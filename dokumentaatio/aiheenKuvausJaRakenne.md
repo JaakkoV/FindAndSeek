@@ -11,3 +11,5 @@ Pelaajan toiminnot:
 * pelimuodon valitseminen
 * vaikeusasteen valitseminen
 * pelikentän valitseminen
+* pelin käynnistäminen
+* pelin pelaaminen
