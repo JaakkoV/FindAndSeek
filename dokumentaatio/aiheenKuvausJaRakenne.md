@@ -6,7 +6,6 @@
 **Rakenne:**
 
 Käyttäjät: Pelaaja
-
 Pelaajan toiminnot:
 * päävalikon näkeminen
 * pelimuodon valitseminen
