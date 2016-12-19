@@ -4,6 +4,7 @@
 **Aihe**: Vuoropohjainen peli, jossa pelaajan ohjaaman hahmon tulee kulkea pelin antamaan pisteeseen kartalla alle annettujen siirtojen lukumäärän.
 
 **Rakenne:**
+
 Käyttäjät: Pelaaja
 
 Pelaajan toiminnot:
