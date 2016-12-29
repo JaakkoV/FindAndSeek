@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game.moveAlgorithms;
+package dev.jaakkovirtanen.findandseek.game.movealgorithms;
 
 /**
  * Behaviour-class let's MapObject (which has a MoveBehaviour) to move diagonally

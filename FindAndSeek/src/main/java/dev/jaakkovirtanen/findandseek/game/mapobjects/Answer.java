@@ -1,7 +1,7 @@
-package dev.jaakkovirtanen.findandseek.game.mapObjects;
+package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
 import dev.jaakkovirtanen.findandseek.game.Location;
-import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.*;
 
 public class Answer extends MapObject {
 

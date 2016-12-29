@@ -1,8 +1,8 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
 import dev.jaakkovirtanen.findandseek.game.levels.Map;
-import dev.jaakkovirtanen.findandseek.game.mapObjects.MapObject;
-import dev.jaakkovirtanen.findandseek.game.mapObjects.Player;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.MapObject;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
 
 /**
  * Level is concrete Map implementation, which consist of

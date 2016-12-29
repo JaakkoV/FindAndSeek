@@ -1,2 +1,6 @@
-# find-and-seek
-[Aiheen kuvaus ja rakenne](dokumentaatio/aiheenKuvausJaRakenne.md)
+## find-and-seek
+
+
+###Dokumentaatio
+* [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)

@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
-import dev.jaakkovirtanen.findandseek.game.mapObjects.Player;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

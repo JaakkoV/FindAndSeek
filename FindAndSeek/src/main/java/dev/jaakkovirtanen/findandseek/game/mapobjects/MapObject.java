@@ -1,7 +1,7 @@
-package dev.jaakkovirtanen.findandseek.game.mapObjects;
+package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
 import dev.jaakkovirtanen.findandseek.game.Location;
-import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.MoveBehaviour;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
 
 public abstract class MapObject {
     Location location;

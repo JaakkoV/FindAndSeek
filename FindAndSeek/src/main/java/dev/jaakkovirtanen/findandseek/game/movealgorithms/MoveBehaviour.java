@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game.moveAlgorithms;
+package dev.jaakkovirtanen.findandseek.game.movealgorithms;
 /**
  * Player implements this interface to know how to move
  * Moving behaviour is made by this way to be able to change

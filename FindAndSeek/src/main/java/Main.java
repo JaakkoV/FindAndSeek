@@ -1,6 +1,6 @@
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.levels.*;
-import dev.jaakkovirtanen.findandseek.game.mapObjects.*;
 
 public class Main {
 

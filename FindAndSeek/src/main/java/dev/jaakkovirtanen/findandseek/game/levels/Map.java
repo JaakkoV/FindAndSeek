@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
-import dev.jaakkovirtanen.findandseek.game.mapObjects.MapObject;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.MapObject;
 
 /**
  * Map-class is abstract class to provide map for the Game-class
