@@ -2,8 +2,11 @@ package dev.jaakkovirtanen.findandseek.game.levels;
 
 import dev.jaakkovirtanen.findandseek.game.mapObjects.MapObject;
 
+/**
+ * Map-class is abstract class to provide map for the Game-class
+ * Maps are generated from Levels, which is class to extend this class
+ */
 public abstract class Map {
-
     private char[][] map;
 
     public Map() {
@@ -33,4 +36,9 @@ public abstract class Map {
     public int getHeight() {
         return this.map.length;
     }
+
+    public char[][] getMap() {
+        return map;
+    }
+    
 }

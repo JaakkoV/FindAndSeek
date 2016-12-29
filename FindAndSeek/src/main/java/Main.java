@@ -1,19 +1,21 @@
-import dev.jaakkovirtanen.findandseek.game.mapObjects.MapObject;
-import dev.jaakkovirtanen.findandseek.game.mapObjects.Answer;
-import dev.jaakkovirtanen.findandseek.game.mapObjects.Player;
-import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.MoveDiagonally;
 import dev.jaakkovirtanen.findandseek.game.*;
-import dev.jaakkovirtanen.findandseek.game.levels.Level;
-import dev.jaakkovirtanen.findandseek.game.levels.Map;
+import dev.jaakkovirtanen.findandseek.game.levels.*;
+import dev.jaakkovirtanen.findandseek.game.mapObjects.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        char[][] newLevel = new char[][]{
+        char[][] newLevel1 = new char[][]{
             {'.', '.', '.', '@', '.', '.', '.'},
             {'.', '.', '.', '.', '.', '.', '.'},
             {'.', '.', '.', '.', '.', '.', '.'}};
-        Map map = new Level(newLevel, new Player());
+        Map map = new Level(newLevel1, new Player());
+        char[][] newLevel2 = new char[][]{
+            {'.', '.', '.', '@', '.', '.', '.'},
+            {'.', '.', '.', '@', '.', '.', '.'},
+            {'.', '.', '.', '@', '.', '.', '.'}};
+        map.createMap();
+        map.changeMap(newLevel2);
         map.createMap();
         
     }
