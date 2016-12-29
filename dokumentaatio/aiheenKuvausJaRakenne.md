@@ -13,3 +13,6 @@ Pelaajan toiminnot:
 * pelikentän valitseminen
 * pelin käynnistäminen
 * pelin pelaaminen
+
+## Määrittelyvaiheen luokkakaavio
+![Ensimmäinen versio luokkakaaviosta](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.0.")
