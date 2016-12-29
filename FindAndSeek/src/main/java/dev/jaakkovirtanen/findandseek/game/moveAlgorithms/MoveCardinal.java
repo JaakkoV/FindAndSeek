@@ -1,7 +1,7 @@
-package dev.jaakkovirtanen.findandseek.game;
+package dev.jaakkovirtanen.findandseek.game.moveAlgorithms;
 
 /**
- * Behavior-class let's MapObject (which has a MoveBehaviour) to move cardinally
+ * Behaviour-class let's MapObject (which has a MoveBehaviour) to move cardinally
  */
 public class MoveCardinal implements MoveBehaviour {
     @Override

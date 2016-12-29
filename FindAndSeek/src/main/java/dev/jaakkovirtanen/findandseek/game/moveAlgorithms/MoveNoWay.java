@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game;
+package dev.jaakkovirtanen.findandseek.game.moveAlgorithms;
 
 /**
  * Behaviour-Class which freezes the MapObject (which has a MoveBehavior)

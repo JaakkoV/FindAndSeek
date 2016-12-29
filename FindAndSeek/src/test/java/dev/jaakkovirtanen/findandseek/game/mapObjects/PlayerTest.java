@@ -1,5 +1,9 @@
-package dev.jaakkovirtanen.findandseek.game;
+package dev.jaakkovirtanen.findandseek.game.mapObjects;
 
+import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.MoveBehaviour;
+import dev.jaakkovirtanen.findandseek.game.mapObjects.Player;
+import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.MoveCardinal;
+import dev.jaakkovirtanen.findandseek.game.moveAlgorithms.MoveDiagonally;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
