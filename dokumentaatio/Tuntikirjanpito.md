@@ -5,4 +5,6 @@ Päivä | Tunnit | Kuvaus
 27.12.2016 | 1.0h | Pajassa aiheen suunnittelua
 28.12.2016 | 2.5h | Työn koodaamista, DL2 palautusten toteutusta mm. Pit
 29.12.2016 | 1.5h | Työn koodaamista, DL2 palautusten toteutusta mm. Checkstyle
+29.12.2016 | 1.5h | Iltakoodaamista ja suunnittelua
+30.12.2016 | 4.5h | Pajatoimintaa, Työn koodaamista, DL3 palautusten toteutusta
 ... | ... | ...
