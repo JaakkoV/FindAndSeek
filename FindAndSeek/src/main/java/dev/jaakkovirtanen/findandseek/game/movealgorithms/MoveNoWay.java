@@ -5,7 +5,8 @@ package dev.jaakkovirtanen.findandseek.game.movealgorithms;
  */
 public class MoveNoWay implements MoveBehaviour {
     @Override
-    public void move() {
+    public int move(char c) {
         System.out.println("not moving at all");
+        return 5;
     }
 }

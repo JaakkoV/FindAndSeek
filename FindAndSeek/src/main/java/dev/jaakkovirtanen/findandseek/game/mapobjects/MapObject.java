@@ -18,8 +18,43 @@ public abstract class MapObject {
         return this.location.getRow();
     }
     
-    public void performMove() {
-        this.moveBehaviour.move();
+    public void performMove(char c) {
+        changeLocation(this.moveBehaviour.move(c));
+    }
+    
+    private void changeLocation(int direction) {
+        switch(direction) {
+            case 1:
+                this.location.setCol(this.location.getCol() - 1);
+                this.location.setRow(this.location.getRow() - 1);
+                break;
+            case 4:
+                this.location.setCol(this.location.getCol() - 1);
+                break;
+            case 7:
+                this.location.setCol(this.location.getCol() - 1);
+                this.location.setRow(this.location.getRow() + 1);
+                break;
+            case 2:
+                this.location.setCol(this.location.getRow() - 1);
+                break;
+            case 8:
+                this.location.setCol(this.location.getRow() + 1);
+                break;
+            case 3:
+                this.location.setCol(this.location.getCol() + 1);
+                this.location.setRow(this.location.getRow() - 1);
+                break;
+            case 6:
+                this.location.setCol(this.location.getCol() + 1);
+                break;
+            case 9:
+                this.location.setCol(this.location.getCol() + 1);
+                this.location.setRow(this.location.getRow() + 1);
+                break;
+            case 5:
+                break;
+        }
     }
     
     public void changeMoveBehaviour(MoveBehaviour newMoveBehaviour) {

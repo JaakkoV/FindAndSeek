@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * @author jaakvirt
  */
 public class LevelTest {
-    private Map level;
+    private Board level;
     private char[][] testMap;
     public LevelTest() {
     }
@@ -41,7 +41,7 @@ public class LevelTest {
 
     @Test 
     public void constructorMap() {
-        assertEquals(this.testMap, this.level.getMap());
+        assertEquals(this.testMap, this.level.getBoard());
     }
     
     @Test 
@@ -50,7 +50,7 @@ public class LevelTest {
             {'.','.','.'},
             {'.','@','.'},
             {'.','.','.'}};
-        this.level.changeMap(expectedMap);
-        assertEquals(expectedMap, this.level.getMap());
+        this.level.loadLevel(expectedMap);
+        assertEquals(expectedMap, this.level.getBoard());
     }
 }

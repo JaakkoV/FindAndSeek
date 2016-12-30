@@ -5,7 +5,13 @@ package dev.jaakkovirtanen.findandseek.game.movealgorithms;
  */
 public class MoveDiagonally implements MoveBehaviour {
     @Override
-    public void move() {
-        System.out.println("moving diagonally only");
+    public int move(char c) {
+        switch(c) {
+            case 'e':
+                return 9;
+            case 'q':
+                return 7;
+        }
+        return 5;
     }
 }

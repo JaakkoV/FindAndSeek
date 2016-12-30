@@ -5,7 +5,13 @@ package dev.jaakkovirtanen.findandseek.game.movealgorithms;
  */
 public class MoveCardinal implements MoveBehaviour {
     @Override
-    public void move() {
-        System.out.println("moving cardinally only");
+    public int move(char c) {
+        switch(c) {
+            case 'w':
+                return 8;
+            case 's':
+                return 2;
+        }
+        return 5;
     }
 }

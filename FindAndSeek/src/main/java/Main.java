@@ -9,14 +9,17 @@ public class Main {
             {'.', '.', '.', '@', '.', '.', '.'},
             {'.', '.', '.', '.', '.', '.', '.'},
             {'.', '.', '.', '.', '.', '.', '.'}};
-        Map map = new Level(newLevel1, new Player());
         char[][] newLevel2 = new char[][]{
-            {'.', '.', '.', '@', '.', '.', '.'},
-            {'.', '.', '.', '@', '.', '.', '.'},
-            {'.', '.', '.', '@', '.', '.', '.'}};
-        map.createMap();
-        map.changeMap(newLevel2);
-        map.createMap();
+            {'.', '.', '.', '@'},
+            {'.', '.', '.', '@'},
+            {'.', '.', '.', '@'}};
+        
+        Level gameLevel = new Level(newLevel1, new Player());
+        Game game = new Game(gameLevel);
+        game.drawBoard();
+        gameLevel.loadLevel(newLevel2);
+        game = new Game(gameLevel);
+        game.drawBoard();
         
     }
 }

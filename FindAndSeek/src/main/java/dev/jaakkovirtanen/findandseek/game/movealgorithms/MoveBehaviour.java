@@ -7,5 +7,5 @@ package dev.jaakkovirtanen.findandseek.game.movealgorithms;
  * Design principle: "program to an interface, not an implementation"
  */
 public interface MoveBehaviour {
-    void move();
+    int move(char c);
 }
