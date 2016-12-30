@@ -19,7 +19,7 @@ Tällä rakenteella pystyn muuttamaan kartalla olevien objektien liikkumisalgori
 **Observer pattern:**
 *Defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically*
 
-Tämän suunnittelumallin käyttämistä pohdin karttaobjektien ja kartan välisen suhteen luomiseen. Haen apua pajasta ennen varsinaisen toteutuksen aloittamista.
+Tämän suunnittelumallin käyttämistä pohdin karttaobjektien ja kartan välisen suhteen luomiseen (loose coupling). Haen apua pajasta ennen varsinaisen toteutuksen aloittamista.
 
 Käyttäjät: Pelaaja
 Pelaajan toiminnot:
@@ -31,4 +31,6 @@ Pelaajan toiminnot:
 * pelin pelaaminen
 
 ## Määrittelyvaiheen luokkakaavio
+Tästä piirroksesta puuttuu vielä muutama todennäköisesti implementoitava luokka selkeyden vuoksi. Koitan ensin saada "pelistä" version, jossa toteutan pelikartan merkistöllä ja saan sinne renderöityä karttaobjekteja, joita sitten yritän saada liikkumaan. Tämän jälkeen lisäilen laskureita ja voittologiikkaa yms.
+
 ![Ensimmäinen versio luokkakaaviosta](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.0.")
