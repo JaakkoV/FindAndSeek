@@ -32,7 +32,7 @@ public class LevelTest {
             {'.','.','.'},
             {'.','.','.'},
             {'.','.','.'}}; 
-        this.level = new Level(testMap, new Player());
+//        this.level = new Level(testMap, new Player());
     }
     
     @After

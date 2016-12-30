@@ -3,11 +3,12 @@ package dev.jaakkovirtanen.findandseek.game.mapobjects;
 import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
 
-public abstract class MapObject {
+public abstract class BoardObject {
     Location location;
     MoveBehaviour moveBehaviour;
 
-    public MapObject() {
+    public BoardObject() {
+        
     }
 
     public int getCol() {

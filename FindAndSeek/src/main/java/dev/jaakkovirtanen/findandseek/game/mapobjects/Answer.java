@@ -1,12 +1,12 @@
 package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.Location;
 
-public class Answer extends MapObject {
+public class Answer extends BoardObject {
 
     public Answer() {
-        location = new Location(1, 1);
+        location = new Location(8, 3);
         moveBehaviour = new MoveNoWay();
     }
 

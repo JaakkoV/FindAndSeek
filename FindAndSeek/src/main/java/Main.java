@@ -1,42 +1,30 @@
 
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.levels.*;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-//        char[][] newLevel1 = new char[][]{
-//            {'.', '.', '.', '@', '.', '.', '.'},
-//            {'.', '.', '.', '.', '.', '.', '.'},
-//            {'.', '.', '.', '.', '.', '.', '.'}};
-//        char[][] newLevel2 = new char[][]{
-//            {'.', '.', '.', '@'},
-//            {'.', '.', '.', '@'},
-//            {'.', '.', '.', '@'}};
-//        
-//        Level gameLevel = new Level(newLevel1, new Player());
-//        Game game = new Game(gameLevel);
-//        game.drawBoard();
-//        gameLevel.loadLevel(newLevel2);
-//        game = new Game(gameLevel);
-//        game.drawBoard();
-
-        Player pelaaja = new Player();
-        System.out.println(pelaaja.getCol());
-        System.out.println(pelaaja.getRow());
-        pelaaja.performMove('w');
-        System.out.println(pelaaja.getCol());
-        System.out.println(pelaaja.getRow());
-
+        BoardObject peluri = new Player();
+        BoardObject vastaus = new Answer();
+        Board pelilauta = new Level(5, 8, peluri, vastaus);
+        
+        pelilauta.drawBoard();
+        
+        System.out.println("Pelaajan sijainti\nSarake: " + peluri.getCol() + "\nRivi: " + peluri.getRow());
+        System.out.println("pelilaudan korkeus on: " + pelilauta.getHeight());
+        System.out.println("pelilaudan leveys on: " + pelilauta.getWidth());
+        
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("liiku: ");
+            System.out.println("liiku (a,s,d,w): ");
             char moveChar = scanner.next().charAt(0);
-            pelaaja.performMove(moveChar);
-            System.out.println(pelaaja.getCol());
-            System.out.println(pelaaja.getRow());
+            peluri.performMove(moveChar);
+            pelilauta.drawBoard();
+            System.out.print(peluri.getCol() + " : ");
+            System.out.println(peluri.getRow());
 
         }
     }

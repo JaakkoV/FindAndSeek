@@ -1,10 +1,10 @@
 package dev.jaakkovirtanen.findandseek.game;
 
 /**
- * Class defines location of objects on the game-map
- * Location is parameter in MapObject-instances
- * MapObject-class is abstract class for all objects on the game-map
- * Classes that extend MapObject are:
+ * Class defines location of objects on the gameBoard
+ * Location is parameter in BoardObject-instances
+ * BoardObject-class is abstract class for all objects on the gameBoard
+ * Classes that extend BoardObject are:
  *      - Player
  *      - Answer
  */
