@@ -6,7 +6,7 @@ package dev.jaakkovirtanen.findandseek.game.movealgorithms;
 public class MoveCardinal implements MoveBehaviour {
     @Override
     public int move(char c) {
-        switch(c) {
+        switch (c) {
             case 'w':
                 return 8;
             case 's':

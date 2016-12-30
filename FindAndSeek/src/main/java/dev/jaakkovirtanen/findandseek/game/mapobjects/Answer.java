@@ -10,4 +10,8 @@ public class Answer extends BoardObject {
         moveBehaviour = new MoveNoWay();
     }
 
+    public Answer(Location location, MoveBehaviour moveBehaviour) {
+        this.location = location;
+        this.moveBehaviour = moveBehaviour;
+    }
 }

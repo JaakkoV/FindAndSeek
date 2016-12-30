@@ -10,6 +10,11 @@ public abstract class BoardObject {
     public BoardObject() {
         
     }
+    
+    public BoardObject(Location location, MoveBehaviour moveBehaviour) {
+        this.location = location;
+        this.moveBehaviour = moveBehaviour;
+    }
 
     public int getCol() {
         return this.location.getCol();
@@ -24,7 +29,7 @@ public abstract class BoardObject {
     }
     
     private void changeLocation(int direction) {
-        switch(direction) {
+        switch (direction) {
             case 1:
                 this.location.setCol(this.location.getCol() - 1);
                 this.location.setRow(this.location.getRow() + 1);
@@ -60,5 +65,9 @@ public abstract class BoardObject {
     
     public void changeMoveBehaviour(MoveBehaviour newMoveBehaviour) {
         this.moveBehaviour = newMoveBehaviour;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

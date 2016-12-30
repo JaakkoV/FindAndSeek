@@ -8,25 +8,27 @@
 <div id="overview"><a href="../../../../../../apidocs/dev/jaakkovirtanen/findandseek/game/levels/Level.html">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> dev.jaakkovirtanen.findandseek.game.levels;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
-<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> dev.jaakkovirtanen.findandseek.game.levels.Map;
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> dev.jaakkovirtanen.findandseek.game.mapobjects.MapObject;
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> * Level is concrete Map implementation, which consist of</em>
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> *      - MapObjects Player &amp; answers</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> *      - char[][], which is 2-dimensional map for the MapObjects</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Level.html">Level</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Map.html">Map</a> {
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/mapobjects/MapObject.html">MapObject</a> player;
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Level.html">Level</a>(<strong class="jxr_keyword">char</strong>[][] level, <a href="../../../../../dev/jaakkovirtanen/findandseek/game/mapobjects/Player.html">Player</a> player) {
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <strong class="jxr_keyword">this</strong>.player = player;
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>          <strong class="jxr_keyword">this</strong>.changeMap(level);
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>      }
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>      
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  }
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> dev.jaakkovirtanen.findandseek.game.levels.Board;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> dev.jaakkovirtanen.findandseek.game.mapobjects.*;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> * Level is building instructions for the GameBoard, which consist of </em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> *      - BoardObjects Player &amp; answers</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> *      - Board height and width</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> * Level is only a "building instruction" for the Board, a thing to be loaded</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Level.html">Level</a> <strong class="jxr_keyword">extends</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Board.html">Board</a> {
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../dev/jaakkovirtanen/findandseek/game/levels/Level.html">Level</a>(<strong class="jxr_keyword">int</strong> boardHeight, <strong class="jxr_keyword">int</strong> boardWidth, <a href="../../../../../dev/jaakkovirtanen/findandseek/game/mapobjects/BoardObject.html">BoardObject</a> player, <a href="../../../../../dev/jaakkovirtanen/findandseek/game/mapobjects/BoardObject.html">BoardObject</a> answer) {
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>          <strong class="jxr_keyword">this</strong>.player = player;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          <strong class="jxr_keyword">this</strong>.board = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">char</strong>[boardHeight][boardWidth];
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; boardHeight; i++) {
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; boardWidth; j++) {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>                  <strong class="jxr_keyword">this</strong>.board[i][j] = '.';
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>              }
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      }
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>

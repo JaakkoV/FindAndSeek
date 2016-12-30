@@ -1,5 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
+import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import org.junit.After;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
-    private Player player;
+    private BoardObject player;
 
     public PlayerTest() {
     }
@@ -26,7 +27,9 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        this.player = new Player();
+        Location location = new Location (3, 1);
+        MoveBehaviour moveBehaviour = new MoveCardinal();
+        this.player = new Player(location, moveBehaviour);
     }
 
     @After
@@ -36,7 +39,7 @@ public class PlayerTest {
     @Test
     public void playerConstructor() {
         assertEquals(1, this.player.getCol());
-        assertEquals(1, this.player.getRow());
+        assertEquals(3, this.player.getRow());
         MoveBehaviour expected = new MoveCardinal();
         assertEquals(expected.getClass(), this.player.moveBehaviour.getClass());
     }
@@ -48,7 +51,7 @@ public class PlayerTest {
 
     @Test
     public void getRow() {
-        assertEquals(1, this.player.getRow());
+        assertEquals(3, this.player.getRow());
     }
 
     @Test

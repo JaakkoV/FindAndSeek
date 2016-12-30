@@ -35,10 +35,6 @@ public abstract class Board {
         }
     }
 
-    private void drawPlayer() {
-        this.board[this.player.getCol()][this.player.getRow()] = '@';
-    }
-
     public int getWidth() {
         return this.board[0].length;
     }

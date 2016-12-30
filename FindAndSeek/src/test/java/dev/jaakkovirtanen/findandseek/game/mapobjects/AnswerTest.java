@@ -5,6 +5,11 @@
  */
 package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
+import dev.jaakkovirtanen.findandseek.game.Location;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveCardinal;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveDiagonally;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +22,9 @@ public class AnswerTest {
     private BoardObject answer;
     
     public AnswerTest() {
-        this.answer = new Answer();
+        Location location = new Location(3,1);
+        MoveBehaviour moveBehaviour = new MoveNoWay();
+        this.answer = new Answer(location, moveBehaviour);
     }
     
     @BeforeClass
@@ -35,11 +42,31 @@ public class AnswerTest {
     
     @After
     public void tearDown() {
+    }    
+    
+    @Test
+    public void answerConstructor() {
+        assertEquals(1, this.answer.getCol());
+        assertEquals(3, this.answer.getRow());
+        MoveBehaviour expected = new MoveNoWay();
+        assertEquals(expected.getClass(), this.answer.moveBehaviour.getClass());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void getCol() {
+        assertEquals(1, this.answer.getCol());
+    }
+
+    @Test
+    public void getRow() {
+        assertEquals(3, this.answer.getRow());
+    }
+
+    @Test
+    public void changeMoveBehaviour() {
+        MoveBehaviour expected = new MoveDiagonally();
+        this.answer.changeMoveBehaviour(expected);
+        assertEquals(expected.getClass(), answer.moveBehaviour.getClass());
+    }
+
 }
