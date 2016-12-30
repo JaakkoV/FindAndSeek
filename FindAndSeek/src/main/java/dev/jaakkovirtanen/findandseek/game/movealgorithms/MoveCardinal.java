@@ -11,6 +11,10 @@ public class MoveCardinal implements MoveBehaviour {
                 return 8;
             case 's':
                 return 2;
+            case 'a':
+                return 4;
+            case 'd':
+                return 6;
         }
         return 5;
     }
