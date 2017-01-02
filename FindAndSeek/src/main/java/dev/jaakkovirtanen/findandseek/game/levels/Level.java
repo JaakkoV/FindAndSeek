@@ -19,7 +19,7 @@ import java.util.Scanner;
  * instructions
  *
  */
-public class Level extends Board {
+public class Level {
 
     private int boardHeight;
     private int boardWidth;
@@ -46,6 +46,12 @@ public class Level extends Board {
         }
     }
 
+    public Level(int boardHeight, int boardWidth, ArrayList<BoardObject> boardObjects) {
+        this.boardObjects.addAll(boardObjects);
+        this.boardHeight = boardHeight;
+        this.boardWidth = boardWidth;
+    }
+
     private boolean initParams(String levelData, String levelDataParam) {
         switch (levelData) {
             case "boardHeight":
@@ -68,20 +74,23 @@ public class Level extends Board {
                 this.boardObjects.add(new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay()));
                 return true;
             case "!a":
-                this.boardObjects.add(new Player(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay()));
+                this.boardObjects.add(new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay()));
                 return true;
             default:
                 return false;
         }
     }
 
-    public Level(int boardHeight, int boardWidth, ArrayList<BoardObject> boardObjects) {
-        this.boardObjects.addAll(boardObjects);
-        this.board = new char[boardHeight][boardWidth];
-        for (int i = 0; i < boardHeight; i++) {
-            for (int j = 0; j < boardWidth; j++) {
-                this.board[i][j] = '.';
-            }
-        }
+    public ArrayList<BoardObject> getBoardObjects() {
+        return boardObjects;
     }
+
+    public int getBoardHeight() {
+        return boardHeight;
+    }
+
+    public int getBoardWidth() {
+        return boardWidth;
+    }
+
 }

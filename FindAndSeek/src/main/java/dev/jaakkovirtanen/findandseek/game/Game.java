@@ -10,12 +10,10 @@ import dev.jaakkovirtanen.findandseek.game.levels.*;
 public class Game {
     private Board gameBoard;
 
-    public Game(Level gameBoard) {
-        this.gameBoard = gameBoard;
+    public Game() {
     }
     
     public void drawBoard() {
-        this.gameBoard.drawBoard();
     }
     
 }

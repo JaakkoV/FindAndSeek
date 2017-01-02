@@ -1,15 +1,12 @@
 package dev.jaakkovirtanen.findandseek.game;
 
 /**
- * Class defines location of objects on the gameBoard
- * Location is parameter in BoardObject-instances
- * BoardObject-class is abstract class for all objects on the gameBoard
- * Classes that extend BoardObject are:
- *      - Player
- *      - Answer
+ * Class defines location of objects on the gameBoard Location is parameter in
+ * BoardObject-instances BoardObject-class is abstract class for all objects on
+ * the gameBoard Classes that extend BoardObject are: - Player - Answer
  */
 public class Location {
-    
+
     private int row;
     private int col;
 
@@ -33,5 +30,14 @@ public class Location {
     public void setRow(int row) {
         this.row = row;
     }
-    
+
+    public boolean equals(Location anotherLocation) {
+        System.out.println(this.row);
+        System.out.println(anotherLocation.getRow());
+        if (this.row == anotherLocation.getRow() && this.col == anotherLocation.getCol()) {
+            return true;
+        }
+        return false;
+    }
+
 }

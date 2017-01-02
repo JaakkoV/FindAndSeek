@@ -4,14 +4,15 @@ import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
 
 public abstract class BoardObject {
+
     Location location;
     MoveBehaviour moveBehaviour;
     int movesPerformed;
-    
+
     public BoardObject() {
-        
+
     }
-    
+
     public BoardObject(Location location, MoveBehaviour moveBehaviour) {
         this.location = location;
         this.moveBehaviour = moveBehaviour;
@@ -20,15 +21,15 @@ public abstract class BoardObject {
     public int getCol() {
         return this.location.getCol();
     }
-    
+
     public int getRow() {
         return this.location.getRow();
     }
-    
+
     public void performMove(char c) {
         changeLocation(this.moveBehaviour.move(c));
     }
-    
+
     private void changeLocation(int direction) {
         switch (direction) {
             case 1:
@@ -63,7 +64,7 @@ public abstract class BoardObject {
                 break;
         }
     }
-    
+
     public void changeMoveBehaviour(MoveBehaviour newMoveBehaviour) {
         this.moveBehaviour = newMoveBehaviour;
     }
@@ -71,4 +72,14 @@ public abstract class BoardObject {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void printLocation() {
+        // for debugging purposes fast print
+        System.out.println("Column is: " + this.getCol() + " and Row is: " + this.getRow());
+    }
+
 }
