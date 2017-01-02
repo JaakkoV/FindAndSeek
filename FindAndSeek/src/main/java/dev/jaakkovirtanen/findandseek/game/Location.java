@@ -32,8 +32,6 @@ public class Location {
     }
 
     public boolean equals(Location anotherLocation) {
-        System.out.println(this.row);
-        System.out.println(anotherLocation.getRow());
         if (this.row == anotherLocation.getRow() && this.col == anotherLocation.getCol()) {
             return true;
         }

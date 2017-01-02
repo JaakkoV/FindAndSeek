@@ -1,5 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
+import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class Board {
 
     private Level level;
     private Player player;
-    private ArrayList<Answer> answers = new ArrayList<>();;
+    private ArrayList<Answer> answers = new ArrayList<>();
     private Answer targeAnswer;
 
     public Board() {
@@ -24,35 +25,39 @@ public class Board {
         this.level = level;
     }
 
-    public Board(Level level, Player player) {
-        this.level = level;
-        this.player = player;
+    public void drawBoard() {
+        for (int i = 0; i < this.level.getBoardHeight(); i++) {
+            for (int j = 0; j < this.level.getBoardWidth(); j++) {
+                if (isPlayer(i, j)) {
+                    System.out.print('@');
+                } else {
+                    System.out.print(isAnswer(i, j));
+                }
+            }
+            System.out.println("");
+        }
     }
 
-//    public void drawBoard() {
-//        for (int i = 0; i < this.level.getHeight(); i++) {
-//            for (int j = 0; j < this.level.getWidth(); j++) {
-//                if (this.player.getCol() == j && this.player.getRow() == i) {
-//                    System.out.print('@');
-//                } else {
-//                    System.out.print(this.board[i][j]);
-//                }
-//            }
-//            System.out.println();
-//        }
-//    }
-    public void initPlayer() {
+    private boolean isPlayer(int i, int j) {
+        return this.player.getLocation().equals(new Location(i, j));
+    }
+
+    public
+            void initPlayer() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Player.class) {
-                setPlayer((Player) b);
+                setPlayer(
+                        (Player) b);
             }
         }
     }
 
-    public void initAnswers() {
+    public
+            void initAnswers() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Answer.class) {
-                answers.add((Answer) b);
+                answers.add(
+                        (Answer) b);
             }
         }
     }
@@ -73,4 +78,12 @@ public class Board {
         return answers;
     }
 
+    private char isAnswer(int i, int j) {
+        for (Answer a : this.answers) {
+            if (a.getLocation().equals(new Location(i, j))) {
+                return a.getValue();
+            }
+        }
+        return '.';
+    }
 }
