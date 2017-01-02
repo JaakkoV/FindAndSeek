@@ -4,8 +4,9 @@ import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.Location;
 
 public class Answer extends BoardObject {
-    private char value;
-    
+
+    private boolean isTarget = false;
+
     public Answer() {
         location = new Location(8, 3);
         moveBehaviour = new MoveNoWay();
@@ -17,10 +18,18 @@ public class Answer extends BoardObject {
     }
 
     public char getValue() {
-        return value;
+        return super.getValue();
     }
 
     public void setValue(char value) {
-        this.value = value;
+        super.setValue(value);
+    }
+
+    public boolean isTarget() {
+        return isTarget;
+    }
+
+    public void setIsTarget(boolean isTarget) {
+        this.isTarget = isTarget;
     }
 }

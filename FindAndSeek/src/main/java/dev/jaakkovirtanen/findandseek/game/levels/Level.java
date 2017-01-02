@@ -35,9 +35,9 @@ public class Level {
                     if (initParams(levelData[i], levelData[i + 1])) {
                         i++;
                     }
-                    if (levelData.length == 3) {
-                        initMapObjects(levelData[i], levelData[i + 1], levelData[i + 2]);
-                        i = i + 2;
+                    if (levelData.length == 4) {
+                        initMapObjects(levelData[i], levelData[i + 1], levelData[i + 2], levelData[i + 3]);
+                        i = i+3;
                     }
                 }
             }
@@ -65,7 +65,7 @@ public class Level {
         }
     }
 
-    private boolean initMapObjects(String levelData, String row, String col) {
+    private boolean initMapObjects(String levelData, String value, String row, String col) {
         Answer a = null;
         switch (levelData) {
             case "player":
@@ -73,12 +73,13 @@ public class Level {
                 return true;
             case "a":
                 a = new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay());
-                a.setValue(levelData.charAt(0));
+                a.setValue(value.charAt(0));
                 this.boardObjects.add(a);
                 return true;
-            case "!a":
+            case "!":
                 a = new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay());
-                a.setValue(levelData.charAt(0));
+                a.setValue(value.charAt(0));
+                a.setIsTarget(true);
                 this.boardObjects.add(a);
                 return true;
             default:

@@ -22,7 +22,7 @@ public class Game {
     public void drawBoard() {
         gameBoard.drawBoard();
     }
-    
+
     public void executePlayerCommand(char moveChar) {
         Player testPlayer = this.gameBoard.getPlayer().getClonePlayer();
         testPlayer.performMove(moveChar);
@@ -30,5 +30,12 @@ public class Game {
             this.gameBoard.getPlayer().performMove(moveChar);
         }
     }
-    
+
+    public void checkGameStatus() {
+        if (this.gameBoard.getTargeAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
+            System.out.println("YOU WON THE GAME!");
+            System.exit(0);
+        }
+    }
+
 }

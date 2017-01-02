@@ -56,6 +56,7 @@ public class Board {
         this.initPlayer();
         this.initAnswers();
     }
+
     private void initPlayer() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Player.class) {
@@ -68,8 +69,11 @@ public class Board {
     private void initAnswers() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Answer.class) {
-                answers.add(
-                        (Answer) b);
+                Answer a = (Answer) b;
+                answers.add(a);
+                if(a.isTarget()) {
+                    this.targeAnswer = a;
+                }
             }
         }
     }
@@ -93,7 +97,17 @@ public class Board {
     public int getHeight() {
         return level.getBoardHeight();
     }
+
     public int getWidth() {
         return level.getBoardWidth();
     }
+
+    public Answer getTargeAnswer() {
+        return targeAnswer;
+    }
+
+    public void setTargeAnswer(Answer targeAnswer) {
+        this.targeAnswer = targeAnswer;
+    }
+    
 }

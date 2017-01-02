@@ -5,6 +5,7 @@ import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
 
 public abstract class BoardObject {
 
+    private char value;
     Location location;
     MoveBehaviour moveBehaviour;
     int movesPerformed;
@@ -80,6 +81,14 @@ public abstract class BoardObject {
     public void printLocation() {
         // for debugging purposes fast print
         System.out.println("Column is: " + this.getCol() + " and Row is: " + this.getRow());
+    }
+
+    public char getValue() {
+        return value;
+    }
+
+    public void setValue(char value) {
+        this.value = value;
     }
 
 }
