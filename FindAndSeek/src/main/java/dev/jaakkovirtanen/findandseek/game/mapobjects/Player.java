@@ -15,4 +15,6 @@ public class Player extends BoardObject {
         this.location = location;
         this.moveBehaviour = moveBehaviour;
     }
+    
+    
 }

@@ -10,21 +10,21 @@ public class Main {
 
         BoardObject peluri = new Player();
         BoardObject vastaus = new Answer();
-        Board pelilauta = new Level(5, 8, peluri, vastaus);
-        pelilauta.drawBoard();
 
-        System.out.println("Pelaajan sijainti\nSarake: " + peluri.getCol() + "\nRivi: " + peluri.getRow());
-        System.out.println("pelilaudan korkeus on: " + pelilauta.getHeight());
-        System.out.println("pelilaudan leveys on: " + pelilauta.getWidth());
+//        System.out.println("Pelaajan sijainti\nSarake: " + peluri.getCol() + "\nRivi: " + peluri.getRow());
+//        System.out.println("pelilaudan korkeus on: " + pelilauta.getHeight());
+//        System.out.println("pelilaudan leveys on: " + pelilauta.getWidth());
+//
+//        Scanner scanner = new Scanner(System.in);
+//        while (true) {
+//            System.out.println("liiku (a,s,d,w): ");
+//            char moveChar = scanner.next().charAt(0);
+//            peluri.performMove(moveChar);
+//            pelilauta.drawBoard();
+//            System.out.print(peluri.getCol() + " : ");
+//            System.out.println(peluri.getRow());
+//        }
+        Level level = new Level("C:\\Users\\User\\Desktop\\javaLabra\\find-and-seek\\FindAndSeek\\src\\main\\java\\dev\\jaakkovirtanen\\findandseek\\game\\levels\\TxtTestLevel.txt");
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("liiku (a,s,d,w): ");
-            char moveChar = scanner.next().charAt(0);
-            peluri.performMove(moveChar);
-            pelilauta.drawBoard();
-            System.out.print(peluri.getCol() + " : ");
-            System.out.println(peluri.getRow());
-        }
     }
 }

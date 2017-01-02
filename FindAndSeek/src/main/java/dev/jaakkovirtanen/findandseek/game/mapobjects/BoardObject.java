@@ -6,7 +6,8 @@ import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
 public abstract class BoardObject {
     Location location;
     MoveBehaviour moveBehaviour;
-
+    int movesPerformed;
+    
     public BoardObject() {
         
     }
