@@ -23,6 +23,7 @@ public class Board {
 
     public void loadLevel(Level level) {
         this.level = level;
+        this.initAll();
     }
 
     public void drawBoard() {
@@ -42,8 +43,20 @@ public class Board {
         return this.player.getLocation().equals(new Location(i, j));
     }
 
-    public
-            void initPlayer() {
+    private char isAnswer(int i, int j) {
+        for (Answer a : this.answers) {
+            if (a.getLocation().equals(new Location(i, j))) {
+                return a.getValue();
+            }
+        }
+        return '.';
+    }
+
+    public void initAll() {
+        this.initPlayer();
+        this.initAnswers();
+    }
+    private void initPlayer() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Player.class) {
                 setPlayer(
@@ -52,8 +65,7 @@ public class Board {
         }
     }
 
-    public
-            void initAnswers() {
+    private void initAnswers() {
         for (BoardObject b : this.level.getBoardObjects()) {
             if (b.getClass() == Answer.class) {
                 answers.add(
@@ -78,12 +90,4 @@ public class Board {
         return answers;
     }
 
-    private char isAnswer(int i, int j) {
-        for (Answer a : this.answers) {
-            if (a.getLocation().equals(new Location(i, j))) {
-                return a.getValue();
-            }
-        }
-        return '.';
-    }
 }

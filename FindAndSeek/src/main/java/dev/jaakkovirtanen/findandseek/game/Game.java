@@ -11,9 +11,15 @@ public class Game {
     private Board gameBoard;
 
     public Game() {
+        this.gameBoard = new Board();
     }
     
     public void drawBoard() {
+        gameBoard.drawBoard();
+    }
+    
+    public void loadLevel(Level level) {
+        gameBoard.loadLevel(level);
     }
     
 }

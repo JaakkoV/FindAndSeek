@@ -17,17 +17,18 @@ public class Main {
         Level level = new Level("C:\\Users\\User\\Desktop\\javaLabra\\find-and-seek\\FindAndSeek\\src\\main\\java\\dev\\jaakkovirtanen\\findandseek\\game\\levels\\TxtTestLevel.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
-        lauta.initPlayer();
-        lauta.initAnswers();
         
         Player peluri = lauta.getPlayer();
+        
+        Game peli = new Game();
+        peli.loadLevel(level);
         
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("liiku (a,s,d,w): ");
             char moveChar = scanner.next().charAt(0);
             peluri.performMove(moveChar);
-            lauta.drawBoard();
+            peli.drawBoard();
             System.out.print(peluri.getCol() + " : ");
             System.out.println(peluri.getRow());
         }
