@@ -10,47 +10,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        System.out.println("Pelaajan sijainti\nSarake: " + peluri.getCol() + "\nRivi: " + peluri.getRow());
-//        System.out.println("pelilaudan korkeus on: " + pelilauta.getHeight());
-//        System.out.println("pelilaudan leveys on: " + pelilauta.getWidth());
-//
         Level level = new Level("C:\\Users\\User\\Desktop\\javaLabra\\find-and-seek\\FindAndSeek\\src\\main\\java\\dev\\jaakkovirtanen\\findandseek\\game\\levels\\TxtTestLevel.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
-        
+
         Player peluri = lauta.getPlayer();
-        
+
         Game peli = new Game();
         peli.loadLevel(level);
-        
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("liiku (a,s,d,w): ");
+            System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
             char moveChar = scanner.next().charAt(0);
+            if (moveChar == '5') peli.changePlayerMoveAlgo();
             peli.executePlayerCommand(moveChar);
-            peli.drawBoard();
-            System.out.print(peluri.getCol() + " : ");
-            System.out.println(peluri.getRow());
+            peluri.printLocation();
         }
-//        
-
-//        lauta.getPlayer().printLocation();
-//        lauta.setPlayer(new Player(new Location(4,1), new MoveDiagonally()));
-//        lauta.getPlayer().printLocation();
-//        
-//        for (BoardObject b : level.getBoardObjects()) {
-//            if(b.getClass() == Player.class) {
-//                b.printLocation();
-//            }
-//        }
-//        
-//        System.out.println("ANSWERS: ");
-//        lauta.initAnswers();
-//        for (BoardObject b : lauta.getAnswers()) {
-//            System.out.println(b);
-//            if(b.getClass() == Answer.class) {
-//                System.out.println(b.getLocation().equals(lauta.getPlayer().getLocation()));
-//            }
-//        }
     }
 }

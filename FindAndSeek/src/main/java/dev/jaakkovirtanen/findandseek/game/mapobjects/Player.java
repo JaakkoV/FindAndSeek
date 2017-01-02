@@ -19,4 +19,9 @@ public class Player extends BoardObject {
         Player clonePlayer = new Player(this.location.getCloneLocation(), this.moveBehaviour);
         return clonePlayer;
     }
+
+    public MoveBehaviour getMoveBehaviour() {
+        return moveBehaviour;
+    }
+    
 }

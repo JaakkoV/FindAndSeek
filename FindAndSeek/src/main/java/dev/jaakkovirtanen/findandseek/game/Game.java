@@ -2,6 +2,8 @@ package dev.jaakkovirtanen.findandseek.game;
 
 import dev.jaakkovirtanen.findandseek.game.levels.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveCardinal;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveDiagonally;
 
 /**
  * Game is a class which consist of: Board, which is initialized with a Level
@@ -28,6 +30,7 @@ public class Game {
         testPlayer.performMove(moveChar);
         if (testPlayer.getLocation().isInside(this.gameBoard.getHeight(), this.gameBoard.getWidth())) {
             this.gameBoard.getPlayer().performMove(moveChar);
+            this.drawBoard();
         }
         checkGameStatus();
     }
@@ -37,6 +40,15 @@ public class Game {
             System.out.println("YOU WON THE GAME!");
             System.exit(0);
         }
+    }
+
+    public void changePlayerMoveAlgo() {
+        if (this.gameBoard.getPlayer().getMoveBehaviour().getClass() == MoveCardinal.class) {
+            this.gameBoard.getPlayer().changeMoveBehaviour(new MoveDiagonally());
+        } else {
+            this.gameBoard.getPlayer().changeMoveBehaviour(new MoveCardinal());
+        }
+        System.out.println("Liikkumisalgoritmi vaihdettu onnistuneesti");
     }
 
 }

@@ -4,7 +4,6 @@ import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.Location;
 
 public class Answer extends BoardObject {
-
     private boolean isTarget = false;
 
     public Answer() {

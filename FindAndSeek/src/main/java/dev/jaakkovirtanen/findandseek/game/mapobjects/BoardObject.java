@@ -34,7 +34,7 @@ public abstract class BoardObject {
     private void changeLocation(int direction) {
         switch (direction) {
             case 1:
-                this.location.setCol(this.location.getCol() - 1);
+                this.location.setCol(this.location.getCol() + 1);
                 this.location.setRow(this.location.getRow() + 1);
                 break;
             case 4:
@@ -51,15 +51,15 @@ public abstract class BoardObject {
                 this.location.setRow(this.location.getRow() - 1);
                 break;
             case 3:
-                this.location.setCol(this.location.getCol() + 1);
+                this.location.setCol(this.location.getCol() - 1);
                 this.location.setRow(this.location.getRow() + 1);
                 break;
             case 6:
                 this.location.setCol(this.location.getCol() + 1);
                 break;
             case 9:
-                this.location.setCol(this.location.getCol() - 1);
-                this.location.setRow(this.location.getRow() + 1);
+                this.location.setCol(this.location.getCol() + 1);
+                this.location.setRow(this.location.getRow() - 1);
                 break;
             case 5:
                 break;
