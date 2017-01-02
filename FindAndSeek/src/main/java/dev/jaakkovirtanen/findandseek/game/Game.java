@@ -29,6 +29,7 @@ public class Game {
         if (testPlayer.getLocation().isInside(this.gameBoard.getHeight(), this.gameBoard.getWidth())) {
             this.gameBoard.getPlayer().performMove(moveChar);
         }
+        checkGameStatus();
     }
 
     public void checkGameStatus() {
