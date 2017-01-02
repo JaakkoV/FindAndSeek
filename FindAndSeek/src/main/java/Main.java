@@ -11,7 +11,7 @@ public class Main {
         BoardObject peluri = new Player();
         BoardObject vastaus = new Answer();
         Board pelilauta = new Level(5, 8, peluri, vastaus);
-
+        System.out.println("test from dt-windows git push");
         pelilauta.drawBoard();
 
         System.out.println("Pelaajan sijainti\nSarake: " + peluri.getCol() + "\nRivi: " + peluri.getRow());
