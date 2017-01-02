@@ -2,8 +2,7 @@
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.levels.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveDiagonally;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import java.util.Scanner;
 
 public class Main {

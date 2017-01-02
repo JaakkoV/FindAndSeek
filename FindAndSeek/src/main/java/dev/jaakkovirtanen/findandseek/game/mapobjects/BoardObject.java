@@ -1,7 +1,7 @@
 package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
 import dev.jaakkovirtanen.findandseek.game.Location;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 
 public abstract class BoardObject {
 

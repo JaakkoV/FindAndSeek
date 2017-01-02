@@ -3,7 +3,6 @@ package dev.jaakkovirtanen.findandseek.game.levels;
 import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import java.util.ArrayList;
-import sun.font.TrueTypeFont;
 
 /**
  * Board-class is abstract class to provide board for the Game-class Boards are
