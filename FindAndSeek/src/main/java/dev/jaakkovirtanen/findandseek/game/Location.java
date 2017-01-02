@@ -38,4 +38,14 @@ public class Location {
         return false;
     }
 
+    public boolean isInside(int row, int col) {
+        if (this.row < row && this.col < col && this.row >= 0 && this.col >= 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    public Location getCloneLocation() {
+        return new Location(row, col);
+    }
 }

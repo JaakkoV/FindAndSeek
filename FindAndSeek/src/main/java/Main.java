@@ -27,7 +27,7 @@ public class Main {
         while (true) {
             System.out.println("liiku (a,s,d,w): ");
             char moveChar = scanner.next().charAt(0);
-            peluri.performMove(moveChar);
+            peli.executePlayerCommand(moveChar);
             peli.drawBoard();
             System.out.print(peluri.getCol() + " : ");
             System.out.println(peluri.getRow());

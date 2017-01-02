@@ -90,4 +90,10 @@ public class Board {
         return answers;
     }
 
+    public int getHeight() {
+        return level.getBoardHeight();
+    }
+    public int getWidth() {
+        return level.getBoardWidth();
+    }
 }
