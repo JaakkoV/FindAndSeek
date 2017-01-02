@@ -38,11 +38,17 @@ public class Game {
     public void checkGameStatus() {
         if (this.gameBoard.getTargeAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
             System.out.println("YOU WON THE GAME!");
+            System.out.println("Moves used: " + this.gameBoard.getPlayer().getMovesPerformed());
             System.exit(0);
         }
     }
 
     public void changePlayerMoveAlgo() {
+        /**
+         * Test class for changing moveBehaviour during runtime, idea can be
+         * used better with further implementations (change moveBehaviour with
+         * special BoardObjects etc)
+         */
         if (this.gameBoard.getPlayer().getMoveBehaviour().getClass() == MoveCardinal.class) {
             this.gameBoard.getPlayer().changeMoveBehaviour(new MoveDiagonally());
         } else {

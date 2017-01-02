@@ -29,6 +29,7 @@ public abstract class BoardObject {
 
     public void performMove(char c) {
         changeLocation(this.moveBehaviour.move(c));
+        movesPerformed++;
     }
 
     private void changeLocation(int direction) {
@@ -91,4 +92,13 @@ public abstract class BoardObject {
         this.value = value;
     }
 
+    public void setMovesPerformed(int movesPerformed) {
+        this.movesPerformed = movesPerformed;
+    }
+
+    public int getMovesPerformed() {
+        return movesPerformed;
+    }
+
+    
 }
