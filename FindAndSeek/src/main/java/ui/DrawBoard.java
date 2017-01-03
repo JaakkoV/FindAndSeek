@@ -10,11 +10,9 @@ import java.util.ArrayList;
 public class DrawBoard extends JPanel {
 
     private Board gameboard;
-    private ArrayList<Rectangle> cells;
 
     public DrawBoard(Board gameboard) {
         this.gameboard = gameboard;
-        this.cells = new ArrayList<>();
     }
 
     @Override
@@ -36,6 +34,9 @@ public class DrawBoard extends JPanel {
                     g2d.fill(player);
                     g2d.setColor(Color.black);
                     g2d.draw(player);
+                    char[] cs = {this.gameboard.getPlayer().getValue()};
+                    g2d.drawChars(cs, 0, 1, xOffset * 2 - 5 + (j * cellWidth), yOffset * 2 + (i * cellHeight)
+                    );
                 } else if (isAnswer(i, j)) {
                     Rectangle answer = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
                     g2d.setColor(Color.yellow);
