@@ -12,9 +12,9 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().add(box);
 //        frame.getContentPane().add(button);
-        frame.setSize(300,300);
+        frame.setSize(600,400);
         Image peli = new ImageIcon("game.jpg").getImage();
-        DrawPanel paneeli = new DrawPanel();
+        DrawStartScreen paneeli = new DrawStartScreen();
         frame.getContentPane().add(paneeli);
 
         frame.setVisible(true);
