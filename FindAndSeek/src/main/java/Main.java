@@ -4,13 +4,14 @@ import dev.jaakkovirtanen.findandseek.game.levels.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import java.util.Scanner;
+import ui.DrawPanel;
 import ui.GUI;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Level level = new Level("C:\\Users\\User\\Desktop\\javaLabra\\find-and-seek\\FindAndSeek\\src\\main\\java\\dev\\jaakkovirtanen\\findandseek\\game\\levels\\TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
 
@@ -21,6 +22,7 @@ public class Main {
         
         GUI gui = new GUI();
         gui.drawGui();
+        
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
