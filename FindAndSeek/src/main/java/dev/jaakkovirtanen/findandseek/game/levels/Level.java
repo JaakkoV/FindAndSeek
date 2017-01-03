@@ -66,13 +66,14 @@ public class Level {
     }
 
     private boolean initMapObjects(String levelData, String value, String row, String col) {
-        Answer a = null;
         switch (levelData) {
             case "player":
-                this.boardObjects.add(new Player(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveCardinal()));
+                Player p = new Player(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveCardinal());
+                p.setValue(value.charAt(0));
+                this.boardObjects.add(p);
                 return true;
             case "a":
-                a = new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay());
+                Answer a = new Answer(new Location(Integer.parseInt(row), Integer.parseInt(col)), new MoveNoWay());
                 a.setValue(value.charAt(0));
                 this.boardObjects.add(a);
                 return true;

@@ -30,7 +30,7 @@ public class Board {
         for (int i = 0; i < this.level.getBoardHeight(); i++) {
             for (int j = 0; j < this.level.getBoardWidth(); j++) {
                 if (isPlayer(i, j)) {
-                    System.out.print('@');
+                    System.out.print(this.player.getValue());
                 } else {
                     System.out.print(isAnswer(i, j));
                 }
