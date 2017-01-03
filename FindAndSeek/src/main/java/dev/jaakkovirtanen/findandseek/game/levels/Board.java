@@ -52,7 +52,7 @@ public class Board {
         return '.';
     }
 
-    public void initAll() {
+    private void initAll() {
         this.initPlayer();
         this.initAnswers();
     }

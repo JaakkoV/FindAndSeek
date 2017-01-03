@@ -4,8 +4,7 @@ import dev.jaakkovirtanen.findandseek.game.levels.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import java.util.Scanner;
-import ui.DrawStartScreen;
-import ui.GUI;
+import ui.*;
 
 public class Main {
 

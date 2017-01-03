@@ -3,7 +3,7 @@ package ui;
 import java.awt.*;
 import javax.swing.*;
 
-public class DrawStartScreen extends JPanel {
+public class StartScreen extends JPanel {
 
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

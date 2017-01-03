@@ -55,4 +55,8 @@ public class Game {
         System.out.println("Liikkumisalgoritmi vaihdettu onnistuneesti");
     }
 
+    public Board getGameBoard() {
+        return gameBoard;
+    }
+
 }
