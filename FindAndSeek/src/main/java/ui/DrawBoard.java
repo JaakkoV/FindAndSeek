@@ -37,12 +37,14 @@ public class DrawBoard extends JPanel {
                     char[] cs = {this.gameboard.getPlayer().getValue()};
                     g2d.drawChars(cs, 0, 1, xOffset * 2 - 5 + (j * cellWidth), yOffset * 2 + (i * cellHeight)
                     );
-                } else if (isAnswer(i, j)) {
+                } else if (isAnswer(i, j) != null) {
                     Rectangle answer = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
                     g2d.setColor(Color.yellow);
                     g2d.fill(answer);
                     g2d.setColor(Color.black);
                     g2d.draw(answer);
+                    char[] cs = isAnswer(i, j);
+                    g2d.drawChars(cs, 0, 1, xOffset * 2 - 5 + (j * cellWidth), yOffset * 2 + (i * cellHeight));
                 } else {
                     Rectangle empty = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
                     g2d.setColor(Color.gray);
@@ -58,13 +60,16 @@ public class DrawBoard extends JPanel {
         return this.gameboard.getPlayer().getLocation().equals(new Location(i, j));
     }
 
-    private boolean isAnswer(int i, int j) {
+    private char[] isAnswer(int i, int j) {
+        char [] returnsChar = new char[1];
         for (Answer a : this.gameboard.getAnswers()) {
             if (a.getLocation().equals(new Location(i, j))) {
-                return true;
+                char ans = a.getValue();
+                returnsChar[0] = ans;
+                return returnsChar;
             }
         }
-        return false;
+        return null;
     }
 
 }
