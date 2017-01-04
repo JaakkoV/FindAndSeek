@@ -16,7 +16,8 @@ public class Board {
     private Level level;
     private Player player;
     private ArrayList<Answer> answers = new ArrayList<>();
-    private Answer targeAnswer;
+    private Answer targetAnswer;
+    private ArrayList<Character> boardOfChars = new ArrayList<>();
 
     public Board() {
     }
@@ -24,19 +25,29 @@ public class Board {
     public void loadLevel(Level level) {
         this.level = level;
         this.initAll();
+        this.initBoardChar();
     }
 
     public void drawBoard() {
+        initBoardChar();
+        for (char c : this.boardOfChars) {
+            System.out.print(c);
+        }
+    }
+
+    private void initBoardChar() {
+        ArrayList<Character> boardCharsToDraw = new ArrayList<>();
         for (int i = 0; i < this.level.getBoardHeight(); i++) {
             for (int j = 0; j < this.level.getBoardWidth(); j++) {
                 if (isPlayer(i, j)) {
-                    System.out.print(this.player.getValue());
+                    boardCharsToDraw.add(this.player.getValue());
                 } else {
-                    System.out.print(isAnswer(i, j));
+                    boardCharsToDraw.add(isAnswer(i, j));
                 }
             }
-            System.out.println("");
+            boardCharsToDraw.add('\n');
         }
+        this.boardOfChars = boardCharsToDraw;
     }
 
     private boolean isPlayer(int i, int j) {
@@ -72,7 +83,7 @@ public class Board {
                 Answer a = (Answer) b;
                 answers.add(a);
                 if (a.isTarget()) {
-                    this.targeAnswer = a;
+                    this.targetAnswer = a;
                 }
             }
         }
@@ -102,12 +113,19 @@ public class Board {
         return level.getBoardWidth();
     }
 
-    public Answer getTargeAnswer() {
-        return targeAnswer;
+    public Answer getTargetAnswer() {
+        return targetAnswer;
     }
 
-    public void setTargeAnswer(Answer targeAnswer) {
-        this.targeAnswer = targeAnswer;
+    public void setTargetAnswer(Answer targeAnswer) {
+        this.targetAnswer = targeAnswer;
     }
 
+    public Level getLevel() {
+        return level;
+    }
+
+    public ArrayList<Character> getBoardOfChars() {
+        return boardOfChars;
+    }
 }

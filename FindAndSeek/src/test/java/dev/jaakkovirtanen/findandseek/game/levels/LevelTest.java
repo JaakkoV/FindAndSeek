@@ -82,13 +82,19 @@ public class LevelTest {
             assertEquals(this.answers.get(i).getValue(), answers.get(i).getValue());
         }
     }
-    
+
     @Test
     public void answerLocationsAfterInit() {
         ArrayList<Answer> answers = getAnswersFromBoardObjects();
         for (int i = 0; i < 4; i++) {
             assertEquals(true, this.answers.get(i).getLocation().equals(answers.get(i).getLocation()));
         }
+    }
+
+    @Test
+    public void targetAnswer() {
+        ArrayList<Answer> answers = getAnswersFromBoardObjects();
+        assertEquals(this.answers.get(3).isTarget(), answers.get(3).isTarget());
     }
 
     private ArrayList<Answer> getAnswersFromBoardObjects() {

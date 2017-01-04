@@ -34,7 +34,7 @@ public class Game {
     }
 
     public void checkGameStatus() {
-        if (this.gameBoard.getTargeAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
+        if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
             System.out.println("YOU WON THE GAME!");
             System.out.println("Moves used: " + this.gameBoard.getPlayer().getMovesPerformed());
             System.exit(0);
