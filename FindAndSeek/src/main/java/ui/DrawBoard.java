@@ -1,6 +1,6 @@
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.Location;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Location;
 import java.awt.*;
 import javax.swing.*;
 import dev.jaakkovirtanen.findandseek.game.levels.*;

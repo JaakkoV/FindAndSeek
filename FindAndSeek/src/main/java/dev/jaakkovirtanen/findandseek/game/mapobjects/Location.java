@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game;
+package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
 /**
  * Class defines location of objects on the gameBoard Location is parameter in

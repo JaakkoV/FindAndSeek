@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
-import dev.jaakkovirtanen.findandseek.game.Location;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Location;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import java.util.ArrayList;
 

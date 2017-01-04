@@ -1,5 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
+import dev.jaakkovirtanen.findandseek.game.mapobjects.Location;
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;

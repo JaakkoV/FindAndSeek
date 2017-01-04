@@ -1,6 +1,5 @@
 package dev.jaakkovirtanen.findandseek.game.mapobjects;
 
-import dev.jaakkovirtanen.findandseek.game.Location;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
 import org.junit.After;
