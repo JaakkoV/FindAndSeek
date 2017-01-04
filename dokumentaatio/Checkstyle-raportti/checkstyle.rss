@@ -23,9 +23,9 @@ under the License.
     <link>${project.url}</link>
     <description>FindAndSeek - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 12,
+      <title>File: 16,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.levels.Level.java">dev/jaakkovirtanen/findandseek/game/levels/Level.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally.java">dev/jaakkovirtanen/findandseek/movealgorithms/MoveDiagonally.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#Main.java">Main.java</a>
+                  <a href="${project.url}/checkstyle.html#ui.StartScreen.java">ui/StartScreen.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveCardinal.java">dev/jaakkovirtanen/findandseek/game/movealgorithms/MoveCardinal.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.levels.Level.java">dev/jaakkovirtanen/findandseek/levels/Level.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay.java">dev/jaakkovirtanen/findandseek/game/movealgorithms/MoveNoWay.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour.java">dev/jaakkovirtanen/findandseek/movealgorithms/MoveBehaviour.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.levels.Board.java">dev/jaakkovirtanen/findandseek/game/levels/Board.java</a>
+                  <a href="${project.url}/checkstyle.html#ui.Scanner.java">ui/Scanner.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.mapobjects.BoardObject.java">dev/jaakkovirtanen/findandseek/game/mapobjects/BoardObject.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.levels.Board.java">dev/jaakkovirtanen/findandseek/levels/Board.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveDiagonally.java">dev/jaakkovirtanen/findandseek/game/movealgorithms/MoveDiagonally.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.movealgorithms.MoveNoWay.java">dev/jaakkovirtanen/findandseek/movealgorithms/MoveNoWay.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.Location.java">dev/jaakkovirtanen/findandseek/game/Location.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.mapobjects.Location.java">dev/jaakkovirtanen/findandseek/mapobjects/Location.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.mapobjects.Player.java">dev/jaakkovirtanen/findandseek/game/mapobjects/Player.java</a>
+                  <a href="${project.url}/checkstyle.html#Main.java">Main.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour.java">dev/jaakkovirtanen/findandseek/game/movealgorithms/MoveBehaviour.java</a>
+                  <a href="${project.url}/checkstyle.html#ui.GUI.java">ui/GUI.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +200,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.game.mapobjects.Answer.java">dev/jaakkovirtanen/findandseek/game/mapobjects/Answer.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.mapobjects.BoardObject.java">dev/jaakkovirtanen/findandseek/mapobjects/BoardObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal.java">dev/jaakkovirtanen/findandseek/movealgorithms/MoveCardinal.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.mapobjects.Player.java">dev/jaakkovirtanen/findandseek/mapobjects/Player.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ui.DrawBoard.java">ui/DrawBoard.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.mapobjects.Answer.java">dev/jaakkovirtanen/findandseek/mapobjects/Answer.java</a>
                 </td>
                 <td>
                   0
