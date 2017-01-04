@@ -33,4 +33,4 @@ Pelaajan toiminnot:
 ## Määrittelyvaiheen luokkakaavio
 Tästä piirroksesta puuttuu vielä muutama todennäköisesti implementoitava luokka selkeyden vuoksi. Koitan ensin saada "pelistä" version, jossa toteutan pelikartan merkistöllä ja saan sinne renderöityä karttaobjekteja, joita sitten yritän saada liikkumaan. Tämän jälkeen lisäilen laskureita ja voittologiikkaa yms.
 
-![Ensimmäinen versio luokkakaaviosta](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.0.")
+![Ensimmäinen versio luokkakaaviosta](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
