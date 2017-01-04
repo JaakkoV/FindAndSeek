@@ -85,7 +85,7 @@ public class LocationTest {
         int expectedCol = 5;
         int expectedRow = 5;
         this.location.setCol(expectedCol);
-        this.location.setCol(expectedRow);
+        this.location.setRow(expectedRow);
         assertEquals(expectedRow, this.location.getRow());
         assertEquals(expectedCol, this.location.getCol());
     }

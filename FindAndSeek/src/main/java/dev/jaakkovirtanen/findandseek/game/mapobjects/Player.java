@@ -4,11 +4,6 @@ import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 
 public class Player extends BoardObject {
     
-    public Player() {
-        location = new Location(0,1);
-        moveBehaviour = new MoveCardinal();
-    }
-    
     public Player(Location location, MoveBehaviour moveBehaviour) {
         this.location = location;
         this.moveBehaviour = moveBehaviour;

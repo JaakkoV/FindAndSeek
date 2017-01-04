@@ -16,33 +16,30 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 public class AnswerTest {
-    private BoardObject answer;
-    
-    public AnswerTest() {
-        Location location = new Location(3,1);
-        MoveBehaviour moveBehaviour = new MoveNoWay();
-        this.answer = new Answer(location, moveBehaviour);
-    }
-    
+
+    private Answer answer;
+
     @BeforeClass
     public static void setUpClass() {
+
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        
+        Location location = new Location(3, 1);
+        MoveBehaviour moveBehaviour = new MoveNoWay();
+        this.answer = new Answer(location, moveBehaviour);
     }
-    
+
     @After
     public void tearDown() {
-    }    
-    
+    }
+
     @Test
     public void answerConstructor() {
         assertEquals(1, this.answer.getCol());
@@ -66,6 +63,22 @@ public class AnswerTest {
         MoveBehaviour expected = new MoveDiagonally();
         this.answer.changeMoveBehaviour(expected);
         assertEquals(expected.getClass(), answer.moveBehaviour.getClass());
+    }
+
+    @Test
+    public void defaultIsTarget() {
+        assertEquals(false, this.answer.isTarget());
+    }
+    
+    public void isYesTarget() {
+        this.answer.setIsTarget(true);
+        assertEquals(true, this.answer.isTarget());
+    }
+    
+    @Test    
+    public void isNotTarget() {
+        this.answer.setIsTarget(false);
+        assertEquals(false, this.answer.isTarget());
     }
 
 }

@@ -3,12 +3,8 @@ package dev.jaakkovirtanen.findandseek.game.mapobjects;
 import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
 
 public class Answer extends BoardObject {
-    private boolean isTarget = false;
 
-    public Answer() {
-        location = new Location(8, 3);
-        moveBehaviour = new MoveNoWay();
-    }
+    private boolean isTarget = false;
 
     public Answer(Location location, MoveBehaviour moveBehaviour) {
         this.location = location;
