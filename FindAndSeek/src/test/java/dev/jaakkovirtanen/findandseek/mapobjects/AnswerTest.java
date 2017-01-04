@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.jaakkovirtanen.findandseek.game.mapobjects;
+package dev.jaakkovirtanen.findandseek.mapobjects;
 
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveBehaviour;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveCardinal;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveDiagonally;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
+import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
+import dev.jaakkovirtanen.findandseek.mapobjects.Location;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveNoWay;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -79,6 +81,14 @@ public class AnswerTest {
     public void isNotTarget() {
         this.answer.setIsTarget(false);
         assertEquals(false, this.answer.isTarget());
+    }
+    
+    @Test
+    public void notMoving() {
+        Location expectedLocation = this.answer.getLocation();
+        this.answer.performMove('w');
+        assertEquals(true, expectedLocation.equals(this.answer.getLocation()));
+        assertEquals(5, this.answer.moveBehaviour.move('s'));
     }
 
 }

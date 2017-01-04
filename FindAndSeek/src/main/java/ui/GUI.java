@@ -1,7 +1,8 @@
 package ui;
 
+import dev.jaakkovirtanen.findandseek.levels.Board;
+import dev.jaakkovirtanen.findandseek.levels.Level;
 import dev.jaakkovirtanen.findandseek.game.Game;
-import dev.jaakkovirtanen.findandseek.game.levels.*;
 import java.awt.*;
 import java.util.Scanner;
 import javax.swing.*;
@@ -31,13 +32,18 @@ public class GUI {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
         while (true) {
+            if (peli.isVictory()) {
+                System.out.println("YOU WON THE GAME");
+                System.out.println("MOVES USED: " + peli.getGameBoard().getPlayer().getMovesPerformed());
+                System.exit(0);
+            }
             char moveChar = scanner.next().charAt(0);
             if (moveChar == '5') {
                 peli.changePlayerMoveAlgo();
             }
             peli.executePlayerCommand(moveChar);
-            frame.repaint();
         }
     }
 }

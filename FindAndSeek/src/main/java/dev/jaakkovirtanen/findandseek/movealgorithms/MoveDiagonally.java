@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game.movealgorithms;
+package dev.jaakkovirtanen.findandseek.movealgorithms;
 
 /**
  * Behaviour-class let's MapObject (which has a MoveBehaviour) to move

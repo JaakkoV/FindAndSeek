@@ -1,6 +1,6 @@
-package dev.jaakkovirtanen.findandseek.game.mapobjects;
+package dev.jaakkovirtanen.findandseek.mapobjects;
 
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
 
 public class Answer extends BoardObject {
 

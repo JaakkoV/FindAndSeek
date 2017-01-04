@@ -1,18 +1,21 @@
 package dev.jaakkovirtanen.findandseek.game;
 
-import dev.jaakkovirtanen.findandseek.game.levels.*;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.*;
+import dev.jaakkovirtanen.findandseek.mapobjects.Player;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
+import dev.jaakkovirtanen.findandseek.levels.Board;
+import dev.jaakkovirtanen.findandseek.levels.Level;
 /**
  * Game is a class which consist of: Board, which is initialized with a Level
  * 
 */
 public class Game {
-
     private Board gameBoard;
-
+    private boolean victory;
+    
     public Game() {
         this.gameBoard = new Board();
+        this.victory = false;
     }
 
     public void loadLevel(Level level) {
@@ -35,9 +38,7 @@ public class Game {
 
     public void checkGameStatus() {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
-            System.out.println("YOU WON THE GAME!");
-            System.out.println("Moves used: " + this.gameBoard.getPlayer().getMovesPerformed());
-            System.exit(0);
+            setVictory(true);
         }
     }
 
@@ -57,6 +58,14 @@ public class Game {
 
     public Board getGameBoard() {
         return gameBoard;
+    }
+
+    public boolean isVictory() {
+        return victory;
+    }
+
+    public void setVictory(boolean victory) {
+        this.victory = victory;
     }
 
 }

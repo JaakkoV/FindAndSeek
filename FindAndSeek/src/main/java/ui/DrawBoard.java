@@ -1,10 +1,10 @@
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Location;
+import dev.jaakkovirtanen.findandseek.levels.Board;
+import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import java.awt.*;
 import javax.swing.*;
-import dev.jaakkovirtanen.findandseek.game.levels.*;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Answer;
+import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
 import java.util.ArrayList;
 
 public class DrawBoard extends JPanel {

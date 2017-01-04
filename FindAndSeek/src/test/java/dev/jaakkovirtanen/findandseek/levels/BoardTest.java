@@ -1,8 +1,10 @@
-package dev.jaakkovirtanen.findandseek.game.levels;
+package dev.jaakkovirtanen.findandseek.levels;
 
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Location;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
+import dev.jaakkovirtanen.findandseek.levels.Board;
+import dev.jaakkovirtanen.findandseek.levels.Level;
+import dev.jaakkovirtanen.findandseek.mapobjects.Location;
+import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveNoWay;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
