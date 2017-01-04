@@ -9,5 +9,5 @@
 
 ###To-Dos (mikä laahaa suhteellisesti perässä):
 - [ ] Dokumentaation päivittäminen
-- [ ] Testien lisääminen
+- [x] Testien lisääminen
 - [ ] JavaDoc
