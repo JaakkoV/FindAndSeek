@@ -1,6 +1,5 @@
 ## find-and-seek
 
-
 ###Dokumentaatio
 * [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
@@ -9,6 +8,12 @@
 * [JavaDoc](https://jaakkov.github.io/find-and-seek/javadoc/index.html)
 
 ###To-Dos (mikä laahaa suhteellisesti perässä):
-- [ ] Dokumentaation päivittäminen
+- [x] Dokumentaation päivittäminen
 - [x] Testien lisääminen
 - [x] JavaDoc
+
+Tällä hetkellä mennään aikataulussa. Seuraavana toteutukseen:
+- [ ] GUI:ta lisää
+- [ ] KeyboardListener
+- [ ] Pelilogiikan laajentamista
+- [ ] Sekvenssikaavioita
