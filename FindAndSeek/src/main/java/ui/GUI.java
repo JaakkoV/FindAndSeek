@@ -21,7 +21,7 @@ public class GUI {
 //        StartScreen paneeli = new StartScreen();
 //        frame.getContentPane().add(paneeli);
 
-        Level level = new Level("assets/TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
         Game peli = new Game();
