@@ -12,7 +12,7 @@
 - [x] Testien lisääminen
 - [x] JavaDoc
 
-Tällä hetkellä mennään aikataulussa. Seuraavana toteutukseen:
+**Tällä hetkellä mennään aikataulussa. Seuraavana toteutukseen:**
 - [ ] GUI:ta lisää
 - [ ] KeyboardListener
 - [ ] Pelilogiikan laajentamista
