@@ -9,6 +9,6 @@ package ui;
  *
  * @author jaakvirt
  */
-class scanner {
+class Scanner {
     
 }
