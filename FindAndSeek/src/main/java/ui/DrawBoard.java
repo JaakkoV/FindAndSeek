@@ -7,6 +7,9 @@ import javax.swing.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
 import java.util.ArrayList;
 
+/**
+ * Class extends JPanel to and is a widget to place on the JFrame.
+ */
 public class DrawBoard extends JPanel {
 
     private Board gameboard;
@@ -61,7 +64,7 @@ public class DrawBoard extends JPanel {
     }
 
     private char[] isAnswer(int i, int j) {
-        char [] returnsChar = new char[1];
+        char[] returnsChar = new char[1];
         for (Answer a : this.gameboard.getAnswers()) {
             if (a.getLocation().equals(new Location(i, j))) {
                 char ans = a.getValue();

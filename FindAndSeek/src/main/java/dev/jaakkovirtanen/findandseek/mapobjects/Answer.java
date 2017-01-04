@@ -2,6 +2,11 @@ package dev.jaakkovirtanen.findandseek.mapobjects;
 
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
 
+/**
+ * Answer-object extends BoardObject and is an answer on the gameboard.
+ * 
+ * Answer has boolean isTarget, which is goal of the game
+ */
 public class Answer extends BoardObject {
 
     private boolean isTarget = false;

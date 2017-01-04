@@ -5,14 +5,16 @@ import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
 import dev.jaakkovirtanen.findandseek.levels.Board;
 import dev.jaakkovirtanen.findandseek.levels.Level;
+
 /**
  * Game is a class which consist of: Board, which is initialized with a Level
  * 
 */
 public class Game {
+
     private Board gameBoard;
     private boolean victory;
-    
+
     public Game() {
         this.gameBoard = new Board();
         this.victory = false;
@@ -42,12 +44,12 @@ public class Game {
         }
     }
 
+    /**
+     * Test class for changing moveBehaviour during runtime, idea can be used
+     * better with further implementations (change moveBehaviour with special
+     * BoardObjects etc)
+     */
     public void changePlayerMoveAlgo() {
-        /**
-         * Test class for changing moveBehaviour during runtime, idea can be
-         * used better with further implementations (change moveBehaviour with
-         * special BoardObjects etc)
-         */
         if (this.gameBoard.getPlayer().getMoveBehaviour().getClass() == MoveCardinal.class) {
             this.gameBoard.getPlayer().changeMoveBehaviour(new MoveDiagonally());
         } else {

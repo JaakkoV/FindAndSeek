@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Level is building instructions for the GameBoard, which consist of
- * BoardObjects, Player & answers, Board height and width
+ * Level is building instructions for the GameBoard.
  *
  * Level is only a "building instruction" for the Board, a thing to be loaded
  *

@@ -7,6 +7,9 @@ import java.awt.*;
 import java.util.Scanner;
 import javax.swing.*;
 
+/**
+ * GUI creates JFrame and adds widgets to it to be drawn
+ */
 public class GUI {
 
     public void drawGui() {
@@ -44,6 +47,8 @@ public class GUI {
                 peli.changePlayerMoveAlgo();
             }
             peli.executePlayerCommand(moveChar);
+            peli.drawBoard();
+            frame.repaint();
         }
     }
 }

@@ -2,6 +2,9 @@ package dev.jaakkovirtanen.findandseek.mapobjects;
 
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
 
+/**
+ * BoardObject is abstract-class to mimic objects on the gameboard.
+ */
 public abstract class BoardObject {
 
     private char value;
@@ -99,5 +102,4 @@ public abstract class BoardObject {
         return movesPerformed;
     }
 
-    
 }

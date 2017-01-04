@@ -3,6 +3,9 @@ package ui;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * StartScreen will be showed to the player. Not ready.
+ */
 public class StartScreen extends JPanel {
 
     public void paintComponent(Graphics g) {
