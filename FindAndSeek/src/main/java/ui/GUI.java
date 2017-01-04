@@ -13,11 +13,11 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().add(box);
 //        frame.getContentPane().add(button);
-        frame.setSize(400, 400);
+        frame.setSize(400, 430);
 //        StartScreen paneeli = new StartScreen();
 //        frame.getContentPane().add(paneeli);
 
-        Level level = new Level("assets/TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
         Game peli = new Game();

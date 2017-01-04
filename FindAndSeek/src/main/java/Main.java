@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Level level = new Level("assets/TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
 

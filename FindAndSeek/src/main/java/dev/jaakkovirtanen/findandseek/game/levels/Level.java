@@ -37,7 +37,7 @@ public class Level {
                     }
                     if (levelData.length == 4) {
                         initMapObjects(levelData[i], levelData[i + 1], levelData[i + 2], levelData[i + 3]);
-                        i = i+3;
+                        i = i + 3;
                     }
                 }
             }

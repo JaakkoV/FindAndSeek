@@ -71,7 +71,7 @@ public class Board {
             if (b.getClass() == Answer.class) {
                 Answer a = (Answer) b;
                 answers.add(a);
-                if(a.isTarget()) {
+                if (a.isTarget()) {
                     this.targeAnswer = a;
                 }
             }
@@ -109,5 +109,5 @@ public class Board {
     public void setTargeAnswer(Answer targeAnswer) {
         this.targeAnswer = targeAnswer;
     }
-    
+
 }

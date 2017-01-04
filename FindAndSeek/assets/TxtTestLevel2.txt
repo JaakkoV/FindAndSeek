@@ -1,0 +1,7 @@
+boardHeight:30
+boardWidth:30
+player:@:16:11
+a:A:24:10
+a:B:16:21
+a:C:3:12
+!:X:17:3

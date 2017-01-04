@@ -1,9 +1,11 @@
 package dev.jaakkovirtanen.findandseek.game.levels;
 
-import dev.jaakkovirtanen.findandseek.game.Location;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.BoardObject;
-import dev.jaakkovirtanen.findandseek.game.mapobjects.Player;
+import dev.jaakkovirtanen.findandseek.game.*;
+import dev.jaakkovirtanen.findandseek.game.mapobjects.*;
+import dev.jaakkovirtanen.findandseek.game.movealgorithms.MoveNoWay;
+import java.util.ArrayList;
+import java.util.Arrays;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,8 +19,11 @@ import static org.junit.Assert.*;
  */
 public class LevelTest {
 
-    private char[][] testMap;
-    private Board level;
+    private int expectedCols, expectedRows;
+    private Level setUpLevel;
+    private Location playerExpectedLocation;
+    private char playerExpectedValue;
+    private ArrayList<Answer> answers;
 
     public LevelTest() {
     }
@@ -33,15 +38,12 @@ public class LevelTest {
 
     @Before
     public void setUp() {
-        int height = 5;
-        int widht = 4;
-        this.testMap = new char[height][widht];
-        this.level = new Level(height, widht, new Player(), new Answer());
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < widht; j++) {
-                this.testMap[i][j] = '.';
-            }
-        }
+        this.setUpLevel = new Level("assets/TxtTestLevel.txt");
+        this.expectedCols = 10;
+        this.expectedRows = 10;
+        this.playerExpectedLocation = new Location(2, 5);
+        this.playerExpectedValue = '@';
+        this.answers = createArrayListOfAnswersForTests();
     }
 
     @After
@@ -49,14 +51,67 @@ public class LevelTest {
     }
 
     @Test
-    public void constructorMap() {
-        assertEquals(this.testMap, this.level.getBoard());
+    public void initParams() {
+        assertEquals(setUpLevel.getBoardHeight(), this.expectedRows);
+        assertEquals(setUpLevel.getBoardWidth(), this.expectedCols);
     }
 
     @Test
-    public void changeBoard() {
-        char[][] expectedMap = this.testMap;
-        this.level.loadLevel(expectedMap);
-        assertEquals(expectedMap, this.level.getBoard());
+    public void playerValueAfterInit() {
+        assertEquals(this.playerExpectedValue, getPlayerFromBoardObjects().getValue());
+    }
+
+    @Test
+    public void playerLocationAfterInit() {
+        assertEquals(true, this.playerExpectedLocation.equals(getPlayerFromBoardObjects().getLocation()));
+    }
+
+    private Player getPlayerFromBoardObjects() {
+        for (BoardObject b : this.setUpLevel.getBoardObjects()) {
+            if (b.getClass() == Player.class) {
+                return (Player) b;
+            }
+        }
+        return null;
+    }
+
+    @Test
+    public void answerValuesAfterInit() {
+        ArrayList<Answer> answers = getAnswersFromBoardObjects();
+        for (int i = 0; i < 4; i++) {
+            assertEquals(this.answers.get(i).getValue(), answers.get(i).getValue());
+        }
+    }
+    
+    @Test
+    public void answerLocationsAfterInit() {
+        ArrayList<Answer> answers = getAnswersFromBoardObjects();
+        for (int i = 0; i < 4; i++) {
+            assertEquals(true, this.answers.get(i).getLocation().equals(answers.get(i).getLocation()));
+        }
+    }
+
+    private ArrayList<Answer> getAnswersFromBoardObjects() {
+        ArrayList<Answer> answers = new ArrayList<>();
+        for (BoardObject b : this.setUpLevel.getBoardObjects()) {
+            if (b.getClass() == Answer.class) {
+                answers.add((Answer) b);
+            }
+        }
+        return answers;
+    }
+
+    private ArrayList<Answer> createArrayListOfAnswersForTests() {
+        ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
+        boolean[] answers = {false, false, false, true};
+        char[] values = {'A', 'B', 'C', 'X'};
+        Location[] locations = {new Location(4, 4), new Location(6, 1), new Location(5, 2), new Location(7, 3)};
+        for (int i = 0; i < 4; i++) {
+            Answer addAnswer = new Answer(locations[i], new MoveNoWay());
+            addAnswer.setValue(values[i]);
+            addAnswer.setIsTarget(answers[i]);
+            arrayOfAnswers.add(addAnswer);
+        }
+        return arrayOfAnswers;
     }
 }
