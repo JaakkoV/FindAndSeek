@@ -70,15 +70,6 @@ public class LevelTest {
         assertEquals(true, this.playerExpectedLocation.equals(getPlayerFromBoardObjects().getLocation()));
     }
 
-    private Player getPlayerFromBoardObjects() {
-        for (BoardObject b : this.setUpLevel.getBoardObjects()) {
-            if (b.getClass() == Player.class) {
-                return (Player) b;
-            }
-        }
-        return null;
-    }
-
     @Test
     public void answerValuesAfterInit() {
         ArrayList<Answer> answers = getAnswersFromBoardObjects();
@@ -123,5 +114,14 @@ public class LevelTest {
             arrayOfAnswers.add(addAnswer);
         }
         return arrayOfAnswers;
+    }
+
+    private Player getPlayerFromBoardObjects() {
+        for (BoardObject b : this.setUpLevel.getBoardObjects()) {
+            if (b.getClass() == Player.class) {
+                return (Player) b;
+            }
+        }
+        return null;
     }
 }

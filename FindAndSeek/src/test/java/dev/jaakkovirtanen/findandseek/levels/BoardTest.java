@@ -53,20 +53,6 @@ public class BoardTest {
     public void tearDown() {
     }
 
-    private ArrayList<Answer> createArrayListOfAnswersForTests() {
-        ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
-        boolean[] answers = {false, false, false, true};
-        char[] values = {'A', 'B', 'C', 'X'};
-        Location[] locations = {new Location(4, 4), new Location(6, 1), new Location(5, 2), new Location(7, 3)};
-        for (int i = 0; i < 4; i++) {
-            Answer addAnswer = new Answer(locations[i], new MoveNoWay());
-            addAnswer.setValue(values[i]);
-            addAnswer.setIsTarget(answers[i]);
-            arrayOfAnswers.add(addAnswer);
-        }
-        return arrayOfAnswers;
-    }
-
     @Test
     public void loadLevel() {
         assertEquals(true, this.setUpLevel == this.board.getLevel());
@@ -93,15 +79,6 @@ public class BoardTest {
         assertArrayEquals(this.getBoardOfCharsToTest().toArray(), this.board.getBoardOfChars().toArray());
     }
 
-    private ArrayList<Character> getBoardOfCharsToTest() {
-        ArrayList<Character> boardOfChars = new ArrayList<>();
-        char[] board = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '@', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', 'A', '.', '.', '.', '.', '.', '\n', '.', '.', 'C', '.', '.', '.', '.', '.', '.', '.', '\n', '.', 'B', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', 'X', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n'};
-        for (char c : board) {
-            boardOfChars.add(c);
-        }
-        return boardOfChars;
-    }
-
     @Test
     public void areAnswersValuesCorrect() {
         for (int i = 0; i < 4; i++) {
@@ -114,6 +91,29 @@ public class BoardTest {
         for (int i = 0; i < 4; i++) {
             assertEquals(true, this.answers.get(i).getLocation().equals(this.board.getAnswers().get(i).getLocation()));
         }
+    }
+
+    private ArrayList<Answer> createArrayListOfAnswersForTests() {
+        ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
+        boolean[] answers = {false, false, false, true};
+        char[] values = {'A', 'B', 'C', 'X'};
+        Location[] locations = {new Location(4, 4), new Location(6, 1), new Location(5, 2), new Location(7, 3)};
+        for (int i = 0; i < 4; i++) {
+            Answer addAnswer = new Answer(locations[i], new MoveNoWay());
+            addAnswer.setValue(values[i]);
+            addAnswer.setIsTarget(answers[i]);
+            arrayOfAnswers.add(addAnswer);
+        }
+        return arrayOfAnswers;
+    }
+
+    private ArrayList<Character> getBoardOfCharsToTest() {
+        ArrayList<Character> boardOfChars = new ArrayList<>();
+        char[] board = {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '@', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', 'A', '.', '.', '.', '.', '.', '\n', '.', '.', 'C', '.', '.', '.', '.', '.', '.', '.', '\n', '.', 'B', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', 'X', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '\n'};
+        for (char c : board) {
+            boardOfChars.add(c);
+        }
+        return boardOfChars;
     }
 
 }

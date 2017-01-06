@@ -72,6 +72,7 @@ public class AnswerTest {
         assertEquals(false, this.answer.isTarget());
     }
     
+    @Test
     public void isYesTarget() {
         this.answer.setIsTarget(true);
         assertEquals(true, this.answer.isTarget());
