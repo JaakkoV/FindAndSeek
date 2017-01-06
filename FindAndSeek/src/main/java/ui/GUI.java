@@ -19,11 +19,6 @@ public class GUI implements KeyListener {
     private JFrame frame;
 
     public void drawGui() throws InterruptedException {
-        this.frame = new JFrame();
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setSize(400, 430);
-        this.frame.setLayout(new BorderLayout());
-
         Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
@@ -31,6 +26,11 @@ public class GUI implements KeyListener {
         this.game.loadLevel(level);
         DrawBoard pelilauta = new DrawBoard(this.game.getGameBoard());
         pelilauta.addKeyListener(this);
+
+        this.frame = new JFrame();
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(this.game.getGameBoard().getWidth() * 20 + 15, this.game.getGameBoard().getHeight() * 20 + 31);
+        this.frame.setLayout(new BorderLayout());
 
         this.frame.getContentPane().add(pelilauta);
         this.frame.setLocationRelativeTo(null);
@@ -44,7 +44,7 @@ public class GUI implements KeyListener {
                 System.out.println("MOVES USED: " + this.game.getGameBoard().getPlayer().getMovesPerformed());
                 System.exit(0);
             }
-            Thread.sleep(0,1);
+            Thread.sleep(0, 1);
         }
     }
 

@@ -1,10 +1,10 @@
-boardHeight:300
-boardWidth:300
+boardHeight:40
+boardWidth:150
 player:@:16:11
 a:A:24:101
 a:B:16:21
 a:C:39:142
 a:C:36:12
-a:C:223:12
-a:C:223:32
+a:C:22:12
+a:C:25:32
 !:X:17:3

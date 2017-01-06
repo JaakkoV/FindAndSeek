@@ -21,14 +21,14 @@ public class DrawBoard extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        int width = 400;
-        int height = 400;
+        int width = this.gameboard.getWidth() * 10;
+        int height = this.gameboard.getHeight() * 10;
 
-        int cellWidth = width / (this.gameboard.getWidth() + 1);
-        int cellHeight = height / (this.gameboard.getHeight() + 1);
+        int cellWidth = width / (this.gameboard.getWidth()) * 2;
+        int cellHeight = height / (this.gameboard.getHeight()) * 2;
 
-        int xOffset = (width - (this.gameboard.getWidth() * cellWidth)) / 2;
-        int yOffset = (height - (this.gameboard.getHeight() * cellHeight)) / 2;
+        int xOffset = (width - (this.gameboard.getWidth() * cellWidth)) / 1000;
+        int yOffset = (height - (this.gameboard.getHeight() * cellHeight)) / 1000;
         for (int i = 0; i < this.gameboard.getHeight(); i++) {
             for (int j = 0; j < this.gameboard.getWidth(); j++) {
                 if (isPlayer(i, j)) {
