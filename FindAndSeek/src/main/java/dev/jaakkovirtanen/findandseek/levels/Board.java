@@ -30,13 +30,6 @@ public class Board {
         this.initBoardChar();
     }
 
-    public void drawBoard() {
-        initBoardChar();
-        for (char c : this.boardOfChars) {
-            System.out.print(c);
-        }
-    }
-
     private void initBoardChar() {
         ArrayList<Character> boardCharsToDraw = new ArrayList<>();
         for (int i = 0; i < this.level.getBoardHeight(); i++) {

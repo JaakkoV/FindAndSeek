@@ -24,16 +24,11 @@ public class Game {
         gameBoard.loadLevel(level);
     }
 
-    public void drawBoard() {
-        gameBoard.drawBoard();
-    }
-
     public void executePlayerCommand(char moveChar) {
         Player testPlayer = this.gameBoard.getPlayer().getClonePlayer();
         testPlayer.performMove(moveChar);
         if (testPlayer.getLocation().isInside(this.gameBoard.getHeight(), this.gameBoard.getWidth())) {
             this.gameBoard.getPlayer().performMove(moveChar);
-            this.drawBoard();
         }
         checkGameStatus();
     }

@@ -4,51 +4,70 @@ import dev.jaakkovirtanen.findandseek.levels.Board;
 import dev.jaakkovirtanen.findandseek.levels.Level;
 import dev.jaakkovirtanen.findandseek.game.Game;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Scanner;
 import javax.swing.*;
 
 /**
  * GUI creates JFrame and adds widgets to it to be drawn
  */
-public class GUI {
+public class GUI implements KeyListener {
 
-    public void drawGui() {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add(box);
-//        frame.getContentPane().add(button);
-        frame.setSize(400, 430);
-//        StartScreen paneeli = new StartScreen();
-//        frame.getContentPane().add(paneeli);
+    private DrawBoard board;
+    private char keyPressed;
+    private Game game;
+    private JFrame frame;
+
+    public void drawGui() throws InterruptedException {
+        this.frame = new JFrame();
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(400, 430);
+        this.frame.setLayout(new BorderLayout());
 
         Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
-        Game peli = new Game();
-        peli.loadLevel(level);
-        DrawBoard pelilauta = new DrawBoard(peli.getGameBoard());
+        this.game = new Game();
+        this.game.loadLevel(level);
+        DrawBoard pelilauta = new DrawBoard(this.game.getGameBoard());
+        pelilauta.addKeyListener(this);
 
-        frame.setLayout(new BorderLayout());
-        frame.getContentPane().add(pelilauta);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-        Scanner scanner = new Scanner(System.in);
+        this.frame.getContentPane().add(pelilauta);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
+        pelilauta.requestFocusInWindow();
 
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
         while (true) {
-            if (peli.isVictory()) {
+            if (this.game.isVictory()) {
                 System.out.println("YOU WON THE GAME");
-                System.out.println("MOVES USED: " + peli.getGameBoard().getPlayer().getMovesPerformed());
+                System.out.println("MOVES USED: " + this.game.getGameBoard().getPlayer().getMovesPerformed());
                 System.exit(0);
             }
-            char moveChar = scanner.next().charAt(0);
-            if (moveChar == '5') {
-                peli.changePlayerMoveAlgo();
-            }
-            peli.executePlayerCommand(moveChar);
-            peli.drawBoard();
-            frame.repaint();
+            Thread.sleep(0,1);
         }
     }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        char moveChar = ke.getKeyChar();
+        if (moveChar == '5') {
+            game.changePlayerMoveAlgo();
+        }
+        game.executePlayerCommand(moveChar);
+        frame.repaint();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+    }
+
 }

@@ -32,31 +32,22 @@ public class DrawBoard extends JPanel {
         for (int i = 0; i < this.gameboard.getHeight(); i++) {
             for (int j = 0; j < this.gameboard.getWidth(); j++) {
                 if (isPlayer(i, j)) {
-                    Rectangle player = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
-                    g2d.setColor(Color.red);
-                    g2d.fill(player);
-                    g2d.setColor(Color.black);
-                    g2d.draw(player);
-                    char[] cs = {this.gameboard.getPlayer().getValue()};
-                    g2d.drawChars(cs, 0, 1, xOffset * 2 - 5 + (j * cellWidth), yOffset * 2 + (i * cellHeight)
-                    );
+                    drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.red);
                 } else if (isAnswer(i, j) != null) {
-                    Rectangle answer = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
-                    g2d.setColor(Color.yellow);
-                    g2d.fill(answer);
-                    g2d.setColor(Color.black);
-                    g2d.draw(answer);
-                    char[] cs = isAnswer(i, j);
-                    g2d.drawChars(cs, 0, 1, xOffset * 2 - 5 + (j * cellWidth), yOffset * 2 + (i * cellHeight));
+                    drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.yellow);
                 } else {
-                    Rectangle empty = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
-                    g2d.setColor(Color.gray);
-                    g2d.fill(empty);
-                    g2d.setColor(Color.black);
-                    g2d.draw(empty);
+                    drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.gray);
                 }
             }
         }
+    }
+
+    private void drawRectangle(int xOffset, int j, int cellWidth, int yOffset, int i, int cellHeight, Graphics2D g2d, Color color) {
+        Rectangle rectangle = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
+        g2d.setColor(color);
+        g2d.fill(rectangle);
+        g2d.setColor(Color.black);
+        g2d.draw(rectangle);
     }
 
     private boolean isPlayer(int i, int j) {
