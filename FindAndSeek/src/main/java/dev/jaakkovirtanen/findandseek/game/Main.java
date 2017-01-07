@@ -1,3 +1,5 @@
+package dev.jaakkovirtanen.findandseek.game;
+
 
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.levels.Board;
