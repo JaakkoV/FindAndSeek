@@ -13,7 +13,7 @@
 - [x] JavaDoc
 
 **Tällä hetkellä mennään aikataulussa. Seuraavana toteutukseen:**
-- [ ] GUI:ta lisää
-- [ ] KeyboardListener
-- [ ] Pelilogiikan laajentamista
+- [x] GUI:ta lisää
+- [x] KeyboardListener
+- [x] Pelilogiikan laajentamista
 - [ ] Sekvenssikaavioita
