@@ -19,7 +19,6 @@ public class Board {
     private Player player;
     private ArrayList<Answer> answers = new ArrayList<>();
     private Answer targetAnswer;
-    private ArrayList<Character> boardOfChars = new ArrayList<>();
 
     public Board() {
     }
@@ -27,24 +26,9 @@ public class Board {
     public void loadLevel(Level level) {
         this.level = level;
         this.initAll();
-        this.initBoardChar();
     }
 
-    private void initBoardChar() {
-        ArrayList<Character> boardCharsToDraw = new ArrayList<>();
-        for (int i = 0; i < this.level.getBoardHeight(); i++) {
-            for (int j = 0; j < this.level.getBoardWidth(); j++) {
-                if (isPlayer(i, j)) {
-                    boardCharsToDraw.add(this.player.getValue());
-                } else {
-                    boardCharsToDraw.add(isAnswer(i, j));
-                }
-            }
-            boardCharsToDraw.add('\n');
-        }
-        this.boardOfChars = boardCharsToDraw;
-    }
-
+  
     private boolean isPlayer(int i, int j) {
         return this.player.getLocation().equals(new Location(i, j));
     }
@@ -118,9 +102,5 @@ public class Board {
 
     public Level getLevel() {
         return level;
-    }
-
-    public ArrayList<Character> getBoardOfChars() {
-        return boardOfChars;
     }
 }
