@@ -35,3 +35,7 @@ Tästä piirroksesta puuttuu vielä UI-luokat selkeyden vuoksi. Ne ovat työn al
 ## Sekvenssikaavio pelaajan ohjaamisesta ylöspäin näppäimellä 'w'
 
 ![Sekvenssikaavio1](ExecuteCommand('w').png "sekve1")
+
+## Sekvenssikaavio pelistatuksen tarkistamisesta
+
+![Sekvenssikaavio2](checkGameStatus.png "sekve2")
