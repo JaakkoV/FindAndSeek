@@ -9,13 +9,18 @@ import java.util.Scanner;
 import javax.swing.*;
 
 /**
- * GUI creates JFrame and adds widgets to it to be drawn
+ * GUI creates JFrame and adds widgets to it to be drawn.
  */
 public class GUI implements KeyListener {
 
     private Game game;
     private JFrame frame;
 
+    /**
+     * Draws widgets to the frame.
+     *
+     * @throws InterruptedException ThreadSleep is used in the method
+     */
     public void drawGui() throws InterruptedException {
         Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();

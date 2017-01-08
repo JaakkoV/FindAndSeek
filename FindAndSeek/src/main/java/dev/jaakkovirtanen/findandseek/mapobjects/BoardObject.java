@@ -12,10 +12,20 @@ public abstract class BoardObject {
     MoveBehaviour moveBehaviour;
     int movesPerformed;
 
+    /**
+     * Empty constructor.
+     */
     public BoardObject() {
 
     }
 
+    /**
+     * Constructor, new BoardObject with location and movebehaviour.
+     *
+     * @param location set objects location
+     * @param moveBehaviour set objects moveBehaviour (use concrete
+     * implementation, eg. new MoveCardinal())
+     */
     public BoardObject(Location location, MoveBehaviour moveBehaviour) {
         this.location = location;
         this.moveBehaviour = moveBehaviour;
@@ -29,6 +39,11 @@ public abstract class BoardObject {
         return this.location.getRow();
     }
 
+    /**
+     * Try to perform objects move.
+     *
+     * @param c character from player
+     */
     public void performMove(char c) {
         changeLocation(this.moveBehaviour.move(c));
         movesPerformed++;
@@ -69,6 +84,12 @@ public abstract class BoardObject {
         }
     }
 
+    /**
+     * Change objects moveAlgorithm.
+     *
+     * @param newMoveBehaviour set new moveBehaviour (use concrete
+     * implementation, eg. new MoveDiagonal())
+     */
     public void changeMoveBehaviour(MoveBehaviour newMoveBehaviour) {
         this.moveBehaviour = newMoveBehaviour;
     }
@@ -79,11 +100,6 @@ public abstract class BoardObject {
 
     public Location getLocation() {
         return location;
-    }
-
-    public void printLocation() {
-        // for debugging purposes fast print
-        System.out.println("Column is: " + this.getCol() + " and Row is: " + this.getRow());
     }
 
     public char getValue() {

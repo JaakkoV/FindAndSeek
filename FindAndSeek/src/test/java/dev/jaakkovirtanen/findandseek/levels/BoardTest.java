@@ -88,6 +88,11 @@ public class BoardTest {
         }
     }
 
+    @Test
+    public void boardOfCharsCorrect() {
+        assertArrayEquals(this.getBoardOfCharsToTest().toArray(), this.board.getBoardOfChars().toArray());
+    }
+
     private ArrayList<Answer> createArrayListOfAnswersForTests() {
         ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
         boolean[] answers = {false, false, false, true};

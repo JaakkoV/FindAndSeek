@@ -27,6 +27,11 @@ public class Level {
     private int boardWidth;
     private ArrayList<BoardObject> boardObjects = new ArrayList<>();
 
+    
+    /**
+     * Reference to txt-file, which contains level-data.
+     * @param filePath path to level's textfile
+     */
     public Level(String filePath) {
         try {
             Scanner file = new Scanner(new FileReader(filePath));
@@ -48,6 +53,12 @@ public class Level {
         }
     }
 
+    /**
+     * Second constructor, with parameters.
+     * @param boardHeight set board height
+     * @param boardWidth set board width
+     * @param boardObjects set boardObjects with boardObject array
+     */
     public Level(int boardHeight, int boardWidth, ArrayList<BoardObject> boardObjects) {
         this.boardObjects.addAll(boardObjects);
         this.boardHeight = boardHeight;

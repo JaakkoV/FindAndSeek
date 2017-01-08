@@ -16,6 +16,10 @@ public class DrawBoard extends JPanel {
     private Dimension prefSize;
     private Color answerColor;
 
+    /**
+     * Constructor for DrawBoard.
+     * @param gameboard initialized with gameboard
+     */
     public DrawBoard(Board gameboard) {
         this.gameboard = gameboard;
         this.prefSize = new Dimension(this.gameboard.getWidth() * 20 + 10, this.gameboard.getHeight() * 20 + 10);

@@ -18,6 +18,11 @@ public class DrawTarget extends JPanel {
     private Dimension prefSize;
     private Color answerColor;
 
+    /**
+     * Constructor for DrawBoard.
+     *
+     * @param gameboard initialized with gameboard
+     */
     public DrawTarget(Board gameboard) {
         this.gameboard = gameboard;
         this.prefSize = new Dimension(30, 30);
