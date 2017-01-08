@@ -12,11 +12,12 @@ import javax.swing.*;
  * GUI creates JFrame and adds widgets to it to be drawn
  */
 public class GUI implements KeyListener {
+
     private Game game;
     private JFrame frame;
 
     public void drawGui() throws InterruptedException {
-        Level level = new Level("assets/TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
         this.game = new Game();
@@ -24,12 +25,11 @@ public class GUI implements KeyListener {
         DrawBoard pelilauta = new DrawBoard(this.game.getGameBoard());
         pelilauta.addKeyListener(this);
         DrawTarget goal = new DrawTarget(this.game.getGameBoard());
-        
 
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
-        
+
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
         goal.setPreferredSize(goal.getPrefSize());
         this.frame.add(goal, BorderLayout.NORTH);

@@ -97,5 +97,5 @@ public class DrawBoard extends JPanel {
     public void setAnswerColor(Color answerColor) {
         this.answerColor = answerColor;
     }
-    
+
 }
