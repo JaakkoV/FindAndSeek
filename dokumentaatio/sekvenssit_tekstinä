@@ -19,3 +19,20 @@ opt if targetAnswersLocation.equals(playersLocation)
 Game->Game:setVictory(true)
 end
 
+
+
+title checkGameStatus
+
+Game->Game: checkGameStatus
+Game->Board: getTargetAnswer
+Board->Game: return targetAnswer
+Game->Answer: targetAnswer.getLocation
+Answer->Game: return aLocation
+Game->Board: getPlayer
+Board->Game: return player
+Game->Player: player.getLocation
+Player->Game: return pLocation
+Game->Game: aLocation.equals(pLocation)
+alt if true
+Game->Game: setVictory(true)
+end
