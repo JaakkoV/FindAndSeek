@@ -1,0 +1,21 @@
+title ExecuteCommand('w')
+
+Game->Game: executePlayerCommand('w')
+Game->Board: this.board.getPlayer()
+Board->Game: return player
+Game->Player: player.getClonePlayer()
+Player->Location: this.location.getCloneLocation()
+Location->Location: new Location(this.row, this.col)
+Location->Player: return cloneLocation
+Player->Player: clonePlayer = new Player(cloneLocation, this.moveBehaviour)
+Player->Game: return clonePlayer
+Game->Player: testPlayer = clonePlayer
+Game->Player: testPlayer.performMove('w')
+opt if testplayer is inside board
+    Game->Player:this.player.performMove('w')
+end
+Game->Game: checkGameStatus
+opt if targetAnswersLocation.equals(playersLocation)
+Game->Game:setVictory(true)
+end
+
