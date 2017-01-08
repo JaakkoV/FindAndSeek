@@ -16,4 +16,4 @@
 - [x] GUI:ta lisää
 - [x] KeyboardListener
 - [x] Pelilogiikan laajentamista
-- [ ] Sekvenssikaavioita
+- [x] Sekvenssikaavioita
