@@ -5,6 +5,7 @@ import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import java.awt.*;
 import javax.swing.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
+import dev.jaakkovirtanen.findandseek.mapobjects.BoardObject;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
@@ -15,20 +16,24 @@ public class DrawTarget extends JPanel {
 
     private Board gameboard;
     private Dimension prefSize;
+    private Color answerColor;
 
     public DrawTarget(Board gameboard) {
         this.gameboard = gameboard;
-        this.prefSize = new Dimension(30,30);
+        this.prefSize = new Dimension(30, 30);
     }
 
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        drawRectangle(this.gameboard.getWidth() * 10 - 10, 25, 0, 25, g2d, Color.yellow);
-        
+        for (Answer a : this.gameboard.getAnswers()) {
+            if (isAnswerGoal(a.getRow(), a.getCol())) {
+                drawRectangle(this.gameboard.getWidth() * 10 - 10, 25, 0, 25, g2d, this.answerColor);
+            }
+        }
     }
 
-    private void drawRectangle(int xOffset,  int cellWidth, int yOffset, int cellHeight, Graphics2D g2d, Color color) {
+    private void drawRectangle(int xOffset, int cellWidth, int yOffset, int cellHeight, Graphics2D g2d, Color color) {
         Rectangle rectangle = new Rectangle(xOffset, yOffset, cellWidth, cellHeight);
         g2d.setColor(color);
         g2d.fill(rectangle);
@@ -36,24 +41,46 @@ public class DrawTarget extends JPanel {
         g2d.draw(rectangle);
     }
 
-    private boolean isPlayer(int i, int j) {
-        return this.gameboard.getPlayer().getLocation().equals(new Location(i, j));
-    }
-
-    private char[] isAnswer(int i, int j) {
-        char[] returnsChar = new char[1];
+    private boolean isAnswerGoal(int i, int j) {
         for (Answer a : this.gameboard.getAnswers()) {
             if (a.getLocation().equals(new Location(i, j))) {
-                char ans = a.getValue();
-                returnsChar[0] = ans;
-                return returnsChar;
+                if (a.isTarget()) {
+                    charToColor(a.getValue());
+                    return true;
+                }
             }
         }
-        return null;
+        return false;
+    }
+
+    private void charToColor(char c) {
+        System.out.println(c);
+        switch (c) {
+            case 'A':
+                System.out.println("blue");
+                setAnswerColor(Color.BLUE);
+                break;
+            case 'B':
+                setAnswerColor(Color.GREEN);
+                break;
+            case 'C':
+                setAnswerColor(Color.PINK);
+                break;
+            case 'X':
+                setAnswerColor(Color.CYAN);
+                break;
+            default:
+                setAnswerColor(Color.BLUE);
+                break;
+        }
     }
 
     public Dimension getPrefSize() {
         return prefSize;
+    }
+
+    public void setAnswerColor(Color answerColor) {
+        this.answerColor = answerColor;
     }
 
 }

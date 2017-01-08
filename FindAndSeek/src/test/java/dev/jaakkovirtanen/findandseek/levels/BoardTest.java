@@ -75,11 +75,6 @@ public class BoardTest {
     }
 
     @Test
-    public void boardOfCharsCorrect() {
-        assertArrayEquals(this.getBoardOfCharsToTest().toArray(), this.board.getBoardOfChars().toArray());
-    }
-
-    @Test
     public void areAnswersValuesCorrect() {
         for (int i = 0; i < 4; i++) {
             assertEquals(this.answers.get(i).getValue(), this.board.getAnswers().get(i).getValue());

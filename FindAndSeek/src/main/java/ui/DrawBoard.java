@@ -19,7 +19,7 @@ public class DrawBoard extends JPanel {
     public DrawBoard(Board gameboard) {
         this.gameboard = gameboard;
         this.prefSize = new Dimension(this.gameboard.getWidth() * 20 + 10, this.gameboard.getHeight() * 20 + 10);
-        this.answerColor = Color.BLUE;
+        this.answerColor = Color.WHITE;
     }
 
     @Override
@@ -73,19 +73,19 @@ public class DrawBoard extends JPanel {
         switch (c) {
             case 'A':
                 System.out.println("blue");
-                this.answerColor = Color.BLUE;
+                setAnswerColor(Color.BLUE);
                 break;
             case 'B':
-                this.answerColor = Color.GREEN;
+                setAnswerColor(Color.GREEN);
                 break;
             case 'C':
-                this.answerColor = Color.PINK;
+                setAnswerColor(Color.PINK);
                 break;
             case 'X':
-                this.answerColor = Color.CYAN;
+                setAnswerColor(Color.CYAN);
                 break;
             default:
-                this.answerColor = Color.BLUE;
+                setAnswerColor(Color.BLUE);
                 break;
         }
     }
@@ -94,4 +94,8 @@ public class DrawBoard extends JPanel {
         return prefSize;
     }
 
+    public void setAnswerColor(Color answerColor) {
+        this.answerColor = answerColor;
+    }
+    
 }
