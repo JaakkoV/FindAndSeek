@@ -12,28 +12,30 @@ import javax.swing.*;
  * GUI creates JFrame and adds widgets to it to be drawn
  */
 public class GUI implements KeyListener {
-
-    private DrawBoard board;
-    private char keyPressed;
     private Game game;
     private JFrame frame;
 
     public void drawGui() throws InterruptedException {
-        Level level = new Level("assets/TxtTestLevel2.txt");
+        Level level = new Level("assets/TxtTestLevel.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
         this.game = new Game();
         this.game.loadLevel(level);
         DrawBoard pelilauta = new DrawBoard(this.game.getGameBoard());
         pelilauta.addKeyListener(this);
+        DrawTarget goal = new DrawTarget(this.game.getGameBoard());
+        
 
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setSize(this.game.getGameBoard().getWidth() * 20 + 15, this.game.getGameBoard().getHeight() * 20 + 31);
         this.frame.setLayout(new BorderLayout());
-
-        this.frame.getContentPane().add(pelilauta);
-        this.frame.setLocationRelativeTo(null);
+        
+        pelilauta.setPreferredSize(pelilauta.getPrefSize());
+        goal.setPreferredSize(goal.getPrefSize());
+        this.frame.add(goal, BorderLayout.NORTH);
+        this.frame.add(pelilauta, BorderLayout.CENTER);
+        this.frame.pack();
+//        this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
         pelilauta.requestFocusInWindow();
 

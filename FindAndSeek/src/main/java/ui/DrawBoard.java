@@ -13,9 +13,11 @@ import java.util.ArrayList;
 public class DrawBoard extends JPanel {
 
     private Board gameboard;
+    private Dimension prefSize;
 
     public DrawBoard(Board gameboard) {
         this.gameboard = gameboard;
+        this.prefSize = new Dimension(this.gameboard.getWidth() * 20 + 10, this.gameboard.getHeight() * 20 + 10);
     }
 
     @Override
@@ -64,6 +66,10 @@ public class DrawBoard extends JPanel {
             }
         }
         return null;
+    }
+
+    public Dimension getPrefSize() {
+        return prefSize;
     }
 
 }
