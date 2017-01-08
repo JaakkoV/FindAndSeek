@@ -28,7 +28,6 @@ Pelaajan toiminnot:
 * pelin pelaaminen
 
 ## Luokkakaavio
-Tästä piirroksesta puuttuu vielä UI-luokat selkeyden vuoksi. Ne ovat työn alla ja lisään niitä piirrokseen, kun kuvio on selkiytynyt ainakin lähelle lopullista.
 
 ![Ensimmäinen versio luokkakaaviosta](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
 
