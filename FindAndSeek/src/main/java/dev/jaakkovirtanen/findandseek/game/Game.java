@@ -1,5 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game;
 
+import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
@@ -13,6 +14,7 @@ import dev.jaakkovirtanen.findandseek.levels.Level;
 public class Game {
 
     private Board gameBoard;
+    private int howManyGoals;
     private boolean victory;
 
     /**
@@ -52,7 +54,9 @@ public class Game {
      */
     public void checkGameStatus() {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
-            setVictory(true);
+            howManyGoals++;
+            gameBoard.changeTargetAnswer(Randomizer.getRandomNumber(gameBoard.getAnswers().size() - 1));
+            System.out.println(howManyGoals);
         }
     }
 
@@ -72,6 +76,7 @@ public class Game {
 
     /**
      * returns gameboard.
+     *
      * @return this.gameBoard
      */
     public Board getGameBoard() {
@@ -80,6 +85,7 @@ public class Game {
 
     /**
      * returns boolean victory.
+     *
      * @return this.victory true or false
      */
     public boolean isVictory() {

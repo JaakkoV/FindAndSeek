@@ -19,6 +19,7 @@ public class Board {
     private Player player;
     private ArrayList<Answer> answers = new ArrayList<>();
     private Answer targetAnswer;
+    private ArrayList<Integer> targetAnswerSequence;
     private ArrayList<Character> boardOfChars = new ArrayList<>();
 
     /**
@@ -89,6 +90,12 @@ public class Board {
             boardCharsToDraw.add('\n');
         }
         this.boardOfChars = boardCharsToDraw;
+    }
+    
+    public void changeTargetAnswer(int indexOfAnswerArray) {
+        this.targetAnswer.setIsTarget(false);
+        this.answers.get(indexOfAnswerArray).setIsTarget(true);
+        initAnswers();
     }
 
     public ArrayList<Character> getBoardOfChars() {

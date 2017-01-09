@@ -59,10 +59,8 @@ public class DrawTarget extends JPanel {
     }
 
     private void charToColor(char c) {
-        System.out.println(c);
         switch (c) {
             case 'A':
-                System.out.println("blue");
                 setAnswerColor(Color.BLUE);
                 break;
             case 'B':

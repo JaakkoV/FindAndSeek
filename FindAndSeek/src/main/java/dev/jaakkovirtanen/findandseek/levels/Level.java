@@ -1,16 +1,10 @@
 package dev.jaakkovirtanen.findandseek.levels;
 
-import dev.jaakkovirtanen.findandseek.mapobjects.Player;
-import dev.jaakkovirtanen.findandseek.mapobjects.BoardObject;
-import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveNoWay;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
-import dev.jaakkovirtanen.findandseek.mapobjects.Location;
+import dev.jaakkovirtanen.findandseek.mapobjects.*;
+import dev.jaakkovirtanen.findandseek.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.game.*;
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /**
  * Level is building instructions for the GameBoard.
@@ -27,9 +21,9 @@ public class Level {
     private int boardWidth;
     private ArrayList<BoardObject> boardObjects = new ArrayList<>();
 
-    
     /**
      * Reference to txt-file, which contains level-data.
+     *
      * @param filePath path to level's textfile
      */
     public Level(String filePath) {
@@ -55,6 +49,7 @@ public class Level {
 
     /**
      * Second constructor, with parameters.
+     *
      * @param boardHeight set board height
      * @param boardWidth set board width
      * @param boardObjects set boardObjects with boardObject array
