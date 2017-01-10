@@ -25,10 +25,11 @@ public class TopMenu extends JPanel {
     private GUI gui;
     private JLabel goalsHit;
     private JLabel optimal;
+    private JLabel optimalCumulative;
     private RectangleDrawing rectum;
 
     public TopMenu(GUI gui) {
-        super(new GridLayout(1, 2));
+        super(new GridLayout(1, 3));
         this.gui = gui;
         this.rectum = new RectangleDrawing(gui.getGame());
         createComponents();
@@ -42,10 +43,15 @@ public class TopMenu extends JPanel {
         this.optimal.setText("optimal " + optimal);
     }
 
+    public void setCumulativeOptimalMoves(int optimal) {
+        this.optimalCumulative.setText("optimal " + optimal);
+    }
+
     @Override
     protected void paintComponent(Graphics grphcs) {
         setGoalsHit(gui.getGame().getGameBoard().getLevel().getHowManyGoals());
         setOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMoves());
+        setCumulativeOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
         repaint();
     }
 
@@ -56,8 +62,12 @@ public class TopMenu extends JPanel {
         InnerTarget targetti = new InnerTarget(gui.getGame().getGameBoard());
         targetti.setPreferredSize(targetti.getPrefSize());
         add(targetti);
+
         this.optimal = new JLabel("optimal: " + gui.getGame().getGameBoard().getLevel().getOptimalMoves());
         add(optimal);
+
+        this.optimalCumulative = new JLabel("Cumulative optimal " + gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
+        add(optimalCumulative);
     }
 
     class InnerTarget extends JPanel {

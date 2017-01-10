@@ -62,14 +62,11 @@ public class GUI implements KeyListener, Runnable {
     private void createComponents(Container container) {
         BoardPanel pelilauta = new BoardPanel(this);
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
-
-        TopMenu northMenu = new TopMenu(this);
-        northMenu.setFocusable(false);
-        BottomMenu southMenu = new BottomMenu(this);
-        southMenu.setFocusable(false);
-        container.add(northMenu, BorderLayout.NORTH);
+        TopMenu topMenu = new TopMenu(this);
+        BottomMenu bottomMenu = new BottomMenu(this);
+        container.add(topMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
-        container.add(southMenu, BorderLayout.SOUTH);
+        container.add(bottomMenu, BorderLayout.SOUTH);
         frame.setFocusable(true);
         frame.pack();
         frame.repaint();
