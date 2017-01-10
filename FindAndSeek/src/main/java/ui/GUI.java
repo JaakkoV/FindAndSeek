@@ -5,6 +5,8 @@ import dev.jaakkovirtanen.findandseek.game.Game;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
 import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Scanner;
@@ -13,40 +15,36 @@ import javax.swing.*;
 /**
  * GUI creates JFrame and adds widgets to it to be drawn.
  */
-public class GUI implements KeyListener {
+public class GUI implements KeyListener, Runnable {
 
     private Game game;
     private JFrame frame;
+    private Color answerColor;
+
+    public GUI() {
+        this.game = new Game();
+        this.game.loadLevel(new Level("assets/TxtTestLevel.txt"));
+    }
+
+    @Override
+    public void run() {
+        drawGui();
+    }
 
     /**
      * Draws widgets to the frame.
      *
      * @throws InterruptedException ThreadSleep is used in the method
      */
-    public void drawGui() throws InterruptedException {
-        Level level = new Level("assets/TxtTestLevel2.txt");
-        Board lauta = new Board();
-        lauta.loadLevel(level);
-        this.game = new Game();
-        this.game.loadLevel(level);
-        innerDrawBoard pelilauta = new innerDrawBoard(this.game.getGameBoard());
-        pelilauta.addKeyListener(this);
-        DrawTarget goal = new DrawTarget(this.game.getGameBoard());
-        JTextArea text = new JTextArea();
-        text.setText(String.format("%s", game.getHowManyGoals()));
-        goal.add(text);
+    private void drawGui() {
+
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
-
-        pelilauta.setPreferredSize(pelilauta.getPrefSize());
-        goal.setPreferredSize(goal.getPrefSize());
-        this.frame.add(goal, BorderLayout.NORTH);
-        this.frame.add(pelilauta, BorderLayout.CENTER);
+        createComponents(frame.getContentPane());
         this.frame.pack();
-//        this.frame.setLocationRelativeTo(null);
+        frame.addKeyListener(this);
         this.frame.setVisible(true);
-        pelilauta.requestFocusInWindow();
 
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
         while (true) {
@@ -55,8 +53,27 @@ public class GUI implements KeyListener {
                 System.out.println("MOVES USED: " + this.game.getGameBoard().getPlayer().getMovesPerformed());
                 System.exit(0);
             }
-            Thread.sleep(0, 1);
+            try {
+                Thread.sleep(0, 1);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
+    }
+
+    private void createComponents(Container container) {
+        InnerBoard pelilauta = new InnerBoard(this.game.getGameBoard());
+        pelilauta.addKeyListener(this);
+//        InnerTarget goal = new InnerTarget(this.game.getGameBoard());
+        pelilauta.setPreferredSize(pelilauta.getPrefSize());
+//        goal.setPreferredSize(goal.getPrefSize());
+//        container.add(goal, BorderLayout.NORTH);
+        InnerSouthMenu goals = new InnerSouthMenu();
+        container.add(goals, BorderLayout.NORTH);
+        container.add(pelilauta, BorderLayout.CENTER);
+        InnerNorthMenu moves = new InnerNorthMenu();
+        container.add(moves, BorderLayout.SOUTH);
+        frame.setFocusable(true);
     }
 
     @Override
@@ -78,19 +95,64 @@ public class GUI implements KeyListener {
     public void keyReleased(KeyEvent ke) {
     }
 
-    class innerDrawBoard extends JPanel {
+    private void drawRectangle(int xOffset, int j, int cellWidth, int yOffset, int i, int cellHeight, Graphics2D g2d, Color color) {
+        Rectangle rectangle = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
+        g2d.setColor(color);
+        g2d.fill(rectangle);
+        g2d.setColor(Color.black);
+        g2d.draw(rectangle);
+    }
+
+    private boolean isPlayer(int i, int j) {
+        return game.getGameBoard().getPlayer().getLocation().equals(new Location(i, j));
+    }
+
+    private boolean isAnswer(int i, int j) {
+        for (Answer a : game.getGameBoard().getAnswers()) {
+            if (a.getLocation().equals(new Location(i, j))) {
+                charToColor(a.getValue());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void charToColor(char c) {
+        switch (c) {
+            case 'A':
+                setAnswerColor(Color.BLUE);
+                break;
+            case 'B':
+                setAnswerColor(Color.GREEN);
+                break;
+            case 'C':
+                setAnswerColor(Color.PINK);
+                break;
+            case 'X':
+                setAnswerColor(Color.CYAN);
+                break;
+            default:
+                setAnswerColor(Color.BLUE);
+                break;
+        }
+    }
+
+    private void setAnswerColor(Color answerColor) {
+        this.answerColor = answerColor;
+    }
+
+    class InnerBoard extends JPanel {
 
         private Dimension prefSize;
-        private Color answerColor;
 
         /**
          * Constructor for DrawBoard.
          *
          * @param gameboard initialized with gameboard
          */
-        public innerDrawBoard(Board gameboard) {
+        public InnerBoard(Board gameboard) {
             this.prefSize = new Dimension(game.getGameBoard().getWidth() * 20 + 10, game.getGameBoard().getHeight() * 20 + 10);
-            this.answerColor = Color.WHITE;
+            answerColor = Color.WHITE;
         }
 
         @Override
@@ -109,7 +171,7 @@ public class GUI implements KeyListener {
                     if (isPlayer(i, j)) {
                         drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.red);
                     } else if (isAnswer(i, j)) {
-                        drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, this.answerColor);
+                        drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, answerColor);
                     } else {
                         drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.gray);
                     }
@@ -117,56 +179,120 @@ public class GUI implements KeyListener {
             }
         }
 
-        private void drawRectangle(int xOffset, int j, int cellWidth, int yOffset, int i, int cellHeight, Graphics2D g2d, Color color) {
-            Rectangle rectangle = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
-            g2d.setColor(color);
-            g2d.fill(rectangle);
-            g2d.setColor(Color.black);
-            g2d.draw(rectangle);
+        public Dimension getPrefSize() {
+            return prefSize;
         }
 
-        private boolean isPlayer(int i, int j) {
-            return game.getGameBoard().getPlayer().getLocation().equals(new Location(i, j));
+    }
+
+    class InnerTarget extends JPanel {
+
+        private Dimension prefSize;
+
+        /**
+         * Constructor for DrawBoard.
+         *
+         * @param gameboard initialized with gameboard
+         */
+        public InnerTarget(Board gameboard) {
+            this.prefSize = new Dimension(30, 30);
         }
 
-        private boolean isAnswer(int i, int j) {
+        @Override
+        public void paintComponent(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            for (Answer a : game.getGameBoard().getAnswers()) {
+                if (isAnswerGoal(a.getRow(), a.getCol())) {
+                    drawRectangle(0, 0, 25, 0, 0, 25, g2d, answerColor);
+                }
+            }
+        }
+
+        private boolean isAnswerGoal(int i, int j) {
             for (Answer a : game.getGameBoard().getAnswers()) {
                 if (a.getLocation().equals(new Location(i, j))) {
-                    charToColor(a.getValue());
-                    return true;
+                    if (a.isTarget()) {
+                        charToColor(a.getValue());
+                        return true;
+                    }
                 }
             }
             return false;
         }
 
-        private void charToColor(char c) {
-            switch (c) {
-                case 'A':
-                    setAnswerColor(Color.BLUE);
-                    break;
-                case 'B':
-                    setAnswerColor(Color.GREEN);
-                    break;
-                case 'C':
-                    setAnswerColor(Color.PINK);
-                    break;
-                case 'X':
-                    setAnswerColor(Color.CYAN);
-                    break;
-                default:
-                    setAnswerColor(Color.BLUE);
-                    break;
-            }
-        }
-
         public Dimension getPrefSize() {
             return prefSize;
         }
+    }
 
-        public void setAnswerColor(Color answerColor) {
-            this.answerColor = answerColor;
+    class InnerNorthMenu extends JPanel implements ActionListener {
+
+        private JLabel playerMoves;
+
+        public InnerNorthMenu() {
+            super(new GridLayout(1, 3));
+            createComponents();
+        }
+
+        public void setPlayerMoves(int playerMoves) {
+            this.playerMoves.setText("Moves: " + playerMoves);
+        }
+
+        public JLabel getPlayerMoves() {
+            return playerMoves;
+        }
+
+        @Override
+        protected void paintComponent(Graphics grphcs) {
+            setPlayerMoves(game.getGameBoard().getPlayer().getMovesPerformed());
+        }
+
+        private void createComponents() {
+            JComboBox levels = new JComboBox<>();
+            add(levels);
+            this.playerMoves = new JLabel("Moves: 0", SwingConstants.CENTER);
+            add(playerMoves);
+
+            JButton exit = new JButton("Exit");
+            exit.addActionListener(this);
+            add(exit);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            System.exit(0);
         }
 
     }
 
+    class InnerSouthMenu extends JPanel {
+
+        private JLabel goalsHit;
+
+        public InnerSouthMenu() {
+            super(new GridLayout(1, 3));
+            createComponents();
+        }
+
+        public void setGoalsHit(int goalsHit) {
+            this.goalsHit.setText("Goals: " + goalsHit);
+        }
+
+        @Override
+        protected void paintComponent(Graphics grphcs) {
+            setGoalsHit(game.getHowManyGoals());
+        }
+
+        private void createComponents() {
+            this.goalsHit = new JLabel("Goals: 0");
+            add(goalsHit);
+
+            InnerTarget targetti = new InnerTarget(game.getGameBoard());
+            targetti.setPreferredSize(targetti.getPrefSize());
+            add(targetti);
+            JLabel optimal = new JLabel("optimal: 15");
+            add(optimal);
+        }
+
+    }
 }
