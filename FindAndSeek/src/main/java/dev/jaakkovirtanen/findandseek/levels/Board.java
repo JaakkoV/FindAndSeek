@@ -95,7 +95,17 @@ public class Board {
 
     public void changeTargetAnswer(int indexOfAnswerArray) {
         this.targetAnswer.setIsTarget(false);
-        this.answers.get(indexOfAnswerArray).setIsTarget(true);
+        Answer newTarget;
+        if (!player.getLocation().equals(this.answers.get(indexOfAnswerArray).getLocation())) {
+            this.answers.get(indexOfAnswerArray).setIsTarget(true);
+        } else {
+            if (indexOfAnswerArray == 0) {
+                this.answers.get(indexOfAnswerArray + 1).setIsTarget(true);
+            } else {
+                this.answers.get(indexOfAnswerArray - 1).setIsTarget(true);
+            }
+        }
+
         initAnswers();
         optimalDistance();
     }
