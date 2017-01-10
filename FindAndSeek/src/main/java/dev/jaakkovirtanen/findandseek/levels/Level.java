@@ -21,6 +21,8 @@ public class Level {
     private int boardWidth;
     private int howManyGoals;
     private ArrayList<BoardObject> boardObjects = new ArrayList<>();
+    private int optimalMovesCumulative;
+    private int optimalMoves;
 
     /**
      * Reference to txt-file, which contains level-data.
@@ -124,4 +126,22 @@ public class Level {
     public void setHowManyGoals(int howManyGoals) {
         this.howManyGoals = howManyGoals;
     }
+
+    private void addOptimalMoves(int optimalDistance) {
+        this.optimalMovesCumulative += optimalDistance;
+    }
+
+    public int getOptimalMovesCumulative() {
+        return optimalMovesCumulative;
+    }
+
+    public void setOptimalMoves(int optimalMoves) {
+        this.optimalMoves = optimalMoves;
+        addOptimalMoves(optimalMoves);
+    }
+
+    public int getOptimalMoves() {
+        return optimalMoves;
+    }
+
 }

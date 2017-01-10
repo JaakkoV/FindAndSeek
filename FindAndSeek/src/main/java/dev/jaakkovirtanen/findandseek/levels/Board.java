@@ -19,9 +19,7 @@ public class Board {
     private Player player;
     private ArrayList<Answer> answers = new ArrayList<>();
     private Answer targetAnswer;
-    private ArrayList<Integer> targetAnswerSequence;
     private ArrayList<Character> boardOfChars = new ArrayList<>();
-    private int howManyGoals;
 
     /**
      * Empty constructor.
@@ -31,12 +29,14 @@ public class Board {
 
     /**
      * Load level to this Board.
+     *
      * @param level level to be uploaded
      */
     public void loadLevel(Level level) {
         this.level = level;
         this.initAll();
         this.initBoardChar();
+        this.optimalDistance();
     }
 
     private boolean isPlayer(int i, int j) {
@@ -92,11 +92,18 @@ public class Board {
         }
         this.boardOfChars = boardCharsToDraw;
     }
-    
+
     public void changeTargetAnswer(int indexOfAnswerArray) {
         this.targetAnswer.setIsTarget(false);
         this.answers.get(indexOfAnswerArray).setIsTarget(true);
         initAnswers();
+        optimalDistance();
+    }
+
+    private void optimalDistance() {
+        int xDist = player.getLocation().getCol() - targetAnswer.getLocation().getCol();
+        int yDist = targetAnswer.getLocation().getRow() - player.getLocation().getRow();
+        level.setOptimalMoves(Math.max(xDist, yDist));
     }
 
     public ArrayList<Character> getBoardOfChars() {
@@ -138,7 +145,4 @@ public class Board {
     public Level getLevel() {
         return level;
     }
-
-    
-    
 }

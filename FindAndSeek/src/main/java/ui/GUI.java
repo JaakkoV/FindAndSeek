@@ -249,7 +249,7 @@ public class GUI implements KeyListener, Runnable {
         JComboBox<Integer> levels;
 
         public InnerSouthMenu() {
-            super(new GridLayout(1, 4));
+            super(new GridLayout(1, 3));
             innerCreateComponents();
         }
 
@@ -275,7 +275,7 @@ public class GUI implements KeyListener, Runnable {
             }
 
             levels.addActionListener(this);
-            add(levels, SwingConstants.LEFT);
+            add(levels);
 
             this.playerMoves = new JLabel("Moves: 0");
             add(playerMoves);
@@ -299,7 +299,7 @@ public class GUI implements KeyListener, Runnable {
         private JLabel goalsHit;
 
         public InnerNorthMenu() {
-            super(new GridLayout(1, 3));
+            super(new GridLayout(1, 2));
             createComponents();
         }
 
@@ -319,7 +319,7 @@ public class GUI implements KeyListener, Runnable {
             InnerTarget targetti = new InnerTarget(game.getGameBoard());
             targetti.setPreferredSize(targetti.getPrefSize());
             add(targetti);
-            JLabel optimal = new JLabel("optimal: 15");
+            JLabel optimal = new JLabel("optimal: " + game.getGameBoard().getLevel().getOptimalMoves());
             add(optimal);
         }
 
