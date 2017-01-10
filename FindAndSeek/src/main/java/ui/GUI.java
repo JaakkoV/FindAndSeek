@@ -74,10 +74,10 @@ public class GUI implements KeyListener, Runnable {
     }
 
     private void createComponents(Container container) {
-        InnerBoard pelilauta = new InnerBoard(this.game.getGameBoard());
+        BoardPanel pelilauta = new BoardPanel(this);
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
 
-        InnerNorthMenu northMenu = new InnerNorthMenu();
+        UpperMenu northMenu = new UpperMenu(this);
 
         InnerSouthMenu southMenu = new InnerSouthMenu();
 
@@ -108,142 +108,8 @@ public class GUI implements KeyListener, Runnable {
     public void keyReleased(KeyEvent ke) {
     }
 
-    private void drawRectangle(int xOffset, int j, int cellWidth, int yOffset, int i, int cellHeight, Graphics2D g2d, Color color) {
-        Rectangle rectangle = new Rectangle(xOffset + (j * cellWidth), yOffset + (i * cellHeight), cellWidth, cellHeight);
-        g2d.setColor(color);
-        g2d.fill(rectangle);
-        g2d.setColor(Color.black);
-        g2d.draw(rectangle);
-    }
-
-    private boolean isPlayer(int i, int j) {
-        return game.getGameBoard().getPlayer().getLocation().equals(new Location(i, j));
-    }
-
-    private boolean isAnswer(int i, int j) {
-        for (Answer a : game.getGameBoard().getAnswers()) {
-            if (a.getLocation().equals(new Location(i, j))) {
-                charToColor(a.getValue());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void charToColor(char c) {
-        switch (c) {
-            case 'A':
-                setAnswerColor(Color.BLUE);
-                break;
-            case 'B':
-                setAnswerColor(Color.GREEN);
-                break;
-            case 'C':
-                setAnswerColor(Color.PINK);
-                break;
-            case 'D':
-                setAnswerColor(Color.ORANGE);
-                break;
-            case 'E':
-                setAnswerColor(Color.YELLOW);
-                break;
-            case 'F':
-                setAnswerColor(Color.MAGENTA);
-                break;
-            case 'X':
-                setAnswerColor(Color.CYAN);
-                break;
-            default:
-                setAnswerColor(Color.BLUE);
-                break;
-        }
-    }
-
-    private void setAnswerColor(Color answerColor) {
-        this.answerColor = answerColor;
-    }
-
-    class InnerBoard extends JPanel {
-
-        private Dimension prefSize;
-
-        /**
-         * Constructor for DrawBoard.
-         *
-         * @param gameboard initialized with gameboard
-         */
-        public InnerBoard(Board gameboard) {
-            this.prefSize = new Dimension(game.getGameBoard().getWidth() * 20 + 10, game.getGameBoard().getHeight() * 20 + 10);
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g;
-            int width = game.getGameBoard().getWidth() * 10;
-            int height = game.getGameBoard().getHeight() * 10;
-
-            int cellWidth = width / (game.getGameBoard().getWidth()) * 2;
-            int cellHeight = height / (game.getGameBoard().getHeight()) * 2;
-
-            int xOffset = (width - (game.getGameBoard().getWidth() * cellWidth)) / 1000;
-            int yOffset = (height - (game.getGameBoard().getHeight() * cellHeight)) / 1000;
-            for (int i = 0; i < game.getGameBoard().getHeight(); i++) {
-                for (int j = 0; j < game.getGameBoard().getWidth(); j++) {
-                    if (isPlayer(i, j)) {
-                        drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.red);
-                    } else if (isAnswer(i, j)) {
-                        drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, answerColor);
-                    } else {
-                        drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.gray);
-                    }
-                }
-            }
-        }
-
-        public Dimension getPrefSize() {
-            return prefSize;
-        }
-
-    }
-
-    class InnerTarget extends JPanel {
-
-        private Dimension prefSize;
-
-        /**
-         * Constructor for DrawBoard.
-         *
-         * @param gameboard initialized with gameboard
-         */
-        public InnerTarget(Board gameboard) {
-            this.prefSize = new Dimension(30, 30);
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g;
-            for (Answer a : game.getGameBoard().getAnswers()) {
-                if (isAnswerGoal(a.getRow(), a.getCol())) {
-                    drawRectangle(0, 0, 25, 0, 0, 25, g2d, answerColor);
-                }
-            }
-        }
-
-        private boolean isAnswerGoal(int i, int j) {
-            for (Answer a : game.getGameBoard().getAnswers()) {
-                if (a.getLocation().equals(new Location(i, j))) {
-                    if (a.isTarget()) {
-                        charToColor(a.getValue());
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public Dimension getPrefSize() {
-            return prefSize;
-        }
+    public Game getGame() {
+        return game;
     }
 
     class InnerSouthMenu extends JPanel implements ActionListener {
@@ -315,41 +181,4 @@ public class GUI implements KeyListener, Runnable {
         }
     }
 
-    class InnerNorthMenu extends JPanel {
-
-        private JLabel goalsHit;
-        private JLabel optimal;
-
-        public InnerNorthMenu() {
-            super(new GridLayout(1, 2));
-            createComponents();
-        }
-
-        public void setGoalsHit(int goalsHit) {
-            this.goalsHit.setText("Goals: " + goalsHit);
-        }
-
-        public void setOptimalMoves(int optimal) {
-            this.optimal.setText("optimal " + optimal);
-        }
-
-        @Override
-        protected void paintComponent(Graphics grphcs) {
-            setGoalsHit(game.getGameBoard().getLevel().getHowManyGoals());
-            setOptimalMoves(game.getGameBoard().getLevel().getOptimalMoves());
-            repaint();
-        }
-
-        private void createComponents() {
-            this.goalsHit = new JLabel("Goals: 0");
-            add(goalsHit);
-
-            InnerTarget targetti = new InnerTarget(game.getGameBoard());
-            targetti.setPreferredSize(targetti.getPrefSize());
-            add(targetti);
-            this.optimal = new JLabel("optimal: " + game.getGameBoard().getLevel().getOptimalMoves());
-            add(optimal);
-        }
-
-    }
 }
