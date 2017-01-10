@@ -1,5 +1,6 @@
 package dev.jaakkovirtanen.findandseek.levels;
 
+import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
 import dev.jaakkovirtanen.findandseek.mapobjects.BoardObject;
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
@@ -20,6 +21,7 @@ public class Board {
     private ArrayList<Answer> answers = new ArrayList<>();
     private Answer targetAnswer;
     private ArrayList<Character> boardOfChars = new ArrayList<>();
+    private boolean mixAnswers = false;
 
     /**
      * Empty constructor.
@@ -95,7 +97,6 @@ public class Board {
 
     public void changeTargetAnswer(int indexOfAnswerArray) {
         this.targetAnswer.setIsTarget(false);
-        Answer newTarget;
         if (!player.getLocation().equals(this.answers.get(indexOfAnswerArray).getLocation())) {
             this.answers.get(indexOfAnswerArray).setIsTarget(true);
         } else {
@@ -105,9 +106,17 @@ public class Board {
                 this.answers.get(indexOfAnswerArray - 1).setIsTarget(true);
             }
         }
-
+        if (mixAnswers) {
+            mixUpAnswers();
+        }
         initAnswers();
         optimalDistance();
+    }
+
+    private void mixUpAnswers() {
+        for (Answer a : answers) {
+            a.setLocation(new Location(Randomizer.getRandomNumber(getWidth() - 2), Randomizer.getRandomNumber(getHeight() - 2)));
+        }
     }
 
     private void optimalDistance() {
@@ -154,5 +163,9 @@ public class Board {
 
     public Level getLevel() {
         return level;
+    }
+
+    public void setMixAnswers(boolean mixAnswers) {
+        this.mixAnswers = mixAnswers;
     }
 }

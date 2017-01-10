@@ -7,6 +7,8 @@ import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -47,6 +49,7 @@ public class GUI implements KeyListener, Runnable {
         this.frame.setLayout(new BorderLayout());
         frame.addKeyListener(this);
         initializeFrame();
+
         this.frame.setVisible(true);
 
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
@@ -67,6 +70,7 @@ public class GUI implements KeyListener, Runnable {
     private void initializeFrame() {
         frame.getContentPane().removeAll();
         createComponents(frame.getContentPane());
+        frame.setSize(new Dimension(800, 600));
     }
 
     private void createComponents(Container container) {
@@ -243,13 +247,16 @@ public class GUI implements KeyListener, Runnable {
         }
     }
 
-    class InnerSouthMenu extends JPanel implements ActionListener {
+    class InnerSouthMenu extends JPanel implements ActionListener, ItemListener {
 
         private JLabel playerMoves;
         JComboBox<Integer> levels;
+        JCheckBox mixUpAnswers;
 
         public InnerSouthMenu() {
             super(new GridLayout(1, 3));
+            mixUpAnswers = new JCheckBox("Mix Answers?");
+            mixUpAnswers.setSelected(false);
             innerCreateComponents();
         }
 
@@ -273,9 +280,11 @@ public class GUI implements KeyListener, Runnable {
             for (int i = 0; i < gameLevels.size(); i++) {
                 levels.addItem(i);
             }
-
             levels.addActionListener(this);
             add(levels);
+
+            mixUpAnswers.addItemListener(this);
+            add(mixUpAnswers);
 
             this.playerMoves = new JLabel("Moves: 0");
             add(playerMoves);
@@ -287,8 +296,21 @@ public class GUI implements KeyListener, Runnable {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            game = new Game();
-            game.loadLevel(gameLevels.get((Integer) this.levels.getSelectedItem()));
+            if (ae.getActionCommand().equals("Exit")) {
+                System.exit(0);
+            } else if (ae.getActionCommand().equals("comboBoxChanged")) {
+                game = new Game();
+                game.loadLevel(gameLevels.get((Integer) this.levels.getSelectedItem()));
+                this.levels.setSelectedItem(this.levels.getSelectedItem());
+                initializeFrame();
+            }
+        }
+
+        @Override
+        public void itemStateChanged(ItemEvent ie) {
+            boolean isSelected = mixUpAnswers.isSelected();
+            game.getGameBoard().setMixAnswers(isSelected);
+            mixUpAnswers.setSelected(true);
             initializeFrame();
         }
 
@@ -307,7 +329,7 @@ public class GUI implements KeyListener, Runnable {
         public void setGoalsHit(int goalsHit) {
             this.goalsHit.setText("Goals: " + goalsHit);
         }
-        
+
         public void setOptimalMoves(int optimal) {
             this.optimal.setText("optimal " + optimal);
         }

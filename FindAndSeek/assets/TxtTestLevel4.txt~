@@ -1,7 +1,0 @@
-boardHeight:10
-boardWidth:10
-player:@:2:5
-a:A:4:4
-a:B:6:1
-a:C:5:2
-!:X:7:3
