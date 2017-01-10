@@ -49,25 +49,11 @@ public class GUI implements KeyListener, Runnable {
         this.frame.setLayout(new BorderLayout());
         frame.addKeyListener(this);
         initializeFrame();
-
         this.frame.setVisible(true);
 
-        System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
-        while (true) {
-            if (this.game.isVictory()) {
-                System.out.println("YOU WON THE GAME");
-                System.out.println("MOVES USED: " + this.game.getGameBoard().getPlayer().getMovesPerformed());
-                System.exit(0);
-            }
-            try {
-                Thread.sleep(0, 1);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
     }
 
-    private void initializeFrame() {
+    public void initializeFrame() {
         frame.getContentPane().removeAll();
         createComponents(frame.getContentPane());
         frame.setSize(new Dimension(800, 600));
@@ -78,9 +64,9 @@ public class GUI implements KeyListener, Runnable {
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
 
         TopMenu northMenu = new TopMenu(this);
-
+        northMenu.setFocusable(false);
         BottomMenu southMenu = new BottomMenu(this);
-
+        southMenu.setFocusable(false);
         container.add(northMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
         container.add(southMenu, BorderLayout.SOUTH);
@@ -115,6 +101,9 @@ public class GUI implements KeyListener, Runnable {
     public ArrayList<Level> getGameLevels() {
         return gameLevels;
     }
-    
-    
+
+    public void initGame() {
+        this.game = new Game();
+    }
+
 }

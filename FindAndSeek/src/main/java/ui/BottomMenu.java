@@ -60,6 +60,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
             levels.addItem(i);
         }
         levels.addActionListener(this);
+        levels.setFocusable(false);
         add(levels);
 
         mixUpAnswers.addItemListener(this);
@@ -78,10 +79,10 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         if (ae.getActionCommand().equals("Exit")) {
             System.exit(0);
         } else if (ae.getActionCommand().equals("comboBoxChanged")) {
-//            gui.getGame() = new Game();
+            gui.initGame();
             gui.getGame().loadLevel(gui.getGameLevels().get((Integer) this.levels.getSelectedItem()));
             this.levels.setSelectedItem(this.levels.getSelectedItem());
-//            gui.initializeFrame();
+            gui.initializeFrame();
         }
     }
 
