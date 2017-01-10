@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -20,10 +21,13 @@ public class GUI implements KeyListener, Runnable {
     private Game game;
     private JFrame frame;
     private Color answerColor;
+    private ArrayList<Level> gameLevels;
 
     public GUI() {
         this.game = new Game();
-        this.game.loadLevel(new Level("assets/TxtTestLevel.txt"));
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt"};
+        this.gameLevels = Level.getListOfLevels(levels);
+        this.game.loadLevel(gameLevels.get(0));
     }
 
     @Override
@@ -42,8 +46,6 @@ public class GUI implements KeyListener, Runnable {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
         createComponents(frame.getContentPane());
-        this.frame.pack();
-        frame.addKeyListener(this);
         this.frame.setVisible(true);
 
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
@@ -63,17 +65,18 @@ public class GUI implements KeyListener, Runnable {
 
     private void createComponents(Container container) {
         InnerBoard pelilauta = new InnerBoard(this.game.getGameBoard());
-        pelilauta.addKeyListener(this);
-//        InnerTarget goal = new InnerTarget(this.game.getGameBoard());
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
-//        goal.setPreferredSize(goal.getPrefSize());
-//        container.add(goal, BorderLayout.NORTH);
-        InnerSouthMenu goals = new InnerSouthMenu();
-        container.add(goals, BorderLayout.NORTH);
+
+        InnerNorthMenu northMenu = new InnerNorthMenu();
+
+        InnerSouthMenu southMenu = new InnerSouthMenu();
+
+        container.add(northMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
-        InnerNorthMenu moves = new InnerNorthMenu();
-        container.add(moves, BorderLayout.SOUTH);
+        container.add(southMenu, BorderLayout.SOUTH);
         frame.setFocusable(true);
+        this.frame.pack();
+        frame.addKeyListener(this);
     }
 
     @Override
@@ -127,6 +130,15 @@ public class GUI implements KeyListener, Runnable {
                 break;
             case 'C':
                 setAnswerColor(Color.PINK);
+                break;
+            case 'D':
+                setAnswerColor(Color.ORANGE);
+                break;
+            case 'E':
+                setAnswerColor(Color.YELLOW);
+                break;
+            case 'F':
+                setAnswerColor(Color.MAGENTA);
                 break;
             case 'X':
                 setAnswerColor(Color.CYAN);
@@ -225,11 +237,12 @@ public class GUI implements KeyListener, Runnable {
         }
     }
 
-    class InnerNorthMenu extends JPanel implements ActionListener {
+    class InnerSouthMenu extends JPanel implements ActionListener {
 
         private JLabel playerMoves;
+        JComboBox<Level> levels;
 
-        public InnerNorthMenu() {
+        public InnerSouthMenu() {
             super(new GridLayout(1, 3));
             createComponents();
         }
@@ -248,8 +261,13 @@ public class GUI implements KeyListener, Runnable {
         }
 
         private void createComponents() {
-            JComboBox levels = new JComboBox<>();
+            levels = new JComboBox<>();
+            for (Level level : gameLevels) {
+                levels.addItem(level);
+            }
+            levels.addActionListener(this);
             add(levels);
+
             this.playerMoves = new JLabel("Moves: 0", SwingConstants.CENTER);
             add(playerMoves);
 
@@ -260,16 +278,18 @@ public class GUI implements KeyListener, Runnable {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.exit(0);
+            game.loadLevel((Level) this.levels.getSelectedItem());
+            createComponents();
+            run();
         }
 
     }
 
-    class InnerSouthMenu extends JPanel {
+    class InnerNorthMenu extends JPanel {
 
         private JLabel goalsHit;
 
-        public InnerSouthMenu() {
+        public InnerNorthMenu() {
             super(new GridLayout(1, 3));
             createComponents();
         }

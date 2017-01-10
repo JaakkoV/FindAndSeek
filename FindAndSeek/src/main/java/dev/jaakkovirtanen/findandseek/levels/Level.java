@@ -107,5 +107,13 @@ public class Level {
     public int getBoardWidth() {
         return boardWidth;
     }
+    
+    public static ArrayList<Level> getListOfLevels(String[] listOfPaths) {
+        ArrayList<Level> listOfLevels = new ArrayList<>();
+        for (String path : listOfPaths) {
+            listOfLevels.add(new Level(path));
+        }
+        return listOfLevels;
+    }
 
 }
