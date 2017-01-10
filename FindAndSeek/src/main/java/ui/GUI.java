@@ -24,7 +24,7 @@ public class GUI implements KeyListener {
      * @throws InterruptedException ThreadSleep is used in the method
      */
     public void drawGui() throws InterruptedException {
-        Level level = new Level("assets/TxtTestLevel.txt");
+        Level level = new Level("assets/TxtTestLevel2.txt");
         Board lauta = new Board();
         lauta.loadLevel(level);
         this.game = new Game();
@@ -32,8 +32,9 @@ public class GUI implements KeyListener {
         innerDrawBoard pelilauta = new innerDrawBoard(this.game.getGameBoard());
         pelilauta.addKeyListener(this);
         DrawTarget goal = new DrawTarget(this.game.getGameBoard());
-        JTextArea text = new JTextArea("gfsdakjgölks");
-        
+        JTextArea text = new JTextArea();
+        text.setText(String.format("%s", game.getHowManyGoals()));
+        goal.add(text);
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
@@ -79,7 +80,6 @@ public class GUI implements KeyListener {
 
     class innerDrawBoard extends JPanel {
 
-        private Board gameboard;
         private Dimension prefSize;
         private Color answerColor;
 
@@ -89,24 +89,23 @@ public class GUI implements KeyListener {
          * @param gameboard initialized with gameboard
          */
         public innerDrawBoard(Board gameboard) {
-            this.gameboard = gameboard;
-            this.prefSize = new Dimension(this.gameboard.getWidth() * 20 + 10, this.gameboard.getHeight() * 20 + 10);
+            this.prefSize = new Dimension(game.getGameBoard().getWidth() * 20 + 10, game.getGameBoard().getHeight() * 20 + 10);
             this.answerColor = Color.WHITE;
         }
 
         @Override
         public void paintComponent(Graphics g) {
             Graphics2D g2d = (Graphics2D) g;
-            int width = this.gameboard.getWidth() * 10;
-            int height = this.gameboard.getHeight() * 10;
+            int width = game.getGameBoard().getWidth() * 10;
+            int height = game.getGameBoard().getHeight() * 10;
 
-            int cellWidth = width / (this.gameboard.getWidth()) * 2;
-            int cellHeight = height / (this.gameboard.getHeight()) * 2;
+            int cellWidth = width / (game.getGameBoard().getWidth()) * 2;
+            int cellHeight = height / (game.getGameBoard().getHeight()) * 2;
 
-            int xOffset = (width - (this.gameboard.getWidth() * cellWidth)) / 1000;
-            int yOffset = (height - (this.gameboard.getHeight() * cellHeight)) / 1000;
-            for (int i = 0; i < this.gameboard.getHeight(); i++) {
-                for (int j = 0; j < this.gameboard.getWidth(); j++) {
+            int xOffset = (width - (game.getGameBoard().getWidth() * cellWidth)) / 1000;
+            int yOffset = (height - (game.getGameBoard().getHeight() * cellHeight)) / 1000;
+            for (int i = 0; i < game.getGameBoard().getHeight(); i++) {
+                for (int j = 0; j < game.getGameBoard().getWidth(); j++) {
                     if (isPlayer(i, j)) {
                         drawRectangle(xOffset, j, cellWidth, yOffset, i, cellHeight, g2d, Color.red);
                     } else if (isAnswer(i, j)) {
@@ -127,11 +126,11 @@ public class GUI implements KeyListener {
         }
 
         private boolean isPlayer(int i, int j) {
-            return this.gameboard.getPlayer().getLocation().equals(new Location(i, j));
+            return game.getGameBoard().getPlayer().getLocation().equals(new Location(i, j));
         }
 
         private boolean isAnswer(int i, int j) {
-            for (Answer a : this.gameboard.getAnswers()) {
+            for (Answer a : game.getGameBoard().getAnswers()) {
                 if (a.getLocation().equals(new Location(i, j))) {
                     charToColor(a.getValue());
                     return true;

@@ -101,4 +101,8 @@ public class Game {
         this.victory = victory;
     }
 
+    public int getHowManyGoals() {
+        return howManyGoals;
+    }
+
 }
