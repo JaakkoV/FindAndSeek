@@ -43,7 +43,7 @@ public class Game {
     public void executePlayerCommand(char moveChar) {
         Player testPlayer = this.gameBoard.getPlayer().getClonePlayer();
         testPlayer.performMove(moveChar);
-        if (testPlayer.getLocation().isInside(this.gameBoard.getHeight(), this.gameBoard.getWidth())) {
+        if (testPlayer.getLocation().isInside(this.gameBoard.getHeight(), this.gameBoard.getWidth()) && !testPlayer.getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
             this.gameBoard.getPlayer().performMove(moveChar);
         }
         checkGameStatus();
