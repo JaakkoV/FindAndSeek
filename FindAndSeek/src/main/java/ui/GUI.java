@@ -297,6 +297,7 @@ public class GUI implements KeyListener, Runnable {
     class InnerNorthMenu extends JPanel {
 
         private JLabel goalsHit;
+        private JLabel optimal;
 
         public InnerNorthMenu() {
             super(new GridLayout(1, 2));
@@ -306,10 +307,16 @@ public class GUI implements KeyListener, Runnable {
         public void setGoalsHit(int goalsHit) {
             this.goalsHit.setText("Goals: " + goalsHit);
         }
+        
+        public void setOptimalMoves(int optimal) {
+            this.optimal.setText("optimal " + optimal);
+        }
 
         @Override
         protected void paintComponent(Graphics grphcs) {
             setGoalsHit(game.getGameBoard().getLevel().getHowManyGoals());
+            setOptimalMoves(game.getGameBoard().getLevel().getOptimalMoves());
+            repaint();
         }
 
         private void createComponents() {
@@ -319,7 +326,7 @@ public class GUI implements KeyListener, Runnable {
             InnerTarget targetti = new InnerTarget(game.getGameBoard());
             targetti.setPreferredSize(targetti.getPrefSize());
             add(targetti);
-            JLabel optimal = new JLabel("optimal: " + game.getGameBoard().getLevel().getOptimalMoves());
+            this.optimal = new JLabel("optimal: " + game.getGameBoard().getLevel().getOptimalMoves());
             add(optimal);
         }
 
