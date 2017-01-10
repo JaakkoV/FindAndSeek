@@ -115,7 +115,7 @@ public class Board {
 
     private void mixUpAnswers() {
         for (Answer a : answers) {
-            a.setLocation(new Location(Randomizer.getRandomNumber(getWidth() - 2), Randomizer.getRandomNumber(getHeight() - 2)));
+            a.setLocation(new Location(Randomizer.getRandomNumber(getHeight()- 1), Randomizer.getRandomNumber(getWidth()- 1)));
         }
     }
 

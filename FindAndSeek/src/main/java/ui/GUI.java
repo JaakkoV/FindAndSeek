@@ -174,7 +174,6 @@ public class GUI implements KeyListener, Runnable {
          */
         public InnerBoard(Board gameboard) {
             this.prefSize = new Dimension(game.getGameBoard().getWidth() * 20 + 10, game.getGameBoard().getHeight() * 20 + 10);
-            answerColor = Color.WHITE;
         }
 
         @Override
@@ -247,7 +246,7 @@ public class GUI implements KeyListener, Runnable {
         }
     }
 
-    class InnerSouthMenu extends JPanel implements ActionListener, ItemListener {
+    class InnerSouthMenu extends JPanel implements ActionListener {
 
         private JLabel playerMoves;
         JComboBox<Integer> levels;
@@ -283,9 +282,18 @@ public class GUI implements KeyListener, Runnable {
             levels.addActionListener(this);
             add(levels);
 
-            mixUpAnswers.addItemListener(this);
-            add(mixUpAnswers);
+            mixUpAnswers.addItemListener(new ItemListener() {
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == 1) {
+                        game.getGameBoard().setMixAnswers(true);
+                        initializeFrame();
+                    } else {
+                        game.getGameBoard().setMixAnswers(false);
+                    }
+                }
+            });
 
+            add(mixUpAnswers);
             this.playerMoves = new JLabel("Moves: 0");
             add(playerMoves);
 
@@ -305,15 +313,6 @@ public class GUI implements KeyListener, Runnable {
                 initializeFrame();
             }
         }
-
-        @Override
-        public void itemStateChanged(ItemEvent ie) {
-            boolean isSelected = mixUpAnswers.isSelected();
-            game.getGameBoard().setMixAnswers(isSelected);
-            mixUpAnswers.setSelected(true);
-            initializeFrame();
-        }
-
     }
 
     class InnerNorthMenu extends JPanel {
