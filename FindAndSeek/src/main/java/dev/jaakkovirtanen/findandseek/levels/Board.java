@@ -101,8 +101,8 @@ public class Board {
     }
 
     private void optimalDistance() {
-        int xDist = player.getLocation().getCol() - targetAnswer.getLocation().getCol();
-        int yDist = targetAnswer.getLocation().getRow() - player.getLocation().getRow();
+        int xDist = Math.abs(player.getLocation().getCol() - targetAnswer.getLocation().getCol());
+        int yDist = Math.abs(targetAnswer.getLocation().getRow() - player.getLocation().getRow());
         level.setOptimalMoves(Math.max(xDist, yDist));
     }
 

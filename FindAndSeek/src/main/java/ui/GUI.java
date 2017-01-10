@@ -25,7 +25,7 @@ public class GUI implements KeyListener, Runnable {
 
     public GUI() {
         this.game = new Game();
-        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt"};
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
         this.game.loadLevel(gameLevels.get(1));
     }
@@ -81,7 +81,7 @@ public class GUI implements KeyListener, Runnable {
         container.add(pelilauta, BorderLayout.CENTER);
         container.add(southMenu, BorderLayout.SOUTH);
         frame.setFocusable(true);
-        this.frame.pack();
+        frame.pack();
         frame.repaint();
     }
 
