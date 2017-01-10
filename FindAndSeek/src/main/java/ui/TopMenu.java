@@ -20,14 +20,14 @@ import javax.swing.JPanel;
  *
  * @author User
  */
-public class UpperMenu extends JPanel {
+public class TopMenu extends JPanel {
 
     private GUI gui;
     private JLabel goalsHit;
     private JLabel optimal;
     private RectangleDrawing rectum;
 
-    public UpperMenu(GUI gui) {
+    public TopMenu(GUI gui) {
         super(new GridLayout(1, 2));
         this.gui = gui;
         this.rectum = new RectangleDrawing(gui.getGame());

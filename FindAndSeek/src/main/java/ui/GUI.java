@@ -77,9 +77,9 @@ public class GUI implements KeyListener, Runnable {
         BoardPanel pelilauta = new BoardPanel(this);
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
 
-        UpperMenu northMenu = new UpperMenu(this);
+        TopMenu northMenu = new TopMenu(this);
 
-        InnerSouthMenu southMenu = new InnerSouthMenu();
+        BottomMenu southMenu = new BottomMenu(this);
 
         container.add(northMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
@@ -112,73 +112,9 @@ public class GUI implements KeyListener, Runnable {
         return game;
     }
 
-    class InnerSouthMenu extends JPanel implements ActionListener {
-
-        private JLabel playerMoves;
-        JComboBox<Integer> levels;
-        JCheckBox mixUpAnswers;
-
-        public InnerSouthMenu() {
-            super(new GridLayout(1, 3));
-            mixUpAnswers = new JCheckBox("Mix Answers?");
-            mixUpAnswers.setSelected(false);
-            innerCreateComponents();
-        }
-
-        public void setPlayerMoves(int playerMoves) {
-            this.playerMoves.setText("Moves: " + playerMoves);
-        }
-
-        public JLabel getPlayerMoves() {
-            return playerMoves;
-        }
-
-        @Override
-        protected void paintComponent(Graphics grphcs) {
-            setPlayerMoves(game.getGameBoard().getPlayer().getMovesPerformed());
-        }
-
-        private void innerCreateComponents() {
-            JLabel level = new JLabel("Level: ");
-            add(level);
-            levels = new JComboBox<>();
-            for (int i = 0; i < gameLevels.size(); i++) {
-                levels.addItem(i);
-            }
-            levels.addActionListener(this);
-            add(levels);
-
-            mixUpAnswers.addItemListener(new ItemListener() {
-                public void itemStateChanged(ItemEvent e) {
-                    if (e.getStateChange() == 1) {
-                        game.getGameBoard().setMixAnswers(true);
-                        initializeFrame();
-                    } else {
-                        game.getGameBoard().setMixAnswers(false);
-                    }
-                }
-            });
-
-            add(mixUpAnswers);
-            this.playerMoves = new JLabel("Moves: 0");
-            add(playerMoves);
-
-            JButton exit = new JButton("Exit");
-            exit.addActionListener(this);
-            add(exit);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            if (ae.getActionCommand().equals("Exit")) {
-                System.exit(0);
-            } else if (ae.getActionCommand().equals("comboBoxChanged")) {
-                game = new Game();
-                game.loadLevel(gameLevels.get((Integer) this.levels.getSelectedItem()));
-                this.levels.setSelectedItem(this.levels.getSelectedItem());
-                initializeFrame();
-            }
-        }
+    public ArrayList<Level> getGameLevels() {
+        return gameLevels;
     }
-
+    
+    
 }
