@@ -21,6 +21,7 @@ public class Board {
     private Answer targetAnswer;
     private ArrayList<Integer> targetAnswerSequence;
     private ArrayList<Character> boardOfChars = new ArrayList<>();
+    private int howManyGoals;
 
     /**
      * Empty constructor.
@@ -137,4 +138,7 @@ public class Board {
     public Level getLevel() {
         return level;
     }
+
+    
+    
 }

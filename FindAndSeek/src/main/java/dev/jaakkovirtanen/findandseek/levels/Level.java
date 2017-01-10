@@ -19,6 +19,7 @@ public class Level {
 
     private int boardHeight;
     private int boardWidth;
+    private int howManyGoals;
     private ArrayList<BoardObject> boardObjects = new ArrayList<>();
 
     /**
@@ -107,7 +108,7 @@ public class Level {
     public int getBoardWidth() {
         return boardWidth;
     }
-    
+
     public static ArrayList<Level> getListOfLevels(String[] listOfPaths) {
         ArrayList<Level> listOfLevels = new ArrayList<>();
         for (String path : listOfPaths) {
@@ -116,4 +117,11 @@ public class Level {
         return listOfLevels;
     }
 
+    public int getHowManyGoals() {
+        return howManyGoals;
+    }
+
+    public void setHowManyGoals(int howManyGoals) {
+        this.howManyGoals = howManyGoals;
+    }
 }

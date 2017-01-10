@@ -10,12 +10,11 @@ import java.util.ArrayList;
 
 /**
  * Game is a class which consist of: Board, which is initialized with a Level.
- * 
-*/
+ *
+ */
 public class Game {
 
     private Board gameBoard;
-    private int howManyGoals;
     private boolean victory;
 
     /**
@@ -55,9 +54,8 @@ public class Game {
      */
     public void checkGameStatus() {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
-            howManyGoals++;
+            gameBoard.getLevel().setHowManyGoals(gameBoard.getLevel().getHowManyGoals() + 1);
             gameBoard.changeTargetAnswer(Randomizer.getRandomNumber(gameBoard.getAnswers().size() - 1));
-            System.out.println(howManyGoals);
         }
     }
 
@@ -100,10 +98,6 @@ public class Game {
      */
     public void setVictory(boolean victory) {
         this.victory = victory;
-    }
-
-    public int getHowManyGoals() {
-        return howManyGoals;
     }
 
 }

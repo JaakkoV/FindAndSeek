@@ -27,7 +27,7 @@ public class GUI implements KeyListener, Runnable {
         this.game = new Game();
         String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
-        this.game.loadLevel(gameLevels.get(0));
+        this.game.loadLevel(gameLevels.get(1));
     }
 
     @Override
@@ -45,7 +45,8 @@ public class GUI implements KeyListener, Runnable {
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
-        createComponents(frame.getContentPane());
+        frame.addKeyListener(this);
+        initializeFrame();
         this.frame.setVisible(true);
 
         System.out.print("liiku (a,s,d,w), vaihda liikkumisalgoritmi painamalla 5 (q,e,z,c): ");
@@ -63,6 +64,11 @@ public class GUI implements KeyListener, Runnable {
         }
     }
 
+    private void initializeFrame() {
+        frame.getContentPane().removeAll();
+        createComponents(frame.getContentPane());
+    }
+
     private void createComponents(Container container) {
         InnerBoard pelilauta = new InnerBoard(this.game.getGameBoard());
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
@@ -76,7 +82,7 @@ public class GUI implements KeyListener, Runnable {
         container.add(southMenu, BorderLayout.SOUTH);
         frame.setFocusable(true);
         this.frame.pack();
-        frame.addKeyListener(this);
+        frame.repaint();
     }
 
     @Override
@@ -240,11 +246,11 @@ public class GUI implements KeyListener, Runnable {
     class InnerSouthMenu extends JPanel implements ActionListener {
 
         private JLabel playerMoves;
-        JComboBox<Level> levels;
+        JComboBox<Integer> levels;
 
         public InnerSouthMenu() {
-            super(new GridLayout(1, 3));
-            createComponents();
+            super(new GridLayout(1, 4));
+            innerCreateComponents();
         }
 
         public void setPlayerMoves(int playerMoves) {
@@ -260,15 +266,18 @@ public class GUI implements KeyListener, Runnable {
             setPlayerMoves(game.getGameBoard().getPlayer().getMovesPerformed());
         }
 
-        private void createComponents() {
+        private void innerCreateComponents() {
+            JLabel level = new JLabel("Level: ");
+            add(level);
             levels = new JComboBox<>();
-            for (Level level : gameLevels) {
-                levels.addItem(level);
+            for (int i = 0; i < gameLevels.size(); i++) {
+                levels.addItem(i);
             }
-            levels.addActionListener(this);
-            add(levels);
 
-            this.playerMoves = new JLabel("Moves: 0", SwingConstants.CENTER);
+            levels.addActionListener(this);
+            add(levels, SwingConstants.LEFT);
+
+            this.playerMoves = new JLabel("Moves: 0");
             add(playerMoves);
 
             JButton exit = new JButton("Exit");
@@ -278,9 +287,9 @@ public class GUI implements KeyListener, Runnable {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            game.loadLevel((Level) this.levels.getSelectedItem());
-            createComponents();
-            run();
+            game = new Game();
+            game.loadLevel(gameLevels.get((Integer) this.levels.getSelectedItem()));
+            initializeFrame();
         }
 
     }
@@ -300,7 +309,7 @@ public class GUI implements KeyListener, Runnable {
 
         @Override
         protected void paintComponent(Graphics grphcs) {
-            setGoalsHit(game.getHowManyGoals());
+            setGoalsHit(game.getGameBoard().getLevel().getHowManyGoals());
         }
 
         private void createComponents() {
