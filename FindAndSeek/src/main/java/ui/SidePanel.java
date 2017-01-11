@@ -50,6 +50,8 @@ public class SidePanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics grphcs) {
+        super.paintComponent(grphcs);
+        this.setBackground(Color.WHITE);
         setGoalsHit(gui.getGame().getGameBoard().getLevel().getHowManyGoals());
         setOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMoves());
         setCumulativeOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());

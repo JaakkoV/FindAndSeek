@@ -5,6 +5,7 @@ import dev.jaakkovirtanen.findandseek.game.Game;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
 import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import java.awt.*;
+import static java.awt.Component.LEFT_ALIGNMENT;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -68,7 +69,7 @@ public class GUI implements KeyListener, Runnable {
         BottomMenu bottomMenu = new BottomMenu(this);
 
         SidePanel sidePanel = new SidePanel(this);
-
+        sidePanel.setPreferredSize(new Dimension(200,400));
         container.add(sidePanel, BorderLayout.EAST);
         container.add(topMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
