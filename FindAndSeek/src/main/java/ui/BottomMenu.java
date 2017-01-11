@@ -28,7 +28,6 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers = new JCheckBox("Mix Answers?");
         mixUpAnswers.setSelected(false);
         roboPlayer = new JCheckBox("Roboplayer?");
-        roboPlayer.setSelected(false);
         createComponents();
     }
 
@@ -82,17 +81,18 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
                 mixUpAnswers.setSelected(false);
                 gui.getGame().getGameBoard().setMixAnswers(false);
             }
-        } else if (ie.getSource().equals(roboPlayer)) {
-            IntelligentPlayer p = new IntelligentPlayer(gui);
+        }
+        if (ie.getSource().equals(roboPlayer)) {
             if (ie.getStateChange() == 1) {
-                p.setOnOff(true);
-                p.run();
                 roboPlayer.setSelected(true);
             } else {
                 roboPlayer.setSelected(false);
-                p.setOnOff(false);
             }
         }
-
     }
+
+    public JCheckBox getRoboPlayer() {
+        return roboPlayer;
+    }
+
 }

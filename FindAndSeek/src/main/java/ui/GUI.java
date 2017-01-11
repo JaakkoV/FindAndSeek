@@ -7,6 +7,7 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -17,6 +18,7 @@ public class GUI implements KeyListener, Runnable {
     private Game game;
     private JFrame frame;
     private ArrayList<Level> gameLevels;
+    private BottomMenu bottomMenu;
 
     public GUI() {
         this.game = new Game();
@@ -58,7 +60,7 @@ public class GUI implements KeyListener, Runnable {
 
         TopMenu topMenu = new TopMenu(this);
 
-        BottomMenu bottomMenu = new BottomMenu(this);
+        bottomMenu = new BottomMenu(this);
 
         SidePanel sidePanel = new SidePanel(this);
         sidePanel.setPreferredSize(new Dimension(200, 400));
@@ -73,13 +75,27 @@ public class GUI implements KeyListener, Runnable {
         frame.repaint();
     }
 
+    public void repaint() {
+        initializeFrame();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+
     @Override
     public void keyTyped(KeyEvent ke) {
-        char moveChar = ke.getKeyChar();
-        if (moveChar == '5') {
-            game.changePlayerMoveAlgo();
+        if (bottomMenu.getRoboPlayer().isSelected()) {
+            IntelligentPlayer p = new IntelligentPlayer(this);
+            p.makeMoves();
+        } else {
+            char moveChar = ke.getKeyChar();
+            if (moveChar == '5') {
+                game.changePlayerMoveAlgo();
+            }
+            game.executePlayerCommand(moveChar);
         }
-        game.executePlayerCommand(moveChar);
         frame.repaint();
     }
 
