@@ -4,6 +4,7 @@ import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
+import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -19,12 +20,15 @@ public class GUI implements KeyListener, Runnable {
     private JFrame frame;
     private ArrayList<Level> gameLevels;
     private BottomMenu bottomMenu;
+    private TopMenu topMenu;
 
     public GUI() {
         this.game = new Game();
         String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
         this.game.loadLevel(gameLevels.get(1));
+        this.bottomMenu = new BottomMenu(this);
+        this.topMenu = new TopMenu(this);
     }
 
     @Override
@@ -58,10 +62,6 @@ public class GUI implements KeyListener, Runnable {
         BoardPanel pelilauta = new BoardPanel(this);
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
 
-        TopMenu topMenu = new TopMenu(this);
-
-        bottomMenu = new BottomMenu(this);
-
         SidePanel sidePanel = new SidePanel(this);
         sidePanel.setPreferredSize(new Dimension(200, 400));
 
@@ -75,15 +75,6 @@ public class GUI implements KeyListener, Runnable {
         frame.repaint();
     }
 
-    public void repaint() {
-        initializeFrame();
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
-
     @Override
     public void keyTyped(KeyEvent ke) {
         if (bottomMenu.getRoboPlayer().isSelected()) {
@@ -95,6 +86,11 @@ public class GUI implements KeyListener, Runnable {
                 game.changePlayerMoveAlgo();
             }
             game.executePlayerCommand(moveChar);
+        }
+        if (game.getGameBoard().getPlayer().getMoveBehaviour().getClass() == MoveDiagonally.class) {
+            bottomMenu.changeDiag(true);
+        } else {
+            bottomMenu.changeDiag(false);
         }
         frame.repaint();
     }

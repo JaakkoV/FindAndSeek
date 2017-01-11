@@ -5,8 +5,6 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.Game;
-import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -21,6 +19,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     private JComboBox<Integer> levels;
     private JCheckBox mixUpAnswers;
     private JCheckBox roboPlayer;
+    private JCheckBox isDiagonal;
 
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
@@ -28,6 +27,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers = new JCheckBox("Mix Answers?");
         mixUpAnswers.setSelected(false);
         roboPlayer = new JCheckBox("Roboplayer?");
+        isDiagonal = new JCheckBox("Diagonal Moves?");
         createComponents();
     }
 
@@ -53,6 +53,10 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         roboPlayer.addItemListener(this);
         roboPlayer.setFocusable(false);
         add(roboPlayer);
+
+        isDiagonal.setFocusable(false);
+        isDiagonal.setEnabled(false);
+        add(isDiagonal);
 
         JButton exit = new JButton("Exit");
         exit.addActionListener(this);
@@ -95,4 +99,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         return roboPlayer;
     }
 
+    public void changeDiag(boolean isDiag) {
+        this.isDiagonal.setSelected(isDiag);
+    }
 }
