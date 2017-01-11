@@ -63,6 +63,7 @@ public class SidePanel extends JPanel {
 
         this.movesBehindTheOptimal = new JLabel("You are 0 behind the optimal");
         add(movesBehindTheOptimal);
+
     }
 
     public void setGoalsHit(int goalsHit) {

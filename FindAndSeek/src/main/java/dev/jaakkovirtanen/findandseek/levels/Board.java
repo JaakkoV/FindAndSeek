@@ -96,6 +96,7 @@ public class Board {
     }
 
     public void changeTargetAnswer(int indexOfAnswerArray) {
+        level.addOptimalMoves(level.getOptimalMoves());
         this.targetAnswer.setIsTarget(false);
         if (!player.getLocation().equals(this.answers.get(indexOfAnswerArray).getLocation())) {
             this.answers.get(indexOfAnswerArray).setIsTarget(true);
@@ -111,7 +112,6 @@ public class Board {
         }
         initAnswers();
         level.setOptimalMoves(optimalDistance());
-        level.addOptimalMoves(optimalDistance());
         player.setMovesSinceHit(0);
     }
 
