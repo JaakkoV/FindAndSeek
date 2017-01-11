@@ -23,7 +23,6 @@ public class GUI implements KeyListener, Runnable {
 
     private Game game;
     private JFrame frame;
-    private Color answerColor;
     private ArrayList<Level> gameLevels;
 
     public GUI() {
@@ -57,7 +56,7 @@ public class GUI implements KeyListener, Runnable {
     public void initializeFrame() {
         frame.getContentPane().removeAll();
         createComponents(frame.getContentPane());
-        frame.setSize(new Dimension(1000, 600));
+//        frame.setSize(new Dimension(1000, 600));
     }
 
     private void createComponents(Container container) {
@@ -69,7 +68,7 @@ public class GUI implements KeyListener, Runnable {
         BottomMenu bottomMenu = new BottomMenu(this);
 
         SidePanel sidePanel = new SidePanel(this);
-        sidePanel.setPreferredSize(new Dimension(200,400));
+        sidePanel.setPreferredSize(new Dimension(200, 400));
         container.add(sidePanel, BorderLayout.EAST);
         container.add(topMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);

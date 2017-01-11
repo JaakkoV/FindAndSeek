@@ -27,12 +27,11 @@ public class SidePanel extends JPanel {
     private JLabel goalsHit;
     private JLabel optimal;
     private JLabel optimalCumulative;
-    private RectangleDrawing rectum;
+    private JLabel playerMoves;
 
     public SidePanel(GUI gui) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.gui = gui;
-        this.rectum = new RectangleDrawing(gui.getGame());
         createComponents();
     }
 
@@ -55,6 +54,7 @@ public class SidePanel extends JPanel {
         setGoalsHit(gui.getGame().getGameBoard().getLevel().getHowManyGoals());
         setOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMoves());
         setCumulativeOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
+        setPlayerMoves(gui.getGame().getGameBoard().getPlayer().getMovesPerformed());
         repaint();
     }
 
@@ -67,5 +67,17 @@ public class SidePanel extends JPanel {
 
         this.optimalCumulative = new JLabel("Cumulative optimal " + gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
         add(optimalCumulative);
+
+        this.playerMoves = new JLabel("Moves: 0");
+        add(playerMoves);
     }
+
+    public void setPlayerMoves(int playerMoves) {
+        this.playerMoves.setText("Moves: " + playerMoves);
+    }
+
+    public JLabel getPlayerMoves() {
+        return playerMoves;
+    }
+
 }

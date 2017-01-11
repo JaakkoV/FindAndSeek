@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 public class BottomMenu extends JPanel implements ActionListener, ItemListener {
 
     private GUI gui;
-    private JLabel playerMoves;
     private JComboBox<Integer> levels;
     private JCheckBox mixUpAnswers;
 
@@ -39,17 +38,8 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         createComponents();
     }
 
-    public void setPlayerMoves(int playerMoves) {
-        this.playerMoves.setText("Moves: " + playerMoves);
-    }
-
-    public JLabel getPlayerMoves() {
-        return playerMoves;
-    }
-
     @Override
     protected void paintComponent(Graphics grphcs) {
-        setPlayerMoves(gui.getGame().getGameBoard().getPlayer().getMovesPerformed());
     }
 
     private void createComponents() {
@@ -66,8 +56,6 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers.addItemListener(this);
         mixUpAnswers.setFocusable(false);
         add(mixUpAnswers);
-        this.playerMoves = new JLabel("Moves: 0");
-        add(playerMoves);
 
         JButton exit = new JButton("Exit");
         exit.addActionListener(this);
