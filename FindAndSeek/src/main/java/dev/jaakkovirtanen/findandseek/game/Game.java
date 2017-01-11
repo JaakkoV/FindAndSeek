@@ -6,8 +6,6 @@ import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
 import dev.jaakkovirtanen.findandseek.levels.Board;
 import dev.jaakkovirtanen.findandseek.levels.Level;
-import java.util.ArrayList;
-
 /**
  * Game is a class which consist of: Board, which is initialized with a Level.
  *

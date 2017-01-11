@@ -8,7 +8,9 @@ import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
 public class Player extends BoardObject {
 
     /**
-     * Constructor for player, set location and movebehaviour (use concrete implementation, eg. new MoveCardinal()).
+     * Constructor for player, set location and movebehaviour (use concrete
+     * implementation, eg. new MoveCardinal()).
+     *
      * @param location set location
      * @param moveBehaviour set moveBehaviour
      */
@@ -18,16 +20,19 @@ public class Player extends BoardObject {
     }
 
     /**
-     * Returns cloned player, with same parameters but different reference to heap.
+     * Returns cloned player, with same parameters but different reference to
+     * heap.
+     *
      * @return Player, clone of the player
      */
     public Player getClonePlayer() {
         Player clonePlayer = new Player(this.location.getCloneLocation(), this.moveBehaviour);
         return clonePlayer;
     }
-    
+
     /**
      * gets player's moveBehaviour.
+     *
      * @return MoveBehaviour
      */
     public MoveBehaviour getMoveBehaviour() {

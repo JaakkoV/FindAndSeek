@@ -111,6 +111,7 @@ public class Board {
         }
         initAnswers();
         optimalDistance();
+        player.setMovesSinceHit(0);
     }
 
     private void mixUpAnswers() {

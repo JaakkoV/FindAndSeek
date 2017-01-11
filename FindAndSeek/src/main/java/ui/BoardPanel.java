@@ -5,13 +5,9 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.Game;
-import dev.jaakkovirtanen.findandseek.levels.Board;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.JPanel;
+import dev.jaakkovirtanen.findandseek.game.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *

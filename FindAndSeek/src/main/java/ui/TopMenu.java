@@ -5,17 +5,10 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.levels.Board;
-import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.mapobjects.Location;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import dev.jaakkovirtanen.findandseek.levels.*;
+import dev.jaakkovirtanen.findandseek.mapobjects.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *

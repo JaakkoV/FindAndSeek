@@ -5,17 +5,10 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.levels.Board;
-import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.mapobjects.Location;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import dev.jaakkovirtanen.findandseek.levels.*;
+import dev.jaakkovirtanen.findandseek.mapobjects.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -23,38 +16,32 @@ import javax.swing.JPanel;
  */
 public class SidePanel extends JPanel {
 
-    private GUI gui;
+    private Player p;
+    private Level l;
     private JLabel goalsHit;
     private JLabel optimal;
     private JLabel optimalCumulative;
     private JLabel playerMoves;
+    private JLabel playerMovesSinceHit;
+    private JLabel behindTheOptimal;
 
     public SidePanel(GUI gui) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.gui = gui;
+        this.p = gui.getGame().getGameBoard().getPlayer();
+        this.l = gui.getGame().getGameBoard().getLevel();
         createComponents();
-    }
-
-    public void setGoalsHit(int goalsHit) {
-        this.goalsHit.setText("Goals: " + goalsHit);
-    }
-
-    public void setOptimalMoves(int optimal) {
-        this.optimal.setText("optimal " + optimal);
-    }
-
-    public void setCumulativeOptimalMoves(int cumuOptimal) {
-        this.optimalCumulative.setText("cumulative optimal " + cumuOptimal);
     }
 
     @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
         this.setBackground(Color.WHITE);
-        setGoalsHit(gui.getGame().getGameBoard().getLevel().getHowManyGoals());
-        setOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMoves());
-        setCumulativeOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
-        setPlayerMoves(gui.getGame().getGameBoard().getPlayer().getMovesPerformed());
+        setGoalsHit(l.getHowManyGoals());
+        setOptimalMoves(l.getOptimalMoves());
+        setCumulativeOptimalMoves(l.getOptimalMovesCumulative());
+        setPlayerMoves();
+        setPlayerMovesSinceHit();
+        setBehindOptimal();
         repaint();
     }
 
@@ -62,22 +49,46 @@ public class SidePanel extends JPanel {
         this.goalsHit = new JLabel("Goals: 0");
         add(goalsHit);
 
-        this.optimal = new JLabel("optimal: " + gui.getGame().getGameBoard().getLevel().getOptimalMoves());
+        this.optimal = new JLabel("optimal: " + l.getOptimalMoves());
         add(optimal);
 
-        this.optimalCumulative = new JLabel("Cumulative optimal " + gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
+        this.optimalCumulative = new JLabel("Cumulative optimal 0");
         add(optimalCumulative);
 
         this.playerMoves = new JLabel("Moves: 0");
         add(playerMoves);
+
+        this.playerMovesSinceHit = new JLabel("Moves from last goal: 0");
+        add(playerMovesSinceHit);
+
+        this.behindTheOptimal = new JLabel("You are 0 behind the optimal");
+        add(behindTheOptimal);
     }
 
-    public void setPlayerMoves(int playerMoves) {
-        this.playerMoves.setText("Moves: " + playerMoves);
+    public void setGoalsHit(int goalsHit) {
+        this.goalsHit.setText("Goals hit: " + goalsHit);
     }
 
-    public JLabel getPlayerMoves() {
-        return playerMoves;
+    public void setOptimalMoves(int optimal) {
+        this.optimal.setText("Optimal distance to next: " + optimal);
+    }
+
+    public void setCumulativeOptimalMoves(int cumuOptimal) {
+        this.optimalCumulative.setText("Cumulative optimal " + cumuOptimal);
+    }
+
+    public void setPlayerMoves() {
+        this.playerMoves.setText("Moves: " + p.getMovesPerformed());
+    }
+
+    public void setPlayerMovesSinceHit() {
+        this.playerMovesSinceHit.setText("Moves from last Goal: " + p.getMovesSinceHit());
+    }
+
+    public void setBehindOptimal() {
+
+        int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
+        this.behindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");
     }
 
 }

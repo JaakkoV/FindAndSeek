@@ -5,12 +5,9 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.Game;
-import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.mapobjects.Location;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import dev.jaakkovirtanen.findandseek.game.*;
+import dev.jaakkovirtanen.findandseek.mapobjects.*;
+import java.awt.*;
 
 /**
  *

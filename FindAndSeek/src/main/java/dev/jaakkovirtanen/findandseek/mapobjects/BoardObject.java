@@ -11,6 +11,7 @@ public abstract class BoardObject {
     Location location;
     MoveBehaviour moveBehaviour;
     int movesPerformed;
+    int movesSinceHit;
 
     /**
      * Empty constructor.
@@ -47,6 +48,7 @@ public abstract class BoardObject {
     public void performMove(char c) {
         changeLocation(this.moveBehaviour.move(c));
         movesPerformed++;
+        movesSinceHit++;
     }
 
     private void changeLocation(int direction) {
@@ -116,6 +118,14 @@ public abstract class BoardObject {
 
     public int getMovesPerformed() {
         return movesPerformed;
+    }
+
+    public void setMovesSinceHit(int movesSinceHit) {
+        this.movesSinceHit = movesSinceHit;
+    }
+
+    public int getMovesSinceHit() {
+        return movesSinceHit;
     }
 
 }
