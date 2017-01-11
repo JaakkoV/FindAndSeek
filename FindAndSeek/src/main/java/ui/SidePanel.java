@@ -15,33 +15,59 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  *
  * @author User
  */
-public class TopMenu extends JPanel {
+public class SidePanel extends JPanel {
 
     private GUI gui;
+    private JLabel goalsHit;
+    private JLabel optimal;
+    private JLabel optimalCumulative;
     private RectangleDrawing rectum;
 
-    public TopMenu(GUI gui) {
-        super(new GridLayout(1, 3));
+    public SidePanel(GUI gui) {
+//        super(new GridLayout(1, 3));
         this.gui = gui;
         this.rectum = new RectangleDrawing(gui.getGame());
         createComponents();
     }
 
+    public void setGoalsHit(int goalsHit) {
+        this.goalsHit.setText("Goals: " + goalsHit);
+    }
+
+    public void setOptimalMoves(int optimal) {
+        this.optimal.setText("optimal " + optimal);
+    }
+
+    public void setCumulativeOptimalMoves(int cumuOptimal) {
+        this.optimalCumulative.setText("cumulative optimal " + cumuOptimal);
+    }
+
     @Override
     protected void paintComponent(Graphics grphcs) {
+        setGoalsHit(gui.getGame().getGameBoard().getLevel().getHowManyGoals());
+        setOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMoves());
+        setCumulativeOptimalMoves(gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
         repaint();
     }
 
     private void createComponents() {
+        this.goalsHit = new JLabel("Goals: 0");
+        add(goalsHit);
+
         InnerTarget targetti = new InnerTarget(gui.getGame().getGameBoard());
         targetti.setPreferredSize(targetti.getPrefSize());
         add(targetti);
+
+        this.optimal = new JLabel("optimal: " + gui.getGame().getGameBoard().getLevel().getOptimalMoves());
+        add(optimal);
+
+        this.optimalCumulative = new JLabel("Cumulative optimal " + gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
+        add(optimalCumulative);
     }
 
     class InnerTarget extends JPanel {
@@ -54,7 +80,7 @@ public class TopMenu extends JPanel {
          * @param gameboard initialized with gameboard
          */
         public InnerTarget(Board gameboard) {
-            this.prefSize = new Dimension(40, 40);
+            this.prefSize = new Dimension(30, 30);
         }
 
         @Override
@@ -62,7 +88,7 @@ public class TopMenu extends JPanel {
             Graphics2D g2d = (Graphics2D) g;
             for (Answer a : gui.getGame().getGameBoard().getAnswers()) {
                 if (isAnswerGoal(a.getRow(), a.getCol())) {
-                    RectangleDrawing.drawRectangle(gui.getGame().getGameBoard().getWidth() * 10 - 10, 0, 35, 0, 0, 35, g2d, RectangleDrawing.charToColor(a.getValue()));
+                    RectangleDrawing.drawRectangle(0, 0, 25, 0, 0, 25, g2d, RectangleDrawing.charToColor(a.getValue()));
                 }
             }
         }
