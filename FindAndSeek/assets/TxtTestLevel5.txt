@@ -1,7 +1,9 @@
-boardHeight:500
-boardWidth:500
+boardHeight:50
+boardWidth:100
 player:@:2:5
-a:A:40:4
-a:B:6:10
-a:C:50:200
-!:X:7:3
+a:A:42:24
+a:B:56:31
+a:C:10:90
+a:A:10:10
+a:C:20:80
+!:X:7:23

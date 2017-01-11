@@ -26,7 +26,7 @@ public class GUI implements KeyListener, Runnable {
     
     public GUI() {
         this.game = new Game();
-        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt"};
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
         this.game.loadLevel(gameLevels.get(0));
         this.bottomMenu = new BottomMenu(this);
@@ -66,7 +66,7 @@ public class GUI implements KeyListener, Runnable {
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
         
         sidePanel = new SidePanel(this);
-        sidePanel.setPreferredSize(new Dimension(200, 400));
+        sidePanel.setPreferredSize(new Dimension(250, 400));
         
         container.add(sidePanel, BorderLayout.EAST);
         container.add(topMenu, BorderLayout.NORTH);

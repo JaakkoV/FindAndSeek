@@ -49,37 +49,45 @@ public class SidePanel extends JPanel {
     }
 
     private void createComponents() {
+        String stars = "***********************************";
+        JLabel empty = new JLabel(stars);
+
         JLabel gameStats = new JLabel("Game Statistics");
         gameStats.setFont(new Font("Courier New", Font.BOLD, 18));
         add(gameStats);
+        add(empty);
 
         this.goalsHit = new JLabel("Goals: 0");
         add(goalsHit);
 
-        this.optimal = new JLabel("optimal: " + l.getOptimalMoves());
-        add(optimal);
+        this.playerMoves = new JLabel("Moves: 0");
+        add(playerMoves);
 
         this.optimalCumulative = new JLabel("Cumulative optimal 0");
         add(optimalCumulative);
 
-        this.playerMoves = new JLabel("Moves: 0");
-        add(playerMoves);
-
         this.playerMovesSinceHit = new JLabel("Moves from last goal: 0");
         add(playerMovesSinceHit);
 
+        this.optimal = new JLabel("optimal: " + l.getOptimalMoves());
+        add(optimal);
+
         this.movesBehindTheOptimal = new JLabel("You are 0 behind the optimal");
         add(movesBehindTheOptimal);
+        JLabel secEmpty = new JLabel(stars);
+        add(secEmpty);
 
-        JLabel percentageBelowThis = new JLabel("False Percentage: ");
-        percentageBelowThis.setPreferredSize(new Dimension(10, 10));
+        JLabel percentageBelowThis = new JLabel("Additional moves %: ");
         percentageBelowThis.setFont(new Font("Courier New", Font.BOLD, 18));
         add(percentageBelowThis);
 
         this.percentageOfExtraMoves = new JLabel();
-        this.percentageOfExtraMoves.setFont(new Font("Courier New", Font.BOLD, 18));
+        this.percentageOfExtraMoves.setFont(new Font("Courier New", Font.BOLD, 20));
+        this.percentageOfExtraMoves.setPreferredSize(new Dimension(100, 100));
         this.percentageOfExtraMoves.setForeground(Color.red);
         add(percentageOfExtraMoves);
+        JLabel thirdEmpty = new JLabel(stars);
+        add(thirdEmpty);
 
     }
 
