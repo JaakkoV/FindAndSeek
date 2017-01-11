@@ -14,7 +14,6 @@ import dev.jaakkovirtanen.findandseek.levels.Level;
  */
 public class Game {
 
-    private IntelligentPlayer p;
     private Board gameBoard;
     private boolean victory;
 

@@ -38,7 +38,7 @@ public class Board {
         this.level = level;
         this.initAll();
         this.initBoardChar();
-        this.optimalDistance();
+        this.level.setOptimalMoves(optimalDistance());
     }
 
     private boolean isPlayer(int i, int j) {
@@ -110,7 +110,8 @@ public class Board {
             mixUpAnswers();
         }
         initAnswers();
-        optimalDistance();
+        level.setOptimalMoves(optimalDistance());
+        level.addOptimalMoves(optimalDistance());
         player.setMovesSinceHit(0);
     }
 
@@ -120,10 +121,10 @@ public class Board {
         }
     }
 
-    private void optimalDistance() {
+    private int optimalDistance() {
         int xDist = Math.abs(player.getLocation().getCol() - targetAnswer.getLocation().getCol());
         int yDist = Math.abs(targetAnswer.getLocation().getRow() - player.getLocation().getRow());
-        level.setOptimalMoves(Math.max(xDist, yDist));
+        return Math.max(xDist, yDist);
     }
 
     public ArrayList<Character> getBoardOfChars() {

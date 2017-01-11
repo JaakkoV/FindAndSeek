@@ -28,6 +28,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers.setSelected(false);
         roboPlayer = new JCheckBox("Roboplayer?");
         isDiagonal = new JCheckBox("Diagonal Moves?");
+        levels = new JComboBox<>();
         createComponents();
     }
 
@@ -38,7 +39,6 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     private void createComponents() {
         JLabel level = new JLabel("Level: ");
         add(level);
-        levels = new JComboBox<>();
         for (int i = 0; i < gui.getGameLevels().size(); i++) {
             levels.addItem(i);
         }

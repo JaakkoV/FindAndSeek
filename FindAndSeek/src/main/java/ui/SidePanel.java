@@ -86,7 +86,6 @@ public class SidePanel extends JPanel {
     }
 
     public void setBehindOptimal() {
-
         int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
         this.movesBehindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");
     }

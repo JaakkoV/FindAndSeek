@@ -21,14 +21,16 @@ public class GUI implements KeyListener, Runnable {
     private ArrayList<Level> gameLevels;
     private BottomMenu bottomMenu;
     private TopMenu topMenu;
+    SidePanel sidePanel;
 
     public GUI() {
         this.game = new Game();
         String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
-        this.game.loadLevel(gameLevels.get(1));
+        this.game.loadLevel(gameLevels.get(0));
         this.bottomMenu = new BottomMenu(this);
         this.topMenu = new TopMenu(this);
+        this.sidePanel = new SidePanel(this);
     }
 
     @Override
@@ -62,7 +64,7 @@ public class GUI implements KeyListener, Runnable {
         BoardPanel pelilauta = new BoardPanel(this);
         pelilauta.setPreferredSize(pelilauta.getPrefSize());
 
-        SidePanel sidePanel = new SidePanel(this);
+        sidePanel = new SidePanel(this);
         sidePanel.setPreferredSize(new Dimension(200, 400));
 
         container.add(sidePanel, BorderLayout.EAST);

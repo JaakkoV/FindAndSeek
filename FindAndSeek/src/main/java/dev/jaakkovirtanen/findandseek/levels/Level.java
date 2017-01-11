@@ -127,8 +127,8 @@ public class Level {
         this.howManyGoals = howManyGoals;
     }
 
-    private void addOptimalMoves() {
-        this.optimalMovesCumulative += this.optimalMoves;
+    public void addOptimalMoves(int optimalMoves) {
+        this.optimalMovesCumulative += optimalMoves;
     }
 
     public int getOptimalMovesCumulative() {
@@ -136,7 +136,6 @@ public class Level {
     }
 
     public void setOptimalMoves(int optimalMoves) {
-        addOptimalMoves();
         this.optimalMoves = optimalMoves;
     }
 
