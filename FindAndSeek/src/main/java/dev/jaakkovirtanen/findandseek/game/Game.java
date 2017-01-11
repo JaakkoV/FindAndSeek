@@ -1,17 +1,20 @@
 package dev.jaakkovirtanen.findandseek.game;
 
+import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
 import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
 import dev.jaakkovirtanen.findandseek.levels.Board;
 import dev.jaakkovirtanen.findandseek.levels.Level;
+
 /**
  * Game is a class which consist of: Board, which is initialized with a Level.
  *
  */
 public class Game {
 
+    private IntelligentPlayer p;
     private Board gameBoard;
     private boolean victory;
 
@@ -54,6 +57,9 @@ public class Game {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
             gameBoard.getLevel().setHowManyGoals(gameBoard.getLevel().getHowManyGoals() + 1);
             gameBoard.changeTargetAnswer(Randomizer.getRandomNumber(gameBoard.getAnswers().size() - 1));
+            if (gameBoard.getPlayer().getMovesPerformed() >= 100) {
+                setVictory(true);
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public class SidePanel extends JPanel {
     private JLabel optimalCumulative;
     private JLabel playerMoves;
     private JLabel playerMovesSinceHit;
-    private JLabel behindTheOptimal;
+    private JLabel movesBehindTheOptimal;
 
     public SidePanel(GUI gui) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -61,8 +61,8 @@ public class SidePanel extends JPanel {
         this.playerMovesSinceHit = new JLabel("Moves from last goal: 0");
         add(playerMovesSinceHit);
 
-        this.behindTheOptimal = new JLabel("You are 0 behind the optimal");
-        add(behindTheOptimal);
+        this.movesBehindTheOptimal = new JLabel("You are 0 behind the optimal");
+        add(movesBehindTheOptimal);
     }
 
     public void setGoalsHit(int goalsHit) {
@@ -88,7 +88,7 @@ public class SidePanel extends JPanel {
     public void setBehindOptimal() {
 
         int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
-        this.behindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");
+        this.movesBehindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");
     }
 
 }

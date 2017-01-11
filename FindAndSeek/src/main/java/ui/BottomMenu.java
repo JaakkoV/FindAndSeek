@@ -6,19 +6,10 @@
 package ui;
 
 import dev.jaakkovirtanen.findandseek.game.Game;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 /**
  *
@@ -29,12 +20,15 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     private GUI gui;
     private JComboBox<Integer> levels;
     private JCheckBox mixUpAnswers;
+    private JCheckBox roboPlayer;
 
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
         this.gui = gui;
         mixUpAnswers = new JCheckBox("Mix Answers?");
         mixUpAnswers.setSelected(false);
+        roboPlayer = new JCheckBox("Roboplayer?");
+        roboPlayer.setSelected(false);
         createComponents();
     }
 
@@ -57,6 +51,10 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers.setFocusable(false);
         add(mixUpAnswers);
 
+        roboPlayer.addItemListener(this);
+        roboPlayer.setFocusable(false);
+        add(roboPlayer);
+
         JButton exit = new JButton("Exit");
         exit.addActionListener(this);
         add(exit);
@@ -76,12 +74,24 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
 
     @Override
     public void itemStateChanged(ItemEvent ie) {
-        if (ie.getStateChange() == 1) {
-            gui.getGame().getGameBoard().setMixAnswers(true);
-            mixUpAnswers.setSelected(true);
-        } else {
-            mixUpAnswers.setSelected(false);
-            gui.getGame().getGameBoard().setMixAnswers(false);
+        if (ie.getSource().equals(mixUpAnswers)) {
+            if (ie.getStateChange() == 1) {
+                gui.getGame().getGameBoard().setMixAnswers(true);
+                mixUpAnswers.setSelected(true);
+            } else {
+                mixUpAnswers.setSelected(false);
+                gui.getGame().getGameBoard().setMixAnswers(false);
+            }
+        } else if (ie.getSource().equals(roboPlayer)) {
+            IntelligentPlayer p = new IntelligentPlayer(gui);
+            if (ie.getStateChange() == 1) {
+                p.setOnOff(true);
+                p.run();
+                roboPlayer.setSelected(true);
+            } else {
+                roboPlayer.setSelected(false);
+                p.setOnOff(false);
+            }
         }
 
     }
