@@ -9,6 +9,7 @@ import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  *
@@ -24,6 +25,7 @@ public class SidePanel extends JPanel {
     private JLabel playerMoves;
     private JLabel playerMovesSinceHit;
     private JLabel movesBehindTheOptimal;
+    private JLabel percentageOfExtraMoves;
 
     public SidePanel(GUI gui) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -42,10 +44,15 @@ public class SidePanel extends JPanel {
         setPlayerMoves();
         setPlayerMovesSinceHit();
         setBehindOptimal();
+        setPercentageOfExtraMoves();
         repaint();
     }
 
     private void createComponents() {
+        JLabel gameStats = new JLabel("Game Statistics");
+        gameStats.setFont(new Font("Courier New", Font.BOLD, 18));
+        add(gameStats);
+
         this.goalsHit = new JLabel("Goals: 0");
         add(goalsHit);
 
@@ -63,6 +70,16 @@ public class SidePanel extends JPanel {
 
         this.movesBehindTheOptimal = new JLabel("You are 0 behind the optimal");
         add(movesBehindTheOptimal);
+
+        JLabel percentageBelowThis = new JLabel("False Percentage: ");
+        percentageBelowThis.setPreferredSize(new Dimension(10, 10));
+        percentageBelowThis.setFont(new Font("Courier New", Font.BOLD, 18));
+        add(percentageBelowThis);
+
+        this.percentageOfExtraMoves = new JLabel();
+        this.percentageOfExtraMoves.setFont(new Font("Courier New", Font.BOLD, 18));
+        this.percentageOfExtraMoves.setForeground(Color.red);
+        add(percentageOfExtraMoves);
 
     }
 
@@ -91,4 +108,14 @@ public class SidePanel extends JPanel {
         this.movesBehindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");
     }
 
+    private void setPercentageOfExtraMoves() {
+        int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
+        int playerMoves = p.getMovesPerformed();
+        if (playerMoves == 0) {
+            this.percentageOfExtraMoves.setText("\n       0,00");
+        } else {
+            float percentage = (float) behindOptimal / playerMoves * 100;
+            this.percentageOfExtraMoves.setText(String.format("\n       %.2f", percentage));
+        }
+    }
 }
