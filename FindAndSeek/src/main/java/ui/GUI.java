@@ -56,7 +56,7 @@ public class GUI implements KeyListener, Runnable {
     public void initializeFrame() {
         frame.getContentPane().removeAll();
         createComponents(frame.getContentPane());
-        frame.setSize(new Dimension(800, 600));
+        frame.setSize(new Dimension(1000, 600));
     }
 
     private void createComponents(Container container) {
@@ -67,6 +67,9 @@ public class GUI implements KeyListener, Runnable {
 
         BottomMenu bottomMenu = new BottomMenu(this);
 
+        SidePanel sidePanel = new SidePanel(this);
+
+        container.add(sidePanel, BorderLayout.EAST);
         container.add(topMenu, BorderLayout.NORTH);
         container.add(pelilauta, BorderLayout.CENTER);
         container.add(bottomMenu, BorderLayout.SOUTH);

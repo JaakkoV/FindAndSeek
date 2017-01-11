@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -29,7 +30,7 @@ public class SidePanel extends JPanel {
     private RectangleDrawing rectum;
 
     public SidePanel(GUI gui) {
-//        super(new GridLayout(1, 3));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.gui = gui;
         this.rectum = new RectangleDrawing(gui.getGame());
         createComponents();
@@ -59,54 +60,10 @@ public class SidePanel extends JPanel {
         this.goalsHit = new JLabel("Goals: 0");
         add(goalsHit);
 
-        InnerTarget targetti = new InnerTarget(gui.getGame().getGameBoard());
-        targetti.setPreferredSize(targetti.getPrefSize());
-        add(targetti);
-
         this.optimal = new JLabel("optimal: " + gui.getGame().getGameBoard().getLevel().getOptimalMoves());
         add(optimal);
 
         this.optimalCumulative = new JLabel("Cumulative optimal " + gui.getGame().getGameBoard().getLevel().getOptimalMovesCumulative());
         add(optimalCumulative);
     }
-
-    class InnerTarget extends JPanel {
-
-        private Dimension prefSize;
-
-        /**
-         * Constructor for DrawBoard.
-         *
-         * @param gameboard initialized with gameboard
-         */
-        public InnerTarget(Board gameboard) {
-            this.prefSize = new Dimension(30, 30);
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g;
-            for (Answer a : gui.getGame().getGameBoard().getAnswers()) {
-                if (isAnswerGoal(a.getRow(), a.getCol())) {
-                    RectangleDrawing.drawRectangle(0, 0, 25, 0, 0, 25, g2d, RectangleDrawing.charToColor(a.getValue()));
-                }
-            }
-        }
-
-        private boolean isAnswerGoal(int i, int j) {
-            for (Answer a : gui.getGame().getGameBoard().getAnswers()) {
-                if (a.getLocation().equals(new Location(i, j))) {
-                    if (a.isTarget()) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public Dimension getPrefSize() {
-            return prefSize;
-        }
-    }
-
 }
