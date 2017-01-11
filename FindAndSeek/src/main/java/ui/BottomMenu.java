@@ -102,4 +102,16 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     public void changeDiag(boolean isDiag) {
         this.isDiagonal.setSelected(isDiag);
     }
+
+    public void setMixUpAnswers(boolean isActive) {
+        this.mixUpAnswers.setSelected(isActive);
+    }
+
+    public void setRoboPlayer(boolean isActive) {
+        this.roboPlayer.setSelected(isActive);
+    }
+
+    public JCheckBox getMixUpAnswers() {
+        return mixUpAnswers;
+    }
 }

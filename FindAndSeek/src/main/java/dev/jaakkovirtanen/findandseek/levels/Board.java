@@ -170,4 +170,9 @@ public class Board {
     public void setMixAnswers(boolean mixAnswers) {
         this.mixAnswers = mixAnswers;
     }
+
+    public boolean isMixAnswers() {
+        return mixAnswers;
+    }
+
 }
