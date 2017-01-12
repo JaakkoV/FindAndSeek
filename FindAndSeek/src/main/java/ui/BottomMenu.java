@@ -15,12 +15,12 @@ import javax.swing.*;
  */
 public class BottomMenu extends JPanel implements ActionListener {
 
-    private GUI gui;
-    private JComboBox<Integer> levels;
-    private JCheckBox mixUpAnswers;
-    private JCheckBox roboPlayer;
-    private JCheckBox isDiagonal;
-    private JCheckBox isPopUps;
+    private final GUI gui;
+    private final JComboBox<Integer> levels;
+    private final JCheckBox mixUpAnswers;
+    private final JCheckBox roboPlayer;
+    private final JCheckBox isDiagonal;
+    private final JCheckBox isPopUps;
 
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
@@ -42,6 +42,7 @@ public class BottomMenu extends JPanel implements ActionListener {
     private void createComponents() {
         JLabel level = new JLabel("Level: ");
         add(level);
+
         for (int i = 0; i < gui.getGameLevels().size(); i++) {
             levels.addItem(i);
         }
@@ -71,7 +72,7 @@ public class BottomMenu extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Exit")) {
             System.exit(0);
-        } else if (ae.getActionCommand().equals("comboBoxChanged")) {
+        } else if (ae.getSource().equals(levels)) {
             gui.initGame();
             gui.getGame().loadLevel(gui.getGameLevels().get((Integer) this.levels.getSelectedItem()));
             this.levels.setSelectedItem(this.levels.getSelectedItem());

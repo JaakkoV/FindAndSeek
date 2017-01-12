@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import dev.jaakkovirtanen.findandseek.levels.*;
@@ -16,8 +11,8 @@ import javax.swing.*;
  */
 public class TopMenu extends JPanel {
 
-    private GUI gui;
-    private RectangleDrawing rectum;
+    private final GUI gui;
+    private final RectangleDrawing rectum;
 
     public TopMenu(GUI gui) {
         super(new GridLayout(1, 3));
@@ -61,12 +56,8 @@ public class TopMenu extends JPanel {
         }
 
         private boolean isAnswerGoal(int i, int j) {
-            for (Answer a : gui.getGame().getGameBoard().getAnswers()) {
-                if (a.getLocation().equals(new Location(i, j))) {
-                    if (a.isTarget()) {
-                        return true;
-                    }
-                }
+            if (gui.getGame().getGameBoard().getAnswers().stream().filter((a) -> (a.getLocation().equals(new Location(i, j)))).anyMatch((a) -> (a.isTarget()))) {
+                return true;
             }
             return false;
         }

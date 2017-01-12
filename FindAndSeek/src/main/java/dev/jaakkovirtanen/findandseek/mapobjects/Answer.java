@@ -4,7 +4,7 @@ import dev.jaakkovirtanen.findandseek.movealgorithms.MoveBehaviour;
 
 /**
  * Answer-object extends BoardObject and is an answer on the gameboard.
- * 
+ *
  * Answer has boolean isTarget, which is goal of the game
  */
 public class Answer extends BoardObject {
@@ -13,6 +13,7 @@ public class Answer extends BoardObject {
 
     /**
      * Constructor with location, moveBehaviour.
+     *
      * @param location set location
      * @param moveBehaviour set moveBehaviour
      */
@@ -23,6 +24,7 @@ public class Answer extends BoardObject {
 
     /**
      * returns answer's value.
+     *
      * @return character, value of the answer
      */
     public char getValue() {
@@ -31,6 +33,7 @@ public class Answer extends BoardObject {
 
     /**
      * sets answer's value.
+     *
      * @param value parameter to put in answer's value
      */
     public void setValue(char value) {

@@ -2,9 +2,9 @@ boardHeight:25
 boardWidth:39
 player:@:16:11
 a:A:14:10
-a:B:16:11
+a:B:16:31
 a:C:3:4
-a:D:2:22
+a:D:20:22
 a:E:2:12
-a:F:22:3
-!:X:17:3
+a:F:12:3
+!:X:17:33

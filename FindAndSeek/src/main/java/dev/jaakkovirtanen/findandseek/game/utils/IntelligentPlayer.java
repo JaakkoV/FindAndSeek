@@ -5,6 +5,12 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.levels.*;
 import ui.GUI;
 
+/**
+ * This class provides ai-player, which is dump and moves only cardinally.
+ *
+ * Class can be extended to provide more intelligent gameplays
+ *
+ */
 public class IntelligentPlayer {
 
     private GUI gui;
@@ -12,6 +18,11 @@ public class IntelligentPlayer {
     private Player p;
     private Board b;
 
+    /**
+     * Constructor for ai-player, needs gui.
+     *
+     * @param gui current gui, which needs ai-player
+     */
     public IntelligentPlayer(GUI gui) {
         this.gui = gui;
         this.game = gui.getGame();
@@ -19,6 +30,11 @@ public class IntelligentPlayer {
         this.b = gui.getGame().getGameBoard();
     }
 
+    /**
+     * Performs moves in game.
+     *
+     * This is called in ver 1.0. from keyListener
+     */
     public void makeMoves() {
         if (p.getRow() > b.getTargetAnswer().getRow()) {
             game.executePlayerCommand('w');

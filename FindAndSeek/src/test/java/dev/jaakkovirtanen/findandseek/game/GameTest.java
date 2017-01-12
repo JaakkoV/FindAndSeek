@@ -45,7 +45,6 @@ public class GameTest {
     @Test
     public void constructorBoard() {
         assertEquals(Board.class, this.game.getGameBoard().getClass());
-        assertEquals(false, this.game.isVictory());
     }
 
     @Test
@@ -62,13 +61,13 @@ public class GameTest {
         this.game.changePlayerMoveAlgo();
         assertEquals(MoveCardinal.class, this.game.getGameBoard().getPlayer().getMoveBehaviour().getClass());
     }
-    
+
     @Test
     public void executePlayerCommand() {
         this.game.loadLevel(setUpLevel);
-        Location expected = new Location (this.game.getGameBoard().getPlayer().getLocation().getRow() + 1, this.game.getGameBoard().getPlayer().getLocation().getCol());
+        Location expected = new Location(this.game.getGameBoard().getPlayer().getLocation().getRow() + 1, this.game.getGameBoard().getPlayer().getLocation().getCol());
         this.game.executePlayerCommand('s');
         assertEquals(true, expected.equals(this.game.getGameBoard().getPlayer().getLocation()));
     }
-    
+
 }

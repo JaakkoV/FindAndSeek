@@ -11,15 +11,13 @@ import dev.jaakkovirtanen.findandseek.levels.*;
  */
 public class Game {
 
-    private Board gameBoard;
-    private boolean victory;
+    private final Board gameBoard;
 
     /**
      * Constructor.
      */
     public Game() {
         this.gameBoard = new Board();
-        this.victory = false;
     }
 
     /**
@@ -47,15 +45,13 @@ public class Game {
     }
 
     /**
-     * checks if victory is true and sets victory-parameter to true.
+     * checks if Player has hit the targetAnswer and change game parameters
+     * (e.g. goals hit).
      */
     public void checkGameStatus() {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {
             gameBoard.getLevel().setHowManyGoals(gameBoard.getLevel().getHowManyGoals() + 1);
             gameBoard.changeTargetAnswer(Randomizer.getRandomNumber(gameBoard.getAnswers().size() - 1));
-            if (gameBoard.getPlayer().getMovesPerformed() >= 100) {
-                setVictory(true);
-            }
         }
     }
 
@@ -80,24 +76,6 @@ public class Game {
      */
     public Board getGameBoard() {
         return gameBoard;
-    }
-
-    /**
-     * returns boolean victory.
-     *
-     * @return this.victory true or false
-     */
-    public boolean isVictory() {
-        return victory;
-    }
-
-    /**
-     * sets victory.
-     *
-     * @param victory boolean value
-     */
-    public void setVictory(boolean victory) {
-        this.victory = victory;
     }
 
 }

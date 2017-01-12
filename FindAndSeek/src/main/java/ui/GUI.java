@@ -3,10 +3,7 @@ package ui;
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.game.utils.*;
-import dev.jaakkovirtanen.findandseek.mapobjects.*;
-import dev.jaakkovirtanen.findandseek.movealgorithms.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -17,16 +14,16 @@ public class GUI implements Runnable {
 
     private Game game;
     private JFrame frame;
-    private ArrayList<Level> gameLevels;
+    private final ArrayList<Level> gameLevels;
     private static KeyboardListener keyListener;
-    private BottomMenu bottomMenu;
-    private TopMenu topMenu;
+    private final BottomMenu bottomMenu;
+    private final TopMenu topMenu;
     private SidePanel sidePanel;
-    private PopUpWindow msgWindow;
+    private final PopUpWindow msgWindow;
 
     public GUI() {
         this.game = new Game();
-        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel3.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
         this.game.loadLevel(gameLevels.get(0));
         this.bottomMenu = new BottomMenu(this);

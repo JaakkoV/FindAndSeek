@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import dev.jaakkovirtanen.findandseek.levels.*;
@@ -16,8 +11,8 @@ import javax.swing.*;
  */
 public class SidePanel extends JPanel {
 
-    private Player p;
-    private Level l;
+    private final Player p;
+    private final Level l;
     private JLabel goalsHit;
     private JLabel optimal;
     private JLabel optimalCumulative;
@@ -117,11 +112,11 @@ public class SidePanel extends JPanel {
 
     private void setPercentageOfExtraMoves() {
         int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
-        int playerMoves = p.getMovesPerformed();
-        if (playerMoves == 0) {
+        int playerMovesLoc = p.getMovesPerformed();
+        if (playerMovesLoc == 0) {
             this.percentageOfExtraMoves.setText("\n       0,00");
         } else {
-            float percentage = (float) behindOptimal / playerMoves * 100;
+            float percentage = (float) behindOptimal / playerMovesLoc * 100;
             this.percentageOfExtraMoves.setText(String.format("\n       %.2f", percentage));
         }
     }

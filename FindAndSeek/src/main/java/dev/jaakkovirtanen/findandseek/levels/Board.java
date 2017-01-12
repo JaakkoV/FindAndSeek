@@ -38,19 +38,6 @@ public class Board {
         this.level.setOptimalMoves(optimalDistance());
     }
 
-    private boolean isPlayer(int i, int j) {
-        return this.player.getLocation().equals(new Location(i, j));
-    }
-
-    private char isAnswer(int i, int j) {
-        for (Answer a : this.answers) {
-            if (a.getLocation().equals(new Location(i, j))) {
-                return a.getValue();
-            }
-        }
-        return '.';
-    }
-
     private void initAll() {
         this.initPlayer();
         this.initAnswers();
@@ -67,34 +54,83 @@ public class Board {
 
     private void initAnswers() {
         for (BoardObject b : this.level.getBoardObjects()) {
-            if (b.getClass() == Answer.class) {
-                Answer a = (Answer) b;
-                answers.add(a);
-                if (a.isTarget()) {
-                    this.targetAnswer = a;
-                }
+            handleAnswers(b);
+        }
+    }
+
+    private void handleAnswers(BoardObject b) {
+        if (b.getClass() == Answer.class) {
+            Answer a = (Answer) b;
+            answers.add(a);
+            ifTargetSetParam(a);
+        }
+    }
+
+    private void ifTargetSetParam(Answer a) {
+        if (a.isTarget()) {
+            this.targetAnswer = a;
+        }
+    }
+
+    private boolean isPlayer(int i, int j) {
+        return this.player.getLocation().equals(new Location(i, j));
+    }
+
+    private char isAnswer(int i, int j) {
+        for (Answer a : this.answers) {
+            if (a.getLocation().equals(new Location(i, j))) {
+                return a.getValue();
             }
         }
+        return '.';
     }
 
     private void initBoardChar() {
         ArrayList<Character> boardCharsToDraw = new ArrayList<>();
-        for (int i = 0; i < this.level.getBoardHeight(); i++) {
-            for (int j = 0; j < this.level.getBoardWidth(); j++) {
-                if (isPlayer(i, j)) {
-                    boardCharsToDraw.add(this.player.getValue());
-                } else {
-                    boardCharsToDraw.add(isAnswer(i, j));
-                }
-            }
-            boardCharsToDraw.add('\n');
-        }
+        loopThroughBoardMatrix(boardCharsToDraw);
         this.boardOfChars = boardCharsToDraw;
     }
 
+    private void loopThroughBoardMatrix(ArrayList<Character> boardCharsToDraw) {
+        for (int i = 0; i < this.level.getBoardHeight(); i++) {
+            for (int j = 0; j < this.level.getBoardWidth(); j++) {
+                initBoardChar(i, j, boardCharsToDraw);
+            }
+            boardCharsToDraw.add('\n');
+        }
+    }
+
+    private void initBoardChar(int i, int j, ArrayList<Character> boardCharsToDraw) {
+        if (isPlayer(i, j)) {
+            boardCharsToDraw.add(this.player.getValue());
+        } else {
+            boardCharsToDraw.add(isAnswer(i, j));
+        }
+    }
+
+    /**
+     * The method changes board's target answer. Method provides functionality
+     * to check if board's location is available to set target, target can't be
+     * set to same place where player is. Method also checks if user wants all
+     * answers mixed up after finding the target, private methods provides
+     * functionality to check that all answers are respawn to legal places
+     *
+     * @param indexOfAnswerArray Int to map new target answer, if it's not
+     * possible, method's logic tries closest one
+     */
     public void changeTargetAnswer(int indexOfAnswerArray) {
         level.addOptimalMoves(level.getOptimalMoves());
         this.targetAnswer.setIsTarget(false);
+        isPlayerOnIt(indexOfAnswerArray);
+        if (mixAnswers) {
+            mixUpAnswers();
+        }
+        initAnswers();
+        level.setOptimalMoves(optimalDistance());
+        player.setMovesSinceHit(0);
+    }
+
+    private void isPlayerOnIt(int indexOfAnswerArray) {
         if (!player.getLocation().equals(this.answers.get(indexOfAnswerArray).getLocation())) {
             this.answers.get(indexOfAnswerArray).setIsTarget(true);
         } else {
@@ -104,29 +140,31 @@ public class Board {
                 this.answers.get(indexOfAnswerArray - 1).setIsTarget(true);
             }
         }
-        if (mixAnswers) {
-            mixUpAnswers();
-        }
-        initAnswers();
-        level.setOptimalMoves(optimalDistance());
-        player.setMovesSinceHit(0);
     }
 
     private void mixUpAnswers() {
         for (Answer a : answers) {
             Location tryLoc = new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1));
-            if (isFree(tryLoc)) {
-                a.setLocation(tryLoc);
-            } else {
-                for (int i = 0; i < 1000; i++) {
-                    tryLoc = new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1));
-                    a.setLocation(tryLoc);
-                    if (isFree(tryLoc)) {
-                        break;
-                    }
-                }
-            }
+            placeIfFree(tryLoc, a);
+        }
+    }
 
+    private void placeIfFree(Location tryLoc, Answer a) {
+        if (isFree(tryLoc)) {
+            a.setLocation(tryLoc);
+        } else {
+            ifNotFreeTryAgain(a);
+        }
+    }
+
+    private void ifNotFreeTryAgain(Answer a) {
+        Location tryLoc;
+        for (int i = 0; i < 1000; i++) {
+            tryLoc = new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1));
+            a.setLocation(tryLoc);
+            if (isFree(tryLoc)) {
+                break;
+            }
         }
     }
 

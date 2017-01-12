@@ -7,13 +7,19 @@ import ui.GUI;
 
 /**
  *
- * @author User
+ * Utility for the application, encapsulated keylistener.
+ *
  */
 public class KeyboardListener implements KeyListener {
 
-    private GUI gui;
-    private BottomMenu bottomMenu;
+    private final GUI gui;
+    private final BottomMenu bottomMenu;
 
+    /**
+     * Constructor, which needs gui.
+     *
+     * @param gui which needs the listener
+     */
     public KeyboardListener(GUI gui) {
         this.gui = gui;
         this.bottomMenu = gui.getBottomMenu();

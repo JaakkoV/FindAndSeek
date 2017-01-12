@@ -5,7 +5,6 @@
  */
 package ui;
 
-import dev.jaakkovirtanen.findandseek.game.*;
 import java.awt.*;
 import javax.swing.*;
 

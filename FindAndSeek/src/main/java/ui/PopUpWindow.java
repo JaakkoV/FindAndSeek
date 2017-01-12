@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class PopUpWindow {
 
-    private JOptionPane popUpWindow;
+    private final JOptionPane popUpWindow;
     private final ImageIcon findAndSeekIcon;
 
     public PopUpWindow() {

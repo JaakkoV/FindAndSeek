@@ -12,6 +12,7 @@ public class Location {
 
     /**
      * Constructor with row and column.
+     *
      * @param row set row for location
      * @param col set column for location
      */
@@ -37,7 +38,9 @@ public class Location {
     }
 
     /**
-     * Returns boolean if the locations are the same coordinate-point on the board.
+     * Returns boolean if the locations are the same coordinate-point on the
+     * board.
+     *
      * @param anotherLocation for comparison
      * @return boolean value if the locations are the same
      */
@@ -50,19 +53,18 @@ public class Location {
 
     /**
      * Returns boolean if the location is inside given area.
+     *
      * @param row RowCount for comparison
      * @param col ColumnCount for comparison
      * @return boolean if location is inside given parameters
      */
     public boolean isInside(int row, int col) {
-        if (this.row < row && this.col < col && this.row >= 0 && this.col >= 0) {
-            return true;
-        }
-        return false;
+        return this.row < row && this.col < col && this.row >= 0 && this.col >= 0;
     }
-    
+
     /**
      * Returns clone of the location, needed for "deep-clone" of the player.
+     *
      * @return clone of the location
      */
     public Location getCloneLocation() {
