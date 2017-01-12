@@ -13,13 +13,14 @@ import javax.swing.*;
  *
  * @author User
  */
-public class BottomMenu extends JPanel implements ActionListener, ItemListener {
+public class BottomMenu extends JPanel implements ActionListener {
 
     private GUI gui;
     private JComboBox<Integer> levels;
     private JCheckBox mixUpAnswers;
     private JCheckBox roboPlayer;
     private JCheckBox isDiagonal;
+    private JCheckBox isPopUps;
 
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
@@ -28,6 +29,8 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         mixUpAnswers.setSelected(false);
         roboPlayer = new JCheckBox("Roboplayer?");
         isDiagonal = new JCheckBox("Diagonal Moves?");
+        isPopUps = new JCheckBox("Pop Ups?");
+        isPopUps.setSelected(true);
         levels = new JComboBox<>();
         createComponents();
     }
@@ -46,15 +49,15 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         levels.setFocusable(false);
         add(levels);
 
-        mixUpAnswers.addItemListener(this);
         mixUpAnswers.setFocusable(false);
         add(mixUpAnswers);
 
-        roboPlayer.addItemListener(this);
         roboPlayer.setFocusable(false);
         add(roboPlayer);
 
-        isDiagonal.setFocusable(false);
+        isPopUps.setFocusable(false);
+        add(isPopUps);
+
         isDiagonal.setEnabled(false);
         add(isDiagonal);
 
@@ -73,24 +76,6 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
             gui.getGame().loadLevel(gui.getGameLevels().get((Integer) this.levels.getSelectedItem()));
             this.levels.setSelectedItem(this.levels.getSelectedItem());
             gui.initializeFrame();
-        }
-    }
-
-    @Override
-    public void itemStateChanged(ItemEvent ie) {
-        if (ie.getSource().equals(mixUpAnswers)) {
-            if (ie.getStateChange() == 1) {
-                mixUpAnswers.setSelected(true);
-            } else {
-                mixUpAnswers.setSelected(false);
-            }
-        }
-        if (ie.getSource().equals(roboPlayer)) {
-            if (ie.getStateChange() == 1) {
-                roboPlayer.setSelected(true);
-            } else {
-                roboPlayer.setSelected(false);
-            }
         }
     }
 
@@ -113,4 +98,9 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     public JCheckBox getMixUpAnswers() {
         return mixUpAnswers;
     }
+
+    public JCheckBox getIsPopUps() {
+        return isPopUps;
+    }
+
 }
