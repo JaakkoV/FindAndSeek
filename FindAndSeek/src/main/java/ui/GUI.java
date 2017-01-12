@@ -22,6 +22,7 @@ public class GUI implements Runnable {
     private BottomMenu bottomMenu;
     private TopMenu topMenu;
     private SidePanel sidePanel;
+    private PopUpWindow msgWindow;
 
     public GUI() {
         this.game = new Game();
@@ -31,7 +32,8 @@ public class GUI implements Runnable {
         this.bottomMenu = new BottomMenu(this);
         this.topMenu = new TopMenu(this);
         this.sidePanel = new SidePanel(this);
-        keyListener = new KeyboardListener(this);
+        this.keyListener = new KeyboardListener(this);
+        this.msgWindow = new PopUpWindow();
     }
 
     @Override
@@ -86,6 +88,12 @@ public class GUI implements Runnable {
     public void repaint() {
         frame.repaint();
         frame.requestFocus();
+    }
+
+    public void checkGameStatus() {
+        if (game.getGameBoard().getLevel().getHowManyGoals() == 10) {
+            this.msgWindow.congratsWindow(10);
+        }
     }
 
     public Game getGame() {

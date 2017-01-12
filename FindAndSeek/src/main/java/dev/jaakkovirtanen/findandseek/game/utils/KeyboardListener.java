@@ -43,6 +43,7 @@ public class KeyboardListener implements KeyListener {
             bottomMenu.changeDiag(false);
         }
         gui.repaint();
+        gui.checkGameStatus();
     }
 
     @Override
