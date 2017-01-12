@@ -35,10 +35,16 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>dev.jaakkovirtanen.findandseek.*</param>
+                        <param>dev.jaakkovirtanen.findandseek.game</param>
+                        <param>dev.jaakkovirtanen.findandseek.levels</param>
+                        <param>dev.jaakkovirtanen.findandseek.mapobjects</param>
+                        <param>dev.jaakkovirtanen.findandseek.movealgorithms</param>
                     </targetClasses>
                     <targetTests>
-                        <param>dev.jaakkovirtanen.findandseek.*</param>
+                        <param>dev.jaakkovirtanen.findandseek.game</param>
+                        <param>dev.jaakkovirtanen.findandseek.levels</param>
+                        <param>dev.jaakkovirtanen.findandseek.mapobjects</param>
+                        <param>dev.jaakkovirtanen.findandseek.movealgorithms</param>
                     </targetTests>
                 </configuration>
             </plugin>

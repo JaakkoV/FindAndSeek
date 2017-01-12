@@ -1,4 +1,4 @@
-package ui;
+package dev.jaakkovirtanen.findandseek.ui;
 
 import java.awt.*;
 import java.awt.event.*;

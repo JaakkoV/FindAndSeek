@@ -1,4 +1,4 @@
-package ui;
+package dev.jaakkovirtanen.findandseek.ui;
 
 import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;

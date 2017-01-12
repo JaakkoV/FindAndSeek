@@ -1,4 +1,4 @@
-package ui;
+package dev.jaakkovirtanen.findandseek.ui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

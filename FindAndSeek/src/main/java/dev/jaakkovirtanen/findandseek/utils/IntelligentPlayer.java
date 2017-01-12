@@ -3,7 +3,7 @@ package dev.jaakkovirtanen.findandseek.game.utils;
 import dev.jaakkovirtanen.findandseek.game.Game;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.levels.*;
-import ui.GUI;
+import dev.jaakkovirtanen.findandseek.ui.GUI;
 
 /**
  * This class provides ai-player, which is dump and moves only cardinally.

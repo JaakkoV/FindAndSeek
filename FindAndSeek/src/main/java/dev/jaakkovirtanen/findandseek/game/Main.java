@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game;
 
-import ui.*;
+import dev.jaakkovirtanen.findandseek.ui.GUI;
 
 public class Main {
 
