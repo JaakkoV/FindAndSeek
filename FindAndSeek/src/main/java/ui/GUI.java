@@ -91,8 +91,8 @@ public class GUI implements Runnable {
     }
 
     public void checkGameStatus() {
-        if (game.getGameBoard().getLevel().getHowManyGoals() == 10) {
-            this.msgWindow.congratsWindow(10);
+        if (game.getGameBoard().getLevel().getHowManyGoals() % 10 == 0 && game.getGameBoard().getLevel().getHowManyGoals() != 0 && game.getGameBoard().getPlayer().getMovesSinceHit() == 0) {
+            this.msgWindow.congratsWindow(game.getGameBoard().getLevel().getHowManyGoals());
         }
     }
 
