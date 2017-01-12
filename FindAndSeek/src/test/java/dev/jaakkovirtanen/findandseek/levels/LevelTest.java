@@ -98,6 +98,22 @@ public class LevelTest {
         return answers;
     }
 
+    @Test
+    public void getListOfLevels() {
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
+        ArrayList<Level> gameLevels = Level.getListOfLevels(levels);
+        for (int i = 0; i < levels.length; i++) {
+            Level l = new Level(levels[i]);
+            Board b = new Board();
+            b.loadLevel(l);
+            Board bT = new Board();
+            bT.loadLevel(gameLevels.get(i));
+            for (int j = 0; j < b.getBoardOfChars().size(); j++) {
+                assertEquals(b.getBoardOfChars().get(j), bT.getBoardOfChars().get(j));
+            }
+        }
+    }
+
     private ArrayList<Answer> createArrayListOfAnswersForTests() {
         ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
         boolean[] answers = {false, false, false, true};

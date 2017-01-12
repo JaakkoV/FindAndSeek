@@ -49,19 +49,6 @@ public class Level {
         }
     }
 
-    /**
-     * Second constructor, with parameters.
-     *
-     * @param boardHeight set board height
-     * @param boardWidth set board width
-     * @param boardObjects set boardObjects with boardObject array
-     */
-    public Level(int boardHeight, int boardWidth, ArrayList<BoardObject> boardObjects) {
-        this.boardObjects.addAll(boardObjects);
-        this.boardHeight = boardHeight;
-        this.boardWidth = boardWidth;
-    }
-
     private boolean initParams(String levelData, String levelDataParam) {
         switch (levelData) {
             case "boardHeight":

@@ -105,15 +105,19 @@ public class BoardTest {
     }
 
     @Test
-    public void isPlayerOnIt() {
+    public void isPlayerOnItZeroIndexAnswer() {
         this.board.getPlayer().setLocation(new Location(4, 4));
         this.board.changeTargetAnswer(0);
         assertEquals(false, this.board.getPlayer().getLocation().equals(this.board.getTargetAnswer()));
         assertEquals(this.board.getTargetAnswer().getLocation().equals(new Location(6, 1)), true);
-        this.board.getPlayer().setLocation(new Location(5, 2));
-        this.board.changeTargetAnswer(2);
+    }
+
+    @Test
+    public void isPlayerOnItBiggerIndexAnswer() {
+        this.board.getPlayer().setLocation(new Location(7, 3));
+        this.board.changeTargetAnswer(3);
         assertEquals(false, this.board.getPlayer().getLocation().equals(this.board.getTargetAnswer()));
-        assertEquals(this.board.getTargetAnswer().getLocation().equals(new Location(6, 1)), true);
+        assertEquals(this.board.getTargetAnswer().getLocation().equals(new Location(5, 2)), true);
     }
 
     @Test
@@ -129,6 +133,20 @@ public class BoardTest {
         this.board.placeIfFree(new Location(6, 1), this.answers.get(0));
         assertEquals(this.answers.get(0).getLocation().equals(new Location(6, 1)), false);
         assertEquals(this.answers.get(0).getLocation().equals(new Location(4, 4)), false);
+    }
+
+    @Test
+    public void isMixed() {
+        this.board.loadLevel(setUpLevel);
+        assertTrue(!this.board.isMixAnswers());
+        this.board.setMixAnswers(true);
+        assertTrue(this.board.isMixAnswers());
+    }
+
+    @Test
+    public void setTarget() {
+        this.board.setTargetAnswer(this.answers.get(2));
+        assertEquals(this.answers.get(2), this.board.getTargetAnswer());
     }
 
     private ArrayList<Answer> createArrayListOfAnswersForTests() {
