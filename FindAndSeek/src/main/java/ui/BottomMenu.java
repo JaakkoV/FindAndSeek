@@ -79,8 +79,8 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
     public void itemStateChanged(ItemEvent ie) {
         if (ie.getSource().equals(mixUpAnswers)) {
             if (ie.getStateChange() == 1) {
-                gui.getGame().getGameBoard().setMixAnswers(true);
                 mixUpAnswers.setSelected(true);
+                gui.getGame().getGameBoard().setMixAnswers(true);
             } else {
                 mixUpAnswers.setSelected(false);
                 gui.getGame().getGameBoard().setMixAnswers(false);

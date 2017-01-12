@@ -71,11 +71,4 @@ public class GameTest {
         assertEquals(true, expected.equals(this.game.getGameBoard().getPlayer().getLocation()));
     }
     
-    @Test
-    public void checkVictory() {
-        this.game.loadLevel(setUpLevel);
-        this.game.getGameBoard().getPlayer().setLocation(new Location(6, 3));
-        this.game.executePlayerCommand('s');
-        assertEquals(true, this.game.isVictory());
-    }
 }
