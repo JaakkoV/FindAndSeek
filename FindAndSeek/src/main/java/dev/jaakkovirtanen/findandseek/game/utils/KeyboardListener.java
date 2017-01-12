@@ -1,10 +1,7 @@
 package dev.jaakkovirtanen.findandseek.game.utils;
 
-import dev.jaakkovirtanen.findandseek.game.Game;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import dev.jaakkovirtanen.findandseek.movealgorithms.*;
+import java.awt.event.*;
 import ui.BottomMenu;
 import ui.GUI;
 

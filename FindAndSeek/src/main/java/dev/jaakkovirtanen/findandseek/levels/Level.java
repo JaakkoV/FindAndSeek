@@ -2,7 +2,6 @@ package dev.jaakkovirtanen.findandseek.levels;
 
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.movealgorithms.*;
-import dev.jaakkovirtanen.findandseek.game.*;
 import java.io.*;
 import java.util.*;
 

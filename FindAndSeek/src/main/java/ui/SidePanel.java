@@ -9,7 +9,6 @@ import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 /**
  *
@@ -60,7 +59,7 @@ public class SidePanel extends JPanel {
         this.goalsHit = new JLabel("Goals: 0");
         add(goalsHit);
 
-        this.playerMoves = new JLabel("Moves: 0");
+        this.playerMoves = new JLabel("Total moves: 0");
         add(playerMoves);
 
         this.optimalCumulative = new JLabel("Cumulative optimal 0");

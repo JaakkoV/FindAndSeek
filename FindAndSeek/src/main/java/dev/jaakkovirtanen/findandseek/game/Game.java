@@ -1,12 +1,9 @@
 package dev.jaakkovirtanen.findandseek.game;
 
-import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
-import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
+import dev.jaakkovirtanen.findandseek.game.utils.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
-import dev.jaakkovirtanen.findandseek.levels.Board;
-import dev.jaakkovirtanen.findandseek.levels.Level;
+import dev.jaakkovirtanen.findandseek.movealgorithms.*;
+import dev.jaakkovirtanen.findandseek.levels.*;
 
 /**
  * Game is a class which consist of: Board, which is initialized with a Level.

@@ -2,15 +2,12 @@ package ui;
 
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.game.*;
-import dev.jaakkovirtanen.findandseek.game.utils.IntelligentPlayer;
-import dev.jaakkovirtanen.findandseek.game.utils.KeyboardListener;
+import dev.jaakkovirtanen.findandseek.game.utils.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
-import dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally;
+import dev.jaakkovirtanen.findandseek.movealgorithms.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -49,7 +46,7 @@ public class GUI implements Runnable {
      */
     private void drawGui() {
 
-        this.frame = new JFrame();
+        this.frame = new JFrame("Find and Seek Game");
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setLayout(new BorderLayout());
         frame.addKeyListener(keyListener);

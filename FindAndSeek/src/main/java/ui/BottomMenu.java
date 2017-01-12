@@ -59,6 +59,7 @@ public class BottomMenu extends JPanel implements ActionListener, ItemListener {
         add(isDiagonal);
 
         JButton exit = new JButton("Exit");
+        exit.setFocusable(false);
         exit.addActionListener(this);
         add(exit);
     }

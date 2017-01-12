@@ -1,10 +1,7 @@
 package dev.jaakkovirtanen.findandseek.levels;
 
 import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
-import dev.jaakkovirtanen.findandseek.mapobjects.BoardObject;
-import dev.jaakkovirtanen.findandseek.mapobjects.Player;
-import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
-import dev.jaakkovirtanen.findandseek.mapobjects.Location;
+import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.util.ArrayList;
 
 /**
