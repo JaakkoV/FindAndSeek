@@ -30,7 +30,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        Location location = new Location (3, 1);
+        Location location = new Location(3, 1);
         MoveBehaviour moveBehaviour = new MoveCardinal();
         this.player = new Player(location, moveBehaviour);
     }
@@ -41,9 +41,9 @@ public class PlayerTest {
 
     @Test
     public void playerConstructor() {
-        BoardObject b = new Player (new Location(3,4), new MoveCardinal());
+        BoardObject b = new Player(new Location(3, 4), new MoveCardinal());
         Player p = (Player) b;
-        assertEquals(true, new Location(3,4).equals(p.getLocation()));
+        assertEquals(true, new Location(3, 4).equals(p.getLocation()));
         assertEquals(new MoveCardinal().getClass(), p.getMoveBehaviour().getClass());
     }
 
@@ -68,7 +68,7 @@ public class PlayerTest {
         this.player.changeMoveBehaviour(expected);
         assertEquals(expected.getClass(), player.moveBehaviour.getClass());
     }
-    
+
     @Test
     public void isCloneSame() {
         Player clone = this.player.getClonePlayer();
@@ -82,81 +82,109 @@ public class PlayerTest {
         this.player.performMove('s');
         assertEquals(1, this.player.getMovesPerformed());
     }
-    
+
     @Test
     public void setMovesPerformed() {
         this.player.performMove('s');
         this.player.setMovesPerformed(5);
         assertEquals(5, this.player.getMovesPerformed());
     }
-    
+
     @Test
     public void setLocation() {
-        Location expectedLocation = new Location(13,33);
+        Location expectedLocation = new Location(13, 33);
         this.player.setLocation(expectedLocation);
         assertEquals(expectedLocation, this.player.getLocation());
     }
-    
-       
+
     @Test
     public void performMoveW() {
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('w');
         assertEquals(0, this.player.getRow());
         assertEquals(1, this.player.getCol());
     }
+
     @Test
     public void performMoveD() {
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('d');
         assertEquals(1, this.player.getRow());
         assertEquals(2, this.player.getCol());
     }
+
     @Test
     public void performMoveS() {
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('s');
         assertEquals(2, this.player.getRow());
         assertEquals(1, this.player.getCol());
     }
+
     @Test
     public void performMoveA() {
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('a');
         assertEquals(1, this.player.getRow());
         assertEquals(0, this.player.getCol());
     }
+
     @Test
     public void performMoveQ() {
         this.player.changeMoveBehaviour(new MoveDiagonally());
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('q');
         assertEquals(0, this.player.getRow());
         assertEquals(0, this.player.getCol());
     }
+
     @Test
     public void performMoveE() {
         this.player.changeMoveBehaviour(new MoveDiagonally());
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('e');
         assertEquals(0, this.player.getRow());
         assertEquals(2, this.player.getCol());
     }
+
     @Test
     public void performMoveC() {
         this.player.changeMoveBehaviour(new MoveDiagonally());
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('c');
         assertEquals(2, this.player.getRow());
         assertEquals(2, this.player.getCol());
     }
+
     @Test
     public void performMoveZ() {
         this.player.changeMoveBehaviour(new MoveDiagonally());
-        this.player.setLocation(new Location(1,1));
+        this.player.setLocation(new Location(1, 1));
         this.player.performMove('z');
         assertEquals(2, this.player.getRow());
         assertEquals(0, this.player.getCol());
     }
-    
+
+    @Test
+    public void performMoveIllegalDiag() {
+        this.player.changeMoveBehaviour(new MoveDiagonally());
+        this.player.setLocation(new Location(1, 1));
+        this.player.performMove('h');
+        assertEquals(1, this.player.getRow());
+        assertEquals(1, this.player.getCol());
+        MoveDiagonally moveC = new MoveDiagonally();
+        assertEquals(5, moveC.move('3'));
+    }
+
+    @Test
+    public void performMoveIllegalCard() {
+        this.player.changeMoveBehaviour(new MoveCardinal());
+        this.player.setLocation(new Location(1, 1));
+        this.player.performMove('h');
+        assertEquals(1, this.player.getRow());
+        assertEquals(1, this.player.getCol());
+        MoveCardinal moveC = new MoveCardinal();
+        assertEquals(5, moveC.move('3'));
+    }
+
 }
