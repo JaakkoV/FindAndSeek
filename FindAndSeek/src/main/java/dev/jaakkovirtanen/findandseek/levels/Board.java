@@ -117,8 +117,32 @@ public class Board {
 
     private void mixUpAnswers() {
         for (Answer a : answers) {
-            a.setLocation(new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1)));
+            Location tryLoc = new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1));
+            if (isFree(tryLoc)) {
+                a.setLocation(tryLoc);
+            } else {
+                for (int i = 0; i < 1000; i++) {
+                    tryLoc = new Location(Randomizer.getRandomNumber(getHeight() - 1), Randomizer.getRandomNumber(getWidth() - 1));
+                    a.setLocation(tryLoc);
+                    if (isFree(tryLoc)) {
+                        break;
+                    }
+                }
+            }
+
         }
+    }
+
+    private boolean isFree(Location location) {
+        for (Answer a : answers) {
+            if (a.getLocation().equals(location)) {
+                return false;
+            }
+            if (a.getLocation().equals(player.getLocation())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private int optimalDistance() {
