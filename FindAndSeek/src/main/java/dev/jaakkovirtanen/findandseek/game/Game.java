@@ -66,7 +66,6 @@ public class Game {
         } else {
             this.gameBoard.getPlayer().changeMoveBehaviour(new MoveCardinal());
         }
-        System.out.println("Liikkumisalgoritmi vaihdettu onnistuneesti");
     }
 
     /**

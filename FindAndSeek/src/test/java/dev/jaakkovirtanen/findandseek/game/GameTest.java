@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveCardinal;
@@ -68,6 +67,18 @@ public class GameTest {
         Location expected = new Location(this.game.getGameBoard().getPlayer().getLocation().getRow() + 1, this.game.getGameBoard().getPlayer().getLocation().getCol());
         this.game.executePlayerCommand('s');
         assertEquals(true, expected.equals(this.game.getGameBoard().getPlayer().getLocation()));
+        checkGameStatus();
     }
 
+    @Test
+    public void checkGameStatus() {
+        Location loc = new Location(3, 5);
+        this.game.loadLevel(setUpLevel);
+        int goals = this.game.getGameBoard().getLevel().getHowManyGoals();
+        this.game.getGameBoard().getPlayer().setLocation(loc);
+        this.game.getGameBoard().getTargetAnswer().setLocation(loc);
+        this.game.checkGameStatus();
+        assertTrue(!loc.equals(this.game.getGameBoard().getTargetAnswer().getLocation()));
+        assertEquals(goals + 1, this.game.getGameBoard().getLevel().getHowManyGoals());
+    }
 }
