@@ -11,5 +11,8 @@ Päivä | Tunnit | Kuvaus
 03.01.2017 | 4.0h | Pajatoimintaa, Swing GUI yms
 04.01.2017 | 5.0h | Massiivinen testienluontitalkoo, Javadoc-kirjoittaminen ja esittäminen
 05.01.2017 | 4.0h | Javadoc-kirjoittaminen checkstylen perusteella. GUI:n virittämistä koostumaan paneeleista ja pakkaamaan layoutin automaattisesti asettelun perusteella. Piirretään maaliobjekti ylös ja maalataan kentänobjektit arvojensa perusteella.
-05.01.2017 | 1.0h | Sekvenssikaavioita
+08.01.2017 | 1.0h | Sekvenssikaavioita
+10.01.2017 | 2.0h | Pajaa, swingin säätämistä
+11.01.2017 | 4.0h | Testailua erinäisten rakenteiden suhteen, refaktorointia
+12.01.2017 | 7.0h | Docien kirjoittelua, refaktorointia, eri toiminnallisuuksien testailu, testien kirjoittamista valmiiksi. Vaikeinta rajoittaa työn paisuttamista ja suitsia toiminnallisuuksien lisäämistä ja tehdä nykyiset valmiiksi..
 ... | ... | ...
