@@ -5,10 +5,6 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author User
- */
 public class SidePanel extends JPanel {
 
     private final Player p;
@@ -21,6 +17,11 @@ public class SidePanel extends JPanel {
     private JLabel movesBehindTheOptimal;
     private JLabel percentageOfExtraMoves;
 
+    /**
+     * Constructor for SidePanel, needs gui.
+     *
+     * @param gui Gui, which wants SidePanel to be drawn
+     */
     public SidePanel(GUI gui) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.p = gui.getGame().getGameBoard().getPlayer();
@@ -85,26 +86,62 @@ public class SidePanel extends JPanel {
 
     }
 
+    /**
+     * Asks SidePanel to update GoalsHit-gameStats.
+     *
+     * GUI uses this
+     *
+     * @param goalsHit Which number to be set
+     */
     public void setGoalsHit(int goalsHit) {
         this.goalsHit.setText("Goals hit: " + goalsHit);
     }
 
+    /**
+     * Asks SidePanel to update OptimalMoves-gameStats.
+     *
+     * GUI uses this
+     *
+     * @param optimal Which number to be set
+     */
     public void setOptimalMoves(int optimal) {
         this.optimal.setText("Optimal distance to next: " + optimal);
     }
 
+    /**
+     * Asks SidePanel to update CumulativeOptimal-gameStats.
+     *
+     * GUI uses this
+     *
+     * @param cumuOptimal Which number to be set
+     */
     public void setCumulativeOptimalMoves(int cumuOptimal) {
         this.optimalCumulative.setText("Cumulative optimal " + cumuOptimal);
     }
 
+    /**
+     * Asks SidePanel to update PlayerMoves-gameStats.
+     *
+     * GUI uses this
+     */
     public void setPlayerMoves() {
         this.playerMoves.setText("Moves: " + p.getMovesPerformed());
     }
 
+    /**
+     * Asks SidePanel to update playerMovesSinceHit-gameStats.
+     *
+     * GUI uses this
+     */
     public void setPlayerMovesSinceHit() {
         this.playerMovesSinceHit.setText("Moves from last Goal: " + p.getMovesSinceHit());
     }
 
+    /**
+     * Asks SidePanel to update BehindOptimal-gameStats.
+     *
+     * GUI uses this
+     */
     public void setBehindOptimal() {
         int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
         this.movesBehindTheOptimal.setText("You are " + behindOptimal + " behind the optimal");

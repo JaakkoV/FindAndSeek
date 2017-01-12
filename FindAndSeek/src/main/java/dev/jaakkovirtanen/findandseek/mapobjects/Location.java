@@ -45,10 +45,7 @@ public class Location {
      * @return boolean value if the locations are the same
      */
     public boolean equals(Location anotherLocation) {
-        if (this.row == anotherLocation.getRow() && this.col == anotherLocation.getCol()) {
-            return true;
-        }
-        return false;
+        return this.row == anotherLocation.getRow() && this.col == anotherLocation.getCol();
     }
 
     /**

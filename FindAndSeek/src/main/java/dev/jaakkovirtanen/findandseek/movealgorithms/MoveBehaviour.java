@@ -9,8 +9,10 @@ package dev.jaakkovirtanen.findandseek.movealgorithms;
  *
  */
 public interface MoveBehaviour {
+
     /**
      * Character to concrete move-method.
+     *
      * @param c character to move-method
      * @return Integer for moving the BoardObject
      */

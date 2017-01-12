@@ -27,30 +27,54 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        if (bottomMenu.getMixUpAnswers().isSelected()) {
-            this.gui.getGame().getGameBoard().setMixAnswers(true);
-        } else {
-            this.gui.getGame().getGameBoard().setMixAnswers(false);
-        }
+        checkIfMixedAnswersWanted();
+        performKeyTyped(ke);
+        checkIfDiagonalMovesSelected();
+        gui.repaint();
+        checkIfPopUpsWanted();
+    }
+
+    private void performKeyTyped(KeyEvent ke) {
         if (bottomMenu.getRoboPlayer().isSelected()) {
-            gui.getGame().getGameBoard().getPlayer().changeMoveBehaviour(new MoveCardinal());
-            IntelligentPlayer p = new IntelligentPlayer(gui);
-            p.makeMoves();
+            performRoboMove();
         } else {
+            /* If RoboMoves not selected, check if moving algo changed 
+             * with '5', otherwise try to executePlayerCommand with KeyTyped's char
+             */
             char moveChar = ke.getKeyChar();
             if (moveChar == '5') {
                 gui.getGame().changePlayerMoveAlgo();
             }
             gui.getGame().executePlayerCommand(moveChar);
         }
+    }
+
+    private void performRoboMove() {
+        // If moveBehaviour is set to diagonal, robo will change it to cardinal first
+        gui.getGame().getGameBoard().getPlayer().changeMoveBehaviour(new MoveCardinal());
+        IntelligentPlayer p = new IntelligentPlayer(gui);
+        p.makeMoves();
+    }
+
+    private void checkIfPopUpsWanted() {
+        if (bottomMenu.getIsPopUps().isSelected()) {
+            gui.checkGameStatus();
+        }
+    }
+
+    private void checkIfDiagonalMovesSelected() {
         if (gui.getGame().getGameBoard().getPlayer().getMoveBehaviour().getClass() == MoveDiagonally.class) {
             bottomMenu.changeDiag(true);
         } else {
             bottomMenu.changeDiag(false);
         }
-        gui.repaint();
-        if (bottomMenu.getIsPopUps().isSelected()) {
-            gui.checkGameStatus();
+    }
+
+    private void checkIfMixedAnswersWanted() {
+        if (bottomMenu.getMixUpAnswers().isSelected()) {
+            this.gui.getGame().getGameBoard().setMixAnswers(true);
+        } else {
+            this.gui.getGame().getGameBoard().setMixAnswers(false);
         }
     }
 

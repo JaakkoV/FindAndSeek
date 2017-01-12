@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author User
- */
 public class BoardPanel extends JPanel {
 
     private GUI gui;
     private Dimension prefSize;
 
     /**
-     * Constructor for DrawBoard.
+     * Constructor for the gameboard panel, needs gui.
      *
-     * @param gameboard initialized with gameboard
+     * @param gui Gui, which wants the drawn gameboard
      */
     public BoardPanel(GUI gui) {
         this.gui = gui;

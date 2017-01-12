@@ -27,6 +27,7 @@ public class Answer extends BoardObject {
      *
      * @return character, value of the answer
      */
+    @Override
     public char getValue() {
         return super.getValue();
     }
@@ -36,6 +37,7 @@ public class Answer extends BoardObject {
      *
      * @param value parameter to put in answer's value
      */
+    @Override
     public void setValue(char value) {
         super.setValue(value);
     }

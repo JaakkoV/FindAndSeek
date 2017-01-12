@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- *
- * @author User
- */
 public class BottomMenu extends JPanel implements ActionListener {
 
     private final GUI gui;
@@ -22,6 +13,11 @@ public class BottomMenu extends JPanel implements ActionListener {
     private final JCheckBox isDiagonal;
     private final JCheckBox isPopUps;
 
+    /**
+     * Constructor for bottom menupanel to be added to gui.
+     *
+     * @param gui Gui, which wants bottom menu to be drawn
+     */
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
         this.gui = gui;
@@ -80,18 +76,38 @@ public class BottomMenu extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Returns checkbox to see if robo wanted.
+     *
+     * @return Checkbox roboplayer
+     */
     public JCheckBox getRoboPlayer() {
         return roboPlayer;
     }
 
+    /**
+     * Change checkbox isDiagonal, if diagonal moves are wanted / not.
+     *
+     * @param isDiag Boolean if diagonal movement is wanted
+     */
     public void changeDiag(boolean isDiag) {
         this.isDiagonal.setSelected(isDiag);
     }
 
+    /**
+     * Set if mixed answers are wanted.
+     *
+     * @param isActive Boolean if mixed answers are wanted
+     */
     public void setMixUpAnswers(boolean isActive) {
         this.mixUpAnswers.setSelected(isActive);
     }
 
+    /**
+     * Set if robo moves are wanted.
+     *
+     * @param isActive Boolean if robo moves are wanted
+     */
     public void setRoboPlayer(boolean isActive) {
         this.roboPlayer.setSelected(isActive);
     }

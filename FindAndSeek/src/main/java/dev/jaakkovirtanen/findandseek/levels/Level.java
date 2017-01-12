@@ -98,6 +98,31 @@ public class Level {
         }
     }
 
+    /**
+     * Provides list of levels to GUI. This constructs many levels from given
+     * array of txt-file paths
+     *
+     * @param listOfPaths Gets Array of String-paths to txt-files, which are
+     * level building instructions
+     * @return ArrayList of constructed levels
+     */
+    public static ArrayList<Level> getListOfLevels(String[] listOfPaths) {
+        ArrayList<Level> listOfLevels = new ArrayList<>();
+        for (String path : listOfPaths) {
+            listOfLevels.add(new Level(path));
+        }
+        return listOfLevels;
+    }
+
+    /**
+     * Adds value of cumulative optimal moves.
+     *
+     * @param optimalMoves Integer value of last distance from player to goal
+     */
+    public void addOptimalMoves(int optimalMoves) {
+        this.optimalMovesCumulative += optimalMoves;
+    }
+
     public ArrayList<BoardObject> getBoardObjects() {
         return boardObjects;
     }
@@ -110,24 +135,12 @@ public class Level {
         return boardWidth;
     }
 
-    public static ArrayList<Level> getListOfLevels(String[] listOfPaths) {
-        ArrayList<Level> listOfLevels = new ArrayList<>();
-        for (String path : listOfPaths) {
-            listOfLevels.add(new Level(path));
-        }
-        return listOfLevels;
-    }
-
     public int getHowManyGoals() {
         return howManyGoals;
     }
 
     public void setHowManyGoals(int howManyGoals) {
         this.howManyGoals = howManyGoals;
-    }
-
-    public void addOptimalMoves(int optimalMoves) {
-        this.optimalMovesCumulative += optimalMoves;
     }
 
     public int getOptimalMovesCumulative() {

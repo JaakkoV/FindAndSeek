@@ -5,19 +5,18 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author User
- */
 public class TopMenu extends JPanel {
 
     private final GUI gui;
-    private final RectangleDrawing rectum;
 
+    /**
+     * Constructor for TopMenu, needs gui.
+     *
+     * @param gui Gui which wants TopMenu to be drawn
+     */
     public TopMenu(GUI gui) {
         super(new GridLayout(1, 3));
         this.gui = gui;
-        this.rectum = new RectangleDrawing(gui.getGame());
         createComponents();
     }
 

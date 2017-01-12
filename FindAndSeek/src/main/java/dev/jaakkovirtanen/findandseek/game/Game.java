@@ -46,7 +46,7 @@ public class Game {
 
     /**
      * checks if Player has hit the targetAnswer and change game parameters
-     * (e.g. goals hit).
+     * (e.g. goals hit) and changes the targetAnswer to new instance.
      */
     public void checkGameStatus() {
         if (this.gameBoard.getTargetAnswer().getLocation().equals(this.gameBoard.getPlayer().getLocation())) {

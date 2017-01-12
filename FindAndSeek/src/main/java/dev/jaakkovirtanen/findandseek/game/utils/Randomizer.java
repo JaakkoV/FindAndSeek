@@ -9,13 +9,13 @@ import java.util.Random;
  */
 public class Randomizer {
 
-    private static final Random random;
+    private static final Random RANDOM;
 
     /**
      * init static random.
      */
     static {
-        random = new Random();
+        RANDOM = new Random();
     }
 
     /**
@@ -40,7 +40,7 @@ public class Randomizer {
      * @return Random integer
      */
     public static int getRandomNumber(int maxVal) {
-        return random.nextInt(maxVal + 1);
+        return RANDOM.nextInt(maxVal + 1);
     }
 
 }
