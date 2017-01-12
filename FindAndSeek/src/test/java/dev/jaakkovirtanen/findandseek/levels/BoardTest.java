@@ -1,7 +1,5 @@
 package dev.jaakkovirtanen.findandseek.levels;
 
-import dev.jaakkovirtanen.findandseek.levels.Board;
-import dev.jaakkovirtanen.findandseek.levels.Level;
 import dev.jaakkovirtanen.findandseek.mapobjects.Location;
 import dev.jaakkovirtanen.findandseek.mapobjects.Answer;
 import dev.jaakkovirtanen.findandseek.movealgorithms.MoveNoWay;
@@ -93,6 +91,46 @@ public class BoardTest {
         assertArrayEquals(this.getBoardOfCharsToTest().toArray(), this.board.getBoardOfChars().toArray());
     }
 
+    @Test
+    public void testOptimalMoves() {
+        assertEquals(5, this.board.getLevel().getOptimalMoves());
+    }
+
+    @Test
+    public void changeTargetAnswer() {
+        this.board.changeTargetAnswer(0);
+        assertEquals(2, this.board.getLevel().getOptimalMoves());
+        assertEquals(this.board.getLevel().getOptimalMovesCumulative(), 5);
+        assertEquals(this.board.getPlayer().getMovesSinceHit(), 0);
+    }
+
+    @Test
+    public void isPlayerOnIt() {
+        this.board.getPlayer().setLocation(new Location(4, 4));
+        this.board.changeTargetAnswer(0);
+        assertEquals(false, this.board.getPlayer().getLocation().equals(this.board.getTargetAnswer()));
+        assertEquals(this.board.getTargetAnswer().getLocation().equals(new Location(6, 1)), true);
+        this.board.getPlayer().setLocation(new Location(5, 2));
+        this.board.changeTargetAnswer(2);
+        assertEquals(false, this.board.getPlayer().getLocation().equals(this.board.getTargetAnswer()));
+        assertEquals(this.board.getTargetAnswer().getLocation().equals(new Location(6, 1)), true);
+    }
+
+    @Test
+    public void placeIfFree() {
+        this.board.setMixAnswers(true);
+        this.board.changeTargetAnswer(0);
+        assertEquals(false, this.board.getTargetAnswer().getLocation().equals(this.board.getPlayer().getLocation()));
+        assertTrue(!isAnyAnswersLocationSame(this.board.getTargetAnswer().getLocation()));
+    }
+
+    @Test
+    public void placeIfFreePub() {
+        this.board.placeIfFree(new Location(6, 1), this.answers.get(0));
+        assertEquals(this.answers.get(0).getLocation().equals(new Location(6, 1)), false);
+        assertEquals(this.answers.get(0).getLocation().equals(new Location(4, 4)), false);
+    }
+
     private ArrayList<Answer> createArrayListOfAnswersForTests() {
         ArrayList<Answer> arrayOfAnswers = new ArrayList<>();
         boolean[] answers = {false, false, false, true};
@@ -114,6 +152,13 @@ public class BoardTest {
             boardOfChars.add(c);
         }
         return boardOfChars;
+    }
+
+    private boolean isAnyAnswersLocationSame(Location location) {
+        if (this.answers.stream().anyMatch((a) -> (a.getLocation().equals(location)))) {
+            return true;
+        }
+        return false;
     }
 
 }

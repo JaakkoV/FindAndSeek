@@ -149,7 +149,15 @@ public class Board {
         }
     }
 
-    private void placeIfFree(Location tryLoc, Answer a) {
+    /**
+     * Public for testing purposes, to avoid testing mixUpAnswers Randomizer.
+     *
+     * Method used by mixUpAnswers
+     *
+     * @param tryLoc Location, try to put answer on this location
+     * @param a Answer, which is put to location
+     */
+    public void placeIfFree(Location tryLoc, Answer a) {
         if (isFree(tryLoc)) {
             a.setLocation(tryLoc);
         } else {
