@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 16,
-             Errors: 0,
+      <title>File: 22,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -47,6 +47,34 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.movealgorithms.MoveDiagonally.java">dev/jaakkovirtanen/findandseek/movealgorithms/MoveDiagonally.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.PopUpWindow.java">dev/jaakkovirtanen/findandseek/ui/PopUpWindow.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.BoardPanel.java">dev/jaakkovirtanen/findandseek/ui/BoardPanel.java</a>
                 </td>
                 <td>
                   0
@@ -111,6 +139,48 @@ under the License.
                   0
                 </td>
                 <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.utils.Randomizer.java">dev/jaakkovirtanen/findandseek/utils/Randomizer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.RectangleDrawing.java">dev/jaakkovirtanen/findandseek/ui/RectangleDrawing.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.BottomMenu.java">dev/jaakkovirtanen/findandseek/ui/BottomMenu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
                   0
                 </td>
               </tr>
@@ -144,7 +214,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ui.DrawRectangle.java">ui/DrawRectangle.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.SidePanel.java">dev/jaakkovirtanen/findandseek/ui/SidePanel.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ui.GUI.java">ui/GUI.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.utils.IntelligentPlayer.java">dev/jaakkovirtanen/findandseek/utils/IntelligentPlayer.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ui.DrawTarget.java">ui/DrawTarget.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.GUI.java">dev/jaakkovirtanen/findandseek/ui/GUI.java</a>
                 </td>
                 <td>
                   0
@@ -228,6 +298,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.ui.TopMenu.java">dev/jaakkovirtanen/findandseek/ui/TopMenu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.mapobjects.Player.java">dev/jaakkovirtanen/findandseek/mapobjects/Player.java</a>
                 </td>
                 <td>
@@ -242,7 +326,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ui.DrawBoard.java">ui/DrawBoard.java</a>
+                  <a href="${project.url}/checkstyle.html#dev.jaakkovirtanen.findandseek.utils.KeyboardListener.java">dev/jaakkovirtanen/findandseek/utils/KeyboardListener.java</a>
                 </td>
                 <td>
                   0
