@@ -26,7 +26,7 @@ public class GUI implements Runnable {
      */
     public GUI() {
         this.game = new Game();
-        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
+        String[] levels = {"assets/TxtTestLevel.txt", "assets/TxtTestLevel2.txt", "assets/TxtTestLevel4.txt", "assets/TxtTestLevel5.txt"};
         this.gameLevels = Level.getListOfLevels(levels);
         this.game.loadLevel(gameLevels.get(0));
         this.bottomMenu = new BottomMenu(this);
