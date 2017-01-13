@@ -1,7 +1,6 @@
 #Käyttöohje suomeksi
  - Sisältää tarvittavat tiedot pelin asentamiseen omalle koneelle 
  - Pelin pelaamiseen
- - Pelikenttien lisäämiseen
  
 ##Pelin asentaminen
 1. Lataa ja Asenna [Java](https://www.java.com/en/download/)
