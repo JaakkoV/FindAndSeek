@@ -1,4 +1,4 @@
-# Find-And-Seek
+# FindAndSeek
 
 ###[**Instructions**](dokumentaatio/käyttöohje.md)
 
