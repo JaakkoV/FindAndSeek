@@ -3,7 +3,6 @@ package dev.jaakkovirtanen.findandseek.ui;
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
-import static java.awt.SystemColor.text;
 import javax.swing.*;
 
 public class SidePanel extends JPanel {
