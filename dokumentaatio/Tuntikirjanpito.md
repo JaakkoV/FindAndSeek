@@ -16,3 +16,5 @@ Päivä | Tunnit | Kuvaus
 11.01.2017 | 4.0h | Testailua erinäisten rakenteiden suhteen, refaktorointia
 12.01.2017 | 7.0h | Docien kirjoittelua, refaktorointia, eri toiminnallisuuksien testailu, testien kirjoittamista valmiiksi. Vaikeinta rajoittaa työn paisuttamista ja suitsia toiminnallisuuksien lisäämistä ja tehdä nykyiset valmiiksi..
 13.01.2017 | 6.0h | Demotilaisuuteen osallistuminen. Käyttöohjeen, sekä muun oheisdokumentaation kirjoittelua. Zip-paketoiminen ja lopullisen palautuksen tekeminen.
+
+**Yhteensä 51.5 h**
