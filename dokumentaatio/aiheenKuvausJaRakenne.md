@@ -1,7 +1,8 @@
 
 #Aiheen kuvaus ja rakenne
 
-##Aihe: Vuoropohjainen peli, jossa pelaajan ohjaaman hahmon tulee kulkea pelin antamaan pisteeseen kartalla mahdollisimman vähillä siirroilla.
+##Aihe:
+Vuoropohjainen peli, jossa pelaajan ohjaaman hahmon tulee kulkea pelin antamaan pisteeseen kartalla mahdollisimman vähillä siirroilla.
 
 ##Käyttäjät:
 * Pelaaja
@@ -27,7 +28,8 @@ Ohjelman rakennetta suunniteltaessa on mietitty alusta alkaen ylläpidettävyytt
   * MoveCardinal
   * MoveDiagonally
   * MoveNoWay
-Onnistuneesti implementoitu Strategy patternin, jonka avulla pystytään muuttamaan kartalla olevien objektien liikkumisalgoritmeja ajon aikana. Esimerkiksi muuttamaan pelaaja-hahmon liikkumaan vaakasuoraan tai diagonaalisti.
+
+Onnistuneesti implementoitu Strategy pattern, jonka avulla pystytään muuttamaan kartalla olevien objektien liikkumisalgoritmeja ajon aikana. Esimerkiksi kyetään muuttamaan pelaaja-hahmo liikkumaan vaaka- ja pystysuoraan tai diagonaalisti.
 
 ### Luokkakaavio
 ![luokkakaavio](assets/javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
@@ -36,8 +38,28 @@ Luokkakaaviosta käy ilmi luokkien väliset suhteet. Paketit ovat eheitä kokona
 
 Main-luokassa luodaan GUI ja kutsutaan run().
 
-Suurin paketti ui pitää sisällään graafisen käyttöliittymän toiminnallisuudet:
- - GUI:lla on useita eri paneeleita, jotka piirretään 
+Suurin paketti **ui** pitää sisällään graafisen käyttöliittymän toiminnallisuudet:
+ - GUI:lla on useita eri paneeleita, jotka piirretään Jframelle halutun ulkonäön saamiseksi yhdistellen swingin tarjoamia eri layouteja
+  - Paneelit ovat:
+   - TopMenu
+   - BoardPanel
+   - BottomMenu
+   - SidePanel
+  - Joista kaksi ensin listattua käyttävät neliöiden piirtämiseen
+   - RectangleDrawing-luokan staattisia metodeja
+  - GUI omistaa myös instanssin PopUpWindow-luokasta, joka generoi viesti-ikkunoita pelin aikana
+   - Lapsellisen helppoa lisätä ikkunoita ja niiden kautta toiminnallisuuksia myöhemmin
+   
+**Game-paketissa** on Main-luokan lisäksi Game-luokka, joka nivoo yhteen Boardin kautta Levelin --> ladataan pelitaso pelilaudalle (ideana, että pelihahmot liikkuvat laudalla, eivätkä tasolla). Game-luokka myös komentaa pelaajaa suorittamaan toimintoja, sekä tarkistaa pelitilanteen pyydettäessä.
+
+**Levels-paketti** sisältää Board- ja Level-luokat, joista Level on rakennusohje Boardille. Board pitää sisällään laudalle tulevat objektit, kuten pelaajan ja maalit (answers). Luokassa on myös ASCII-metodeja toiminnan testauksen helpottamiseksi. Boardille ladataan Level, josta alustetaan pelihahmot tarjotuilla metodeilla (init). Board myös hallitsee objektien sijoittamista ja sen tueksi tarjottuja tarkistusmetodeja, kuten "onko ruutu vapaa".
+
+**Mapobjects-paketti** (unohtui refaktoroida tuo paketin nimi, sori siitä). Sisältää abstraktin luokan BoardObject, jolla on aina oliomuuttujana Location (triviaalisti sijainti ja apumetodeja 2D:llä). Luokkaa täydentävät v.1.0. vaiheessa Player ja Answer. Abstraktilla luokalla on myös aina liikkumisalgoritmi-rajapinnan MoveBehaviour toteuttama konkreettinen toteutus, joka määrittää sallitut liikkeet.
+
+**Movealgorithms** Täällä sijaitsee rajapintamääritelmä MoveBehaviour ja sen toteuttavat konkreettiset luokat, joita on tehty kurssia varten 3 kappaletta:
+ - MoveNoWay, ei liiku
+ - MoveDiagonally, liikkuu diagonaalisesti
+ - MoveCardinal, liikku pysty- ja vaakasuunnassa
 
 ### Sekvenssikaavio pelaajan ohjaamisesta ylöspäin näppäimellä 'w'
 
