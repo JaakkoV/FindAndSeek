@@ -104,13 +104,21 @@ public class GUI implements Runnable {
      * This is the method to add interaction after specific game status
      */
     public void checkGameStatus() {
-        boolean everyTenth = game.getGameBoard().getLevel().getHowManyGoals() % 10 == 0 && game.getGameBoard().getLevel().getHowManyGoals() != 0 && game.getGameBoard().getPlayer().getMovesSinceHit() == 0;
-        if (everyTenth) {
-            this.msgWindow.congratsWindow(game.getGameBoard().getLevel().getHowManyGoals());
-        }
+        everyTenthGoalCongrats();
+        randomPopUpBecauseICan();
+    }
+
+    private void randomPopUpBecauseICan() {
         boolean random = Randomizer.getRandomNumber(100) > 99;
         if (random) {
             this.msgWindow.messageWindow("This is just crazy annoying reminder with probab of 1% to pop up");
+        }
+    }
+
+    private void everyTenthGoalCongrats() {
+        boolean everyTenth = game.getGameBoard().getLevel().getHowManyGoals() % 10 == 0 && game.getGameBoard().getLevel().getHowManyGoals() != 0 && game.getGameBoard().getPlayer().getMovesSinceHit() == 0;
+        if (everyTenth) {
+            this.msgWindow.congratsWindow(game.getGameBoard().getLevel().getHowManyGoals());
         }
     }
 

@@ -32,20 +32,24 @@ public class Level {
         try {
             Scanner file = new Scanner(new FileReader(filePath));
             while (file.hasNext()) {
-                String line = file.next();
-                String[] levelData = line.split(":");
-                for (int i = 0; i < levelData.length; i++) {
-                    if (initParams(levelData[i], levelData[i + 1])) {
-                        i++;
-                    }
-                    if (levelData.length == 4) {
-                        initMapObjects(levelData[i], levelData[i + 1], levelData[i + 2], levelData[i + 3]);
-                        i = i + 3;
-                    }
-                }
+                initFile(file);
             }
         } catch (Exception e) {
             System.out.println("level file was not readable, caught exception: " + e.toString());
+        }
+    }
+
+    private void initFile(Scanner file) {
+        String line = file.next();
+        String[] levelData = line.split(":");
+        for (int i = 0; i < levelData.length; i++) {
+            if (initParams(levelData[i], levelData[i + 1])) {
+                i++;
+            }
+            if (levelData.length == 4) {
+                initMapObjects(levelData[i], levelData[i + 1], levelData[i + 2], levelData[i + 3]);
+                i = i + 3;
+            }
         }
     }
 
