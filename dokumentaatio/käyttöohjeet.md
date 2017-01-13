@@ -60,7 +60,10 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
     - Exit-nappi pelin lopettamiselle
 ![panels](panels.gif)
 
+##Pelin mielekkyydestä
+Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin mielekkyys on siis ollut toissijainen juttu monen muun tekijän rinnalla. Kurssin puitteissa kaikkia ideoita ei ole haluttu lähteä toteuttamaan, vaan panostettu rakenteeseen ja hyvään runkoon. Tätä peliä on mahdollista jatkokehittää helposti moneen eri suuntaan pelinautinnon lisäämiseksi (vaikka värinappuloiden pyydystäminen on jo nykyisellään varsin ratkiriemukasta).
+
 Peli jatkuu niin kauan, kun pelaaja haluaa pelata. 
 
-##Esimerkki vikkelästä vipeltäjäpelaajasta:
-[ElämästäNauttivaVipeltäjä](testingFindAndSeek.gif)
+##Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
+![ElämästäNauttivaVipeltäjä](testingFindAndSeek.gif)
