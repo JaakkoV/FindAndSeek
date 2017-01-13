@@ -51,20 +51,20 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
     - Englanniksi pelkistetyt peliohjeet
 4. Alapaneeli, joka toimii päävalikkona
     - Kenttien valinta (Level)
-     - Jokainen kenttä säilyttää pelin suoritusaikana kaikki pelatut tiedot per kenttä
+      - Jokainen kenttä säilyttää pelin suoritusaikana kaikki pelatut tiedot per kenttä
     - Halutaanko maalitaulujen paikat arvotuiksi osuman jälkeen (Mix Answers)
     - Tekoälyn aktivointi (Roboplayer)
-     - Jokainen näppäinpainallus suorittaa robotin algoritmin mukaisen siirron (vaaka-pystysiirtoja seuraavaan maaliin)
+      - Jokainen näppäinpainallus suorittaa robotin algoritmin mukaisen siirron (vaaka-pystysiirtoja seuraavaan maaliin)
     - Ponnahdusikkunoiden (de)aktivointi (Pop Ups)
     - Infokenttä, kumpi liikkumisalgo on käytössä (Diagonal Moves)
     - Exit-nappi pelin lopettamiselle
 ![panels](assets/panels.gif)
 
 ##Pelin mielekkyydestä
-Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin mielekkyys on siis ollut toissijainen juttu monen muun tekijän rinnalla. Kurssin puitteissa kaikkia ideoita ei ole haluttu lähteä toteuttamaan, vaan panostettu rakenteeseen ja hyvään runkoon. Tätä peliä on mahdollista jatkokehittää helposti moneen eri suuntaan pelinautinnon lisäämiseksi (vaikka värinappuloiden pyydystäminen on jo nykyisellään varsin ratkiriemukasta).
+Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin mielekkyys on siis ollut toissijainen juttu monen muun tekijän rinnalla. Kurssin puitteissa kaikkia ideoita ei ole haluttu lähteä toteuttamaan, vaan on panostettu rakenteeseen ja hyvään runkoon. Tätä peliä on mahdollista jatkokehittää helposti moneen eri suuntaan pelinautinnon lisäämiseksi (vaikka värinappuloiden pyydystäminen on jo nykyisellään varsin ratkiriemukasta).
 
 Peli jatkuu niin kauan, kun pelaaja haluaa pelata. 
 
 ##Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
 ![ElämästäNauttivaVipeltäjä](assets/testingFindAndSeek.gif)
-Kuten ylläolevasta on huomattavissa, kentälle saa myös useita saman värisiä maaleja, joista kuitenkin vain yksi kerrallaan on oikea kohde. Robotti osaa ne päätellä, mutta ihmispelaajan on koitettava onneaan.
+Kuten ylläolevasta on huomattavissa, kentälle saa ladattua myös useita saman värisiä maaleja, joista kuitenkin vain yksi kerrallaan on oikea kohde. Robotti osaa ne päätellä, mutta ihmispelaajan on koitettava onneaan.
