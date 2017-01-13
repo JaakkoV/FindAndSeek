@@ -1,4 +1,4 @@
-#Käyttöohjeet suomeksi
+#Käyttöohje suomeksi
  - Sisältää tarvittavat tiedot pelin asentamiseen omalle koneelle 
  - Pelin pelaamiseen
  - Pelikenttien lisäämiseen
