@@ -18,4 +18,4 @@ Peliä on automaattisten testien lisäksi testattu pelaamalla sitä melko runsaa
 Pelissä ei ole tullut pelaamisen yhteydessä pahoja bugeja. Levelit täytyy olla oikeassa polussa suhteessa suoritettavaan filsuun. Joskus robottipelaajan pelattaessa nopealla syötteellä ja arvotuilla vastauksilla, saattaa uusi target respawnata pelaajan päälle, jolloin se ei osaa liikkua "uuteen" kohteeseen. Tästä pääsee ohi deaktivoimalla robopelaaja ja painamalla mitä tahansa, paitsi pelaajan liikuttamisnäppäintä tai liikkumalla pois ja takaisin. Esiintymistodennäköisyys on erittäin pieni, joten en jaksanut loppuvaiheessa enää korjata.
 
 ##Test-runia
-![testingFindAndSeek](testingFindAndSeek.gif)
+![testingFindAndSeek](assets/testingFindAndSeek.gif)
