@@ -83,8 +83,8 @@ public class SidePanel extends JPanel {
         add(percentageOfExtraMoves);
         JLabel thirdEmpty = new JLabel(stars);
         add(thirdEmpty);
-        
-        String instructionText = "Game instructions: \n1. Try to move red block to the target\n  * Target is on the top of the board\n  * Use w, a, s, d for cardinal moves\n  * Press '5' to activate diagonal moves \n  * Keys for diag q, e, z, c\n2. Use Bottom menu to\n  * Change levels\n  * Activate mixed answers\n  * Activate RoboPlayer, use space\n  * Activate pop-windows";
+
+        String instructionText = "Game instructions: \n1. Try to move red block to the target\n with as few moves as possible\n  * Target is on the top of the board\n  * Use w, a, s, d for cardinal moves\n  * Press '5' to activate diagonal moves \n  * Keys for diag q, e, z, c\n2. Use Bottom menu to\n  * Change levels\n  * Activate mixed answers\n  * Activate RoboPlayer, use space\n  * Activate pop-windows";
         JTextArea instructions = new JTextArea(instructionText);
         instructions.setEditable(false);
         instructions.setFocusable(false);
@@ -92,14 +92,14 @@ public class SidePanel extends JPanel {
         add(instructions);
 
         for (Component c : getComponents()) {
-            if(c.getClass() == JLabel.class) {
+            if (c.getClass() == JLabel.class) {
                 JLabel j = (JLabel) c;
                 j.setAlignmentX(SwingConstants.HORIZONTAL);
             } else if (c.getClass() == JTextArea.class) {
                 JTextArea j = (JTextArea) c;
                 j.setAlignmentX(SwingConstants.HORIZONTAL);
             }
-            
+
         }
     }
 

@@ -16,9 +16,9 @@ public class GUI implements Runnable {
     private JFrame frame;
     private final ArrayList<Level> gameLevels;
     private static KeyboardListener keyListener;
-    private final BottomMenu bottomMenu;
-    private final TopMenu topMenu;
     private SidePanel sidePanel;
+    private final TopMenu topMenu;
+    private final BottomMenu bottomMenu;
     private final PopUpWindow msgWindow;
 
     /**

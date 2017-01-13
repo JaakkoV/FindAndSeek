@@ -21,11 +21,11 @@ public class BottomMenu extends JPanel implements ActionListener {
     public BottomMenu(GUI gui) {
         super(new GridLayout(1, 3));
         this.gui = gui;
-        mixUpAnswers = new JCheckBox("Mix Answers?");
+        mixUpAnswers = new JCheckBox("Mix Answers");
         mixUpAnswers.setSelected(false);
-        roboPlayer = new JCheckBox("Roboplayer?");
-        isDiagonal = new JCheckBox("Diagonal Moves?");
-        isPopUps = new JCheckBox("Pop Ups?");
+        roboPlayer = new JCheckBox("Roboplayer");
+        isDiagonal = new JCheckBox("Diagonal Moves");
+        isPopUps = new JCheckBox("Pop Ups");
         isPopUps.setSelected(true);
         levels = new JComboBox<>();
         createComponents();
