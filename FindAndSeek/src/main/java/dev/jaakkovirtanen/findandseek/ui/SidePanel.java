@@ -3,6 +3,7 @@ package dev.jaakkovirtanen.findandseek.ui;
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
+import static java.awt.SystemColor.text;
 import javax.swing.*;
 
 public class SidePanel extends JPanel {
@@ -10,10 +11,10 @@ public class SidePanel extends JPanel {
     private final Player p;
     private final Level l;
     private JLabel goalsHit;
-    private JLabel optimal;
-    private JLabel optimalCumulative;
     private JLabel playerMoves;
+    private JLabel optimalCumulative;
     private JLabel playerMovesSinceHit;
+    private JLabel optimal;
     private JLabel movesBehindTheOptimal;
     private JLabel percentageOfExtraMoves;
 
@@ -78,12 +79,29 @@ public class SidePanel extends JPanel {
 
         this.percentageOfExtraMoves = new JLabel();
         this.percentageOfExtraMoves.setFont(new Font("Courier New", Font.BOLD, 20));
-        this.percentageOfExtraMoves.setPreferredSize(new Dimension(100, 100));
+//        this.percentageOfExtraMoves.setPreferredSize(new Dimension(100, 100));
         this.percentageOfExtraMoves.setForeground(Color.red);
         add(percentageOfExtraMoves);
         JLabel thirdEmpty = new JLabel(stars);
         add(thirdEmpty);
+        
+        String instructionText = "Game instructions: \n1. Try to move red block to the target\n  * Target is on the top of the board\n  * Use w, a, s, d for cardinal moves\n  * Press '5' to activate diagonal moves \n  * Keys for diag q, e, z, c\n2. Use Bottom menu to\n  * Change levels\n  * Activate mixed answers\n  * Activate RoboPlayer, use space\n  * Activate pop-windows";
+        JTextArea instructions = new JTextArea(instructionText);
+        instructions.setEditable(false);
+        instructions.setFocusable(false);
+        instructions.setLineWrap(true);
+        add(instructions);
 
+        for (Component c : getComponents()) {
+            if(c.getClass() == JLabel.class) {
+                JLabel j = (JLabel) c;
+                j.setAlignmentX(SwingConstants.HORIZONTAL);
+            } else if (c.getClass() == JTextArea.class) {
+                JTextArea j = (JTextArea) c;
+                j.setAlignmentX(SwingConstants.HORIZONTAL);
+            }
+            
+        }
     }
 
     /**
@@ -134,7 +152,7 @@ public class SidePanel extends JPanel {
      * GUI uses this
      */
     public void setPlayerMovesSinceHit() {
-        this.playerMovesSinceHit.setText("Moves from last Goal: " + p.getMovesSinceHit());
+        this.playerMovesSinceHit.setText("Moves from last goal: " + p.getMovesSinceHit());
     }
 
     /**
@@ -151,7 +169,7 @@ public class SidePanel extends JPanel {
         int behindOptimal = (p.getMovesPerformed() - p.getMovesSinceHit()) - l.getOptimalMovesCumulative() + Math.max(0, p.getMovesSinceHit() - l.getOptimalMoves());
         int playerMovesLoc = p.getMovesPerformed();
         if (playerMovesLoc == 0) {
-            this.percentageOfExtraMoves.setText("\n       0,00");
+            this.percentageOfExtraMoves.setText("\n       0.00");
         } else {
             float percentage = (float) behindOptimal / playerMovesLoc * 100;
             this.percentageOfExtraMoves.setText(String.format("\n       %.2f", percentage));
