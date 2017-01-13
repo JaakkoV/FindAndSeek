@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game.utils;
+package dev.jaakkovirtanen.findandseek.utils;
 
 import java.util.ArrayList;
 import java.util.Random;

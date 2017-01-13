@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.game;
 
-import dev.jaakkovirtanen.findandseek.game.utils.*;
+import dev.jaakkovirtanen.findandseek.utils.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.Player;
 import dev.jaakkovirtanen.findandseek.movealgorithms.*;
 import dev.jaakkovirtanen.findandseek.levels.*;

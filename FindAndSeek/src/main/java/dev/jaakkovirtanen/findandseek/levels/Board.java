@@ -1,6 +1,6 @@
 package dev.jaakkovirtanen.findandseek.levels;
 
-import dev.jaakkovirtanen.findandseek.game.utils.Randomizer;
+import dev.jaakkovirtanen.findandseek.utils.Randomizer;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.util.ArrayList;
 

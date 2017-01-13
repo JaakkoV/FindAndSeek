@@ -1,4 +1,4 @@
-package dev.jaakkovirtanen.findandseek.game.utils;
+package dev.jaakkovirtanen.findandseek.utils;
 
 import dev.jaakkovirtanen.findandseek.movealgorithms.*;
 import java.awt.event.*;
@@ -27,14 +27,19 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
         checkIfMixedAnswersWanted();
-        performKeyTyped(ke);
+        performKeyPressed(ke);
         checkIfDiagonalMovesSelected();
         gui.repaint();
         checkIfPopUpsWanted();
     }
 
-    private void performKeyTyped(KeyEvent ke) {
+    private void performKeyPressed(KeyEvent ke) {
         if (bottomMenu.getRoboPlayer().isSelected()) {
             performRoboMove();
         } else {
@@ -76,11 +81,6 @@ public class KeyboardListener implements KeyListener {
         } else {
             this.gui.getGame().getGameBoard().setMixAnswers(false);
         }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent ke) {
-
     }
 
     @Override

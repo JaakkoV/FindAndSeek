@@ -2,7 +2,7 @@ package dev.jaakkovirtanen.findandseek.ui;
 
 import dev.jaakkovirtanen.findandseek.levels.*;
 import dev.jaakkovirtanen.findandseek.game.*;
-import dev.jaakkovirtanen.findandseek.game.utils.*;
+import dev.jaakkovirtanen.findandseek.utils.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
