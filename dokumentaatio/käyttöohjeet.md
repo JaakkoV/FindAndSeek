@@ -47,7 +47,7 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
      - Liikkeet viimeisestä haetusta maalista
      - Optimaalinen liikkeiden määrä seuraavaan maaliin (viimeisestä maalista)
      - Kuinka paljon pelaaja on kokonaisuudessaa perässä optimia suoritusta
-     - Kuinka monta prosenttia pelaaja on liikkunut turhia siirtoja
+     - Kuinka monta prosenttia pelaaja on liikkunut turhia siirtoja (0,00% on optimi, ei yhtään hukkasiirtoa)
     - Englanniksi pelkistetyt peliohjeet
 4. Alapaneeli, joka toimii päävalikkona
     - Kenttien valinta (Level)
