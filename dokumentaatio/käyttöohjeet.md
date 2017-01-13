@@ -16,7 +16,7 @@ Haluttu piste näkyy pelikentällä pelilaudan yläpuolella:
 
 Pelaajalla on käytettävissään kaksi liikkumisalgoritmia vaaka- ja pystysuunnassa tai diagonaalisesti liikkumiseen. Nämä kaksi algoritmia ovat voimassa vain yksi kerrallaan ja niiden välillä vaihdetaan painamalla näppäintä 5. Molempia on käytettävä jos halutaan saavuttaa optimaalinen askelten lukumäärä.
 
-![diagMove](diagMove.gif)
+![diagMoves](diagMoves.gif)
 
 ##Liikkuminen
 Näppäimet
