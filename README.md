@@ -1,6 +1,6 @@
 # FindAndSeek
 
-###[**Instructions**](dokumentaatio/käyttöohje.md)
+###[**Käyttöohje**](dokumentaatio/käyttöohje.md)
 
 ## Dokumentaatio
 ### Sydänverellä kirjoitetut
