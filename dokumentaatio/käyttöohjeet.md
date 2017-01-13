@@ -67,3 +67,4 @@ Peli jatkuu niin kauan, kun pelaaja haluaa pelata.
 
 ##Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
 ![ElämästäNauttivaVipeltäjä](testingFindAndSeek.gif)
+Kuten ylläolevasta on huomattavissa, kentälle saa myös useita saman värisiä maaleja, joista kuitenkin vain yksi kerrallaan on oikea kohde. Robotti osaa ne päätellä, mutta ihmispelaajan on koitettava onneaan.
