@@ -54,7 +54,7 @@ Suurin paketti **ui** pitää sisällään graafisen käyttöliittymän toiminna
 
 **Levels-paketti** sisältää Board- ja Level-luokat, joista Level on rakennusohje Boardille. Board pitää sisällään laudalle tulevat objektit, kuten pelaajan ja maalit (answers). Luokassa on myös ASCII-metodeja toiminnan testauksen helpottamiseksi. Boardille ladataan Level, josta alustetaan pelihahmot tarjotuilla metodeilla (init). Board myös hallitsee objektien sijoittamista ja sen tueksi tarjottuja tarkistusmetodeja, kuten "onko ruutu vapaa".
 
-**Mapobjects-paketti** (unohtui refaktoroida tuo paketin nimeksi 'boardobjects', sori siitä). Sisältää abstraktin luokan BoardObject, jolla on aina oliomuuttujana Location (triviaalisti sijainti ja apumetodeja 2D:llä). Luokkaa täydentävät v.1.0. vaiheessa Player ja Answer. Abstraktilla luokalla on myös aina liikkumisalgoritmi-rajapinnan MoveBehaviour toteuttama konkreettinen toteutus, joka määrittää sallitut liikkeet.
+**Mapobjects-paketti** (unohtui refaktoroida paketin nimeksi 'boardobjects', sori siitä). Sisältää abstraktin luokan BoardObject, jolla on aina oliomuuttujana Location (triviaalisti sijainti ja apumetodeja 2D:llä). Luokkaa täydentävät v.1.0. vaiheessa Player ja Answer. Abstraktilla luokalla on myös aina liikkumisalgoritmi-rajapinnan MoveBehaviour toteuttama konkreettinen toteutus, joka määrittää sallitut liikkeet.
 
 **Movealgorithms** Täällä sijaitsee rajapintamääritelmä MoveBehaviour ja sen toteuttavat konkreettiset luokat, joita on tehty kurssia varten 3 kappaletta:
  - MoveNoWay, ei liiku
