@@ -9,4 +9,13 @@
 3. Suorita .jar-tiedosto käynnistääksesi peli
 
 ##Pelin tarkoitus
-Pelissä on tarkoitus päästä 2-ulotteisella kartalla haluttuun pisteeseen mahdollisimman vähillä siirroilla. 
+Pelissä on tarkoitus päästä 2-ulotteisella kartalla haluttuun pisteeseen mahdollisimman vähillä siirroilla. Pelaajalla on käytettävissään kaksi liikkumisalgoritmia vaaka- ja pystysuunnassa tai diagonaalisesti liikkumiseen. Nämä kaksi algoritmia ovat voimassa vain yksi kerrallaan ja niiden välillä vaihdetaan painamalla näppäintä 5.
+
+```
+   w 
+   | 
+a-   -d
+   |
+   s
+   
+   ```
