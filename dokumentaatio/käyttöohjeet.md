@@ -12,11 +12,11 @@
 Pelissä on tarkoitus päästä 2-ulotteisella kartalla haluttuun pisteeseen mahdollisimman vähillä siirroilla. 
 
 Haluttu piste näkyy pelikentällä pelilaudan yläpuolella:
-![targetBlock](targetBlock.gif)
+![targetBlock](assets/targetBlock.gif)
 
 Pelaajalla on käytettävissään kaksi liikkumisalgoritmia vaaka- ja pystysuunnassa tai diagonaalisesti liikkumiseen. Nämä kaksi algoritmia ovat voimassa vain yksi kerrallaan ja niiden välillä vaihdetaan painamalla näppäintä 5. Molempia on käytettävä jos halutaan saavuttaa optimaalinen askelten lukumäärä.
 
-![diagMoves](diagMoves.gif)
+![diagMoves](assets/diagMoves.gif)
 
 ##Liikkuminen
 Näppäimet
@@ -58,7 +58,7 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
     - Ponnahdusikkunoiden (de)aktivointi (Pop Ups)
     - Infokenttä, kumpi liikkumisalgo on käytössä (Diagonal Moves)
     - Exit-nappi pelin lopettamiselle
-![panels](panels.gif)
+![panels](assets/panels.gif)
 
 ##Pelin mielekkyydestä
 Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin mielekkyys on siis ollut toissijainen juttu monen muun tekijän rinnalla. Kurssin puitteissa kaikkia ideoita ei ole haluttu lähteä toteuttamaan, vaan panostettu rakenteeseen ja hyvään runkoon. Tätä peliä on mahdollista jatkokehittää helposti moneen eri suuntaan pelinautinnon lisäämiseksi (vaikka värinappuloiden pyydystäminen on jo nykyisellään varsin ratkiriemukasta).
@@ -66,5 +66,5 @@ Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin miele
 Peli jatkuu niin kauan, kun pelaaja haluaa pelata. 
 
 ##Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
-![ElämästäNauttivaVipeltäjä](testingFindAndSeek.gif)
+![ElämästäNauttivaVipeltäjä](assets/testingFindAndSeek.gif)
 Kuten ylläolevasta on huomattavissa, kentälle saa myös useita saman värisiä maaleja, joista kuitenkin vain yksi kerrallaan on oikea kohde. Robotti osaa ne päätellä, mutta ihmispelaajan on koitettava onneaan.
