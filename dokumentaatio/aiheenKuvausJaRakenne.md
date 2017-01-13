@@ -34,21 +34,21 @@ Onnistuneesti implementoitu Strategy pattern, jonka avulla pystytään muuttamaa
 ### Luokkakaavio
 ![luokkakaavio](assets/javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
 
-Luokkakaaviosta käy ilmi luokkien väliset suhteet. Paketit ovat eheitä kokonaisuuksia, ehkä Main-luokan Game-pakettiin tiputtamista lukuunottamatta. Luokkakaaviossa ei ole piirretty utils-paketin suhteita kuvan sotkemisen välttämiseksi. Niissä ei kuitenkaan mitään salattavaa ole, mutta aputyökalujen käyttämisen luonteen vuoksi niiden avaaminen kuvassa ei edesauta ohjelman luokkalogiikan ymmärtämistä. Utils-paketin IntelligentPlayer tarjoaa tekoälyn ohjaamaan pelaajaa, Randomizeria käytetään muutamissa luokissa generoimaan satunnaislukuja staattisilla metodeilla, KeyboardListener tarjoaa näppäimistönkuuntelupalvelua.
+Luokkakaaviosta käy ilmi luokkien väliset suhteet. Paketit ovat eheitä kokonaisuuksia, ehkä Main-luokan Game-pakettiin tiputtamista lukuunottamatta. Luokkakaaviossa ei ole piirretty **utils-paketin** suhteita kuvan sotkemisen välttämiseksi. Niissä ei kuitenkaan ole mitään salattavaa, mutta aputyökalujen käyttämisen luonteen vuoksi niiden avaaminen kuvassa ei edesauta luokkalogiikan ymmärtämistä. Utils-paketin IntelligentPlayer tarjoaa tekoälyn ohjaamaan pelaajaa, Randomizeria käytetään muutamissa luokissa generoimaan satunnaislukuja staattisilla metodeilla, KeyboardListener tarjoaa näppäimistönkuuntelupalvelua.
 
 Main-luokassa luodaan GUI ja kutsutaan run().
 
 Suurin paketti **ui** pitää sisällään graafisen käyttöliittymän toiminnallisuudet:
  - GUI:lla on useita eri paneeleita, jotka piirretään Jframelle halutun ulkonäön saamiseksi yhdistellen swingin tarjoamia eri layouteja
   - Paneelit ovat:
-   - TopMenu
-   - BoardPanel
-   - BottomMenu
-   - SidePanel
+    - TopMenu
+    - BoardPanel
+    - BottomMenu
+    - SidePanel
   - Joista kaksi ensin listattua käyttävät neliöiden piirtämiseen
-   - RectangleDrawing-luokan staattisia metodeja
+    - RectangleDrawing-luokan staattisia metodeja
   - GUI omistaa myös instanssin PopUpWindow-luokasta, joka generoi viesti-ikkunoita pelin aikana
-   - Lapsellisen helppoa lisätä ikkunoita ja niiden kautta toiminnallisuuksia myöhemmin
+    - Lapsellisen helppoa lisätä ikkunoita ja niiden kautta toiminnallisuuksia myöhemmin
    
 **Game-paketissa** on Main-luokan lisäksi Game-luokka, joka nivoo yhteen Boardin kautta Levelin --> ladataan pelitaso pelilaudalle (ideana, että pelihahmot liikkuvat laudalla, eivätkä tasolla). Game-luokka myös komentaa pelaajaa suorittamaan toimintoja, sekä tarkistaa pelitilanteen pyydettäessä.
 
