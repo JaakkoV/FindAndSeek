@@ -35,14 +35,14 @@ Pelaajan toiminnot:
 
 ## Luokkakaavio
 
-![luokkakaavio](javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
+![luokkakaavio](assets/javaLabra-luokkakaavio.png "Luokkakaavio, ver 1.1")
 
 ## Sekvenssikaavio pelaajan ohjaamisesta ylöspäin näppäimellä 'w'
 
-![Sekvenssikaavio1](ExecuteCommand('w').png "sekve1")
+![Sekvenssikaavio1](assets/ExecuteCommand('w').png "sekve1")
 
 ## Sekvenssikaavio pelistatuksen tarkistamisesta
 
-![Sekvenssikaavio2](checkGameStatus.png "sekve2")
+![Sekvenssikaavio2](assets/checkGameStatus.png "sekve2")
 
 ## Rakenne
