@@ -60,4 +60,7 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
     - Exit-nappi pelin lopettamiselle
 ![panels](panels.gif)
 
-Peli jatkuu niin kauan, kun pelaaja haluaa pelata.
+Peli jatkuu niin kauan, kun pelaaja haluaa pelata. 
+
+##Esimerkki vikkelästä vipeltäjäpelaajasta:
+[ElämästäNauttivaVipeltäjä](testingFindAndSeek.gif)
