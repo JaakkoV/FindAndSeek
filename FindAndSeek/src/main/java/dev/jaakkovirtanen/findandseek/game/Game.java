@@ -30,10 +30,8 @@ public class Game {
     }
 
     /**
-     * method tries to execute player command and moves player & increase
-     * moveCount if move is allowed.
-     *
-     * @param moveChar character from player
+     * Tries to perform players move.
+     * @param moveChar character to specify wanted action
      */
     public void executePlayerCommand(char moveChar) {
         Player testPlayer = this.gameBoard.getPlayer().getClonePlayer();

@@ -4,6 +4,9 @@ import dev.jaakkovirtanen.findandseek.game.*;
 import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 
+/**
+ * RectangleDrawing provides special rectangle drawing methods to panel components.
+ */
 public class RectangleDrawing {
 
     /**

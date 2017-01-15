@@ -3,6 +3,9 @@ package dev.jaakkovirtanen.findandseek.ui;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+/**
+ * PopUpWindow encapsulates message-window methods for GUI to use.
+ */
 public class PopUpWindow {
 
     private final JOptionPane popUpWindow;

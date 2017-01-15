@@ -5,6 +5,9 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * SidePanel extends JPanel and gives sidepanel to GUI-frame.
+ */
 public class SidePanel extends JPanel {
 
     private final Player p;

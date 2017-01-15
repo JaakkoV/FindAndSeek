@@ -5,6 +5,9 @@ import dev.jaakkovirtanen.findandseek.mapobjects.*;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * TopMenu extends JPanel and gives top menu to GUI-frame.
+ */
 public class TopMenu extends JPanel {
 
     private final GUI gui;

@@ -3,6 +3,9 @@ package dev.jaakkovirtanen.findandseek.ui;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * BoardPanel extends JPanel and give gameboard to GUI-frame.
+ */
 public class BoardPanel extends JPanel {
 
     private GUI gui;

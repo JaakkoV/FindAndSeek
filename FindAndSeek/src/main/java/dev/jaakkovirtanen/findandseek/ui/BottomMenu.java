@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * BottomMenu extends JPanel and gives bottom menu to GUI-frame.
+ */
 public class BottomMenu extends JPanel implements ActionListener {
 
     private final GUI gui;
