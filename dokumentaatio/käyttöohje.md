@@ -1,13 +1,13 @@
-#Käyttöohje suomeksi
+# Käyttöohje suomeksi
  - Sisältää tarvittavat tiedot pelin asentamiseen omalle koneelle 
  - Pelin pelaamiseen
  
-##Pelin asentaminen
+## Pelin asentaminen
 1. Lataa ja Asenna [Java](https://www.java.com/en/download/)
 2. Lataa ja pura [FindAndSeek.zip](../FindAndSeek.zip)
 3. Suorita .jar-tiedosto käynnistääksesi peli
 
-##Pelin tarkoitus
+## Pelin tarkoitus
 Pelissä on tarkoitus päästä 2-ulotteisella kartalla haluttuun pisteeseen mahdollisimman vähillä siirroilla. 
 
 Haluttu piste näkyy pelikentällä pelilaudan yläpuolella:
@@ -32,7 +32,7 @@ q   e
  / \
 z   c
    ```
-##Pelin käyttöliittymästä
+## Pelin käyttöliittymästä
 Pelin graafinen käyttöliittymä koostuu neljästä osasta:
 
 1. Yläpaneeli
@@ -59,11 +59,11 @@ Pelin graafinen käyttöliittymä koostuu neljästä osasta:
     - Exit-nappi pelin lopettamiselle
 ![panels](assets/panels.gif)
 
-##Pelin mielekkyydestä
+## Pelin mielekkyydestä
 Sovellus on toteutettu javalabran harjoitustyönä, opinnäytteenä. Pelin mielekkyys on siis ollut toissijainen juttu monen muun tekijän rinnalla. Kurssin puitteissa kaikkia ideoita ei ole haluttu lähteä toteuttamaan, vaan on panostettu rakenteeseen ja hyvään runkoon. Tätä peliä on mahdollista jatkokehittää helposti moneen eri suuntaan pelinautinnon lisäämiseksi (vaikka värinappuloiden pyydystäminen on jo nykyisellään varsin ratkiriemukasta).
 
 Peli jatkuu niin kauan, kun pelaaja haluaa pelata. 
 
-##Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
+## Esimerkki vikkelästä vipeltäjäpelaajasta testikentällä:
 ![ElämästäNauttivaVipeltäjä](assets/testingFindAndSeek.gif)
 Kuten ylläolevasta on huomattavissa, kentälle saa ladattua myös useita saman värisiä maaleja, joista kuitenkin vain yksi kerrallaan on oikea kohde. Robotti osaa ne päätellä, mutta ihmispelaajan on koitettava onneaan.
