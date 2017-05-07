@@ -1,13 +1,13 @@
 
-#Aiheen kuvaus ja rakenne
+# Aiheen kuvaus ja rakenne
 
-##Aihe:
+## Aihe:
 Vuoropohjainen peli, jossa pelaajan ohjaaman hahmon tulee kulkea pelin antamaan pisteeseen kartalla mahdollisimman vähillä siirroilla.
 
-##Käyttäjät:
+## Käyttäjät:
 * Pelaaja
 
-###Pelaajan toiminnot:
+### Pelaajan toiminnot:
 * Pelin käynnistäminen
 * Halutun tason valinta
 * Pelin pelaaminen
